@@ -1,2 +1,2 @@
-# Ocean_box_models
-Ocean box models
+# ocean_box_models
+ocean box models
