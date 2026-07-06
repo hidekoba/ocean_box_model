@@ -588,6 +588,7 @@
          DICD  = DICDX
          DO2P  = DO2PX
          DO2S  = DO2SX
+         DO2L  = DO2LX
          DO2N  = DO2NX
          DO2M  = DO2MX
          DO2D  = DO2DX
