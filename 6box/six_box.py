@@ -154,7 +154,7 @@ def default_params():
         "CV4": CV4,
         "CV5": CV5,
 
-        # Temperatures are written as K in main(6).f90 comments, but values are deg C.
+        # Temperatures are in deg C.
         "TEMP": 1.0,
         "TEMS": 8.0,
         "TEML": 21.5,

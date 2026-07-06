@@ -153,7 +153,7 @@ def default_params():
         "CV4": CV4,
         "CV5": CV5,
 
-        # Temperatures are labelled K in main(7).f90 comments, but values are deg C.
+        # Temperatures are in deg C.
         "TEMP": 1.0,
         "TEMS": 8.0,
         "TEML": 21.5,
@@ -344,7 +344,7 @@ def o2sats_all(params):
     }
 
 
-def step(state, params, aux, *, fortran_compat_do2l_omit=False):
+def step(state, params, aux):
     DT = params["DT"]
     TRAN = params["TRAN"]
     FPD = params["FPD"]
@@ -422,7 +422,7 @@ def step(state, params, aux, *, fortran_compat_do2l_omit=False):
     DICAX = state["DICA"] + ((TRAN + FNA) * (state["DICN"] - state["DICA"]) + FAD * (state["DICD"] - state["DICA"]) + dic_factor * (0.5 * RGMM * (EPS + EPL) + GMA * EPN)) * (DT / VOCNA)
     DICDX = state["DICD"] + ((TRAN + FAD) * (state["DICA"] - state["DICD"]) + FPD * (state["DICP"] - state["DICD"]) + dic_factor * (0.5 * RGMM * (EPS + EPL) + RGMA * EPN + EPP)) * (DT / VOCND)
 
-    # O2: follows main(7).f90 equations; no air-sea O2 exchange terms are included there.
+    # O2
     DO2PX = state["DO2P"] + ((TRAN + FPD) * (state["DO2D"] - state["DO2P"]) + FPS * (state["DO2S"] - state["DO2P"]) + RO2P * EPP + FAP * (o2satv["P"] - state["DO2P"])) * (DT / VOCNP)
     DO2SX = state["DO2S"] + ((TRAN + FPS) * (state["DO2P"] - state["DO2S"]) + FSL * (state["DO2L"] - state["DO2S"]) + RO2P * EPS + FAS * (o2satv["S"] - state["DO2S"])) * (DT / VOCNS)
     DO2LX = state["DO2L"] + (FSL * (state["DO2S"] - state["DO2L"]) + FLN * (state["DO2N"] - state["DO2L"]) + FLM * (state["DO2M"] - state["DO2L"]) + RO2P * EPL + FAL * (o2satv["L"] - state["DO2L"])) * (DT / VOCNL)
@@ -453,10 +453,6 @@ def step(state, params, aux, *, fortran_compat_do2l_omit=False):
         "DO2P": DO2PX, "DO2S": DO2SX, "DO2L": DO2LX, "DO2N": DO2NX, "DO2M": DO2MX, "DO2A": DO2AX, "DO2D": DO2DX,
         "PCO2A": PCO2AX,
     }
-
-    if fortran_compat_do2l_omit:
-        # Reproduce the apparent omission in main(7).f90's update block.
-        new_state["DO2L"] = state["DO2L"]
 
     aux = dict(aux)
     aux["EPL"] = EPL
@@ -551,7 +547,7 @@ def create_dataframe(out):
     return df
 
 
-def run_model(max_iter=100000, verbose=True, params=None, return_history=False, *, fortran_compat_do2l_omit=False):
+def run_model(max_iter=100000, verbose=True, params=None, return_history=False):
     if params is None:
         params = default_params()
     state, aux = initialize(params)
@@ -561,7 +557,7 @@ def run_model(max_iter=100000, verbose=True, params=None, return_history=False, 
     nstep = max_iter
     for i in range(1, max_iter + 1):
         old_po4p = state["PO4P"]
-        state_new, aux_new = step(state, params, aux, fortran_compat_do2l_omit=fortran_compat_do2l_omit)
+        state_new, aux_new = step(state, params, aux)
         rel = abs((state_new["PO4P"] / old_po4p) - 1.0) if old_po4p != 0 else abs(state_new["PO4P"])
 
         state, aux = state_new, aux_new
@@ -600,11 +596,6 @@ def main():
     parser.add_argument("--save-csv", type=str, default=None)
     parser.add_argument("--save-history", type=str, default=None)
     parser.add_argument("--quiet", action="store_true")
-    parser.add_argument(
-        "--fortran-compat-do2l-omit",
-        action="store_true",
-        help="Reproduce the apparent omission of DO2L update in main(7).f90.",
-    )
     args = parser.parse_args()
 
     if args.save_history:
@@ -612,14 +603,12 @@ def main():
             max_iter=args.iters,
             verbose=not args.quiet,
             return_history=True,
-            fortran_compat_do2l_omit=args.fortran_compat_do2l_omit,
         )
         hist.to_csv(args.save_history, index=False)
     else:
         out = run_model(
             max_iter=args.iters,
             verbose=not args.quiet,
-            fortran_compat_do2l_omit=args.fortran_compat_do2l_omit,
         )
 
     if args.save_csv:
