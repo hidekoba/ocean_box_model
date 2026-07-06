@@ -253,6 +253,11 @@ def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name=
         else:
             PCO2AX = PCO2A_atm
 
+       ## simple convergence check on PO4 relative change
+       #rel_change = abs(PO4SX - PO4S) / max(abs(PO4S), 1.0e-30)
+       #if rel_change <= 1.0e-6:
+       #    break
+
         # Update state
         TEMS = TEMSX
         TEMD = TEMDX
@@ -265,10 +270,6 @@ def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name=
         DO2S = DO2SX
         DO2D = DO2DX
         PCO2A_atm = PCO2AX
-
-        # simple convergence check on PO4 relative change
-        if abs((PO4SX / (PO4S if PO4S != 0 else PO4SX)) - 1.0) <= 1.0e-6:
-            break
 
     # finalize outputs (convert to units similar to Fortran prints)
     TOCFIN = DICS * VOCNS + DICD * VOCND + PCO2A_atm * VATM
