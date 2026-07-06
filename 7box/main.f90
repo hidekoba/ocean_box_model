@@ -529,6 +529,7 @@
      &             + (TRAN + FPD) * (DO2D - DO2P)                      &
      &             + FPS * (DO2S - DO2P)                               &
      &             + RO2P * EPP                                        &
+     &             + FAP * (O2SATP - DO2P)                             &
      &           )                                                     &
      &           * (DT / VOCNP)
          DO2SX = DO2S                                                  &
@@ -536,6 +537,7 @@
      &             + (TRAN + FPS) * (DO2P - DO2S)                      &
      &             + FSL * (DO2L - DO2S)                               &
      &             + RO2P * EPS                                        &
+     &             + FAS * (O2SATS - DO2S)                             &
      &           )                                                     &
      &           * (DT / VOCNS)
          DO2LX = DO2L                                                  &
@@ -544,6 +546,7 @@
      &             + FLN * (DO2N - DO2L)                               &
      &             + FLM * (DO2M - DO2L)                               &
      &             + RO2P * EPL                                        &
+     &             + FAL * (O2SATL - DO2L)                             &
      &           )                                                     &
      &           * (DT / VOCNL)
          DO2NX = DO2N                                                  &
@@ -552,6 +555,7 @@
      &             + FLN * (DO2L - DO2N)                               &
      &             + FNA * (DO2A - DO2N)                               &
      &             + RO2P * EPN                                        &
+     &             + FAN * (O2SATN - DO2N)                             &
      &           )                                                     &
      &           * (DT / VOCNN)
          DO2MX = DO2M                                                  &
