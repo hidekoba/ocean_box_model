@@ -15,7 +15,7 @@
 !
 ! ---------------------------------------------------------------------
 
-      INTEGER :: I, ISTEP
+      INTEGER :: I
       INTEGER, PARAMETER :: NBOX=3
 !     1:H, 2:L, 3:D
 
@@ -23,37 +23,35 @@
       REAL(8) :: CV1, CV2, CV3, CV4, CV5
 
       REAL(8) :: VOCN, AOCN, VATM
-      REAL(8) :: ZOCNH, DEH, AOCNH, VOCNH
-      REAL(8) :: ZOCNL, DEL, AOCNL, VOCNL
-      REAL(8) :: ZOCND, VOCND
+      REAL(8) :: ZOCNH, DEH, AOCNH, FAOCNH, VOCNH
+      REAL(8) :: ZOCNL, DEL, AOCNL, FAOCNL, VOCNL
+      REAL(8) :: ZOCND,                     VOCND
 
-      REAL(8) :: T, FHD, FLD, FLH, PVH, PVL, FAH, FAL
+      REAL(8) :: TRAN, FHD, FLD, FLH, PVH, PVL, FAH, FAL
       REAL(8) :: R, LF, HSC
       REAL(8) :: RRC, RCP, RNP, RO2P, CEPH
       REAL(8) :: BT(NBOX)
       REAL(8) :: K0(NBOX), K1(NBOX), K2(NBOX)
       REAL(8) :: KB(NBOX), KW(NBOX), FH(NBOX)
 
-      REAL(8) :: TEMH, SALH,   TEMHX, SALHX
+      REAL(8) :: TEMH,  SALH,   TEMHX!  SALHX
       REAL(8) :: PO4H,  ALKH,   DICH,   DO2H
       REAL(8) :: PO4HX, ALKHX,  DICHX,  DO2HX
       REAL(8) :: CO2H,  HCO3H,  CO32H,  PCO2H, O2SATH, AOUH, EPH
-      REAL(8) :: CO2HX, HCO3HX, CO32HX, PCO2HX
 
-      REAL(8) :: TEML, SALL,   TEMLX, SALLX
+      REAL(8) :: TEML,  SALL,   TEMLX!  SALLX
       REAL(8) :: PO4L,  ALKL,   DICL,   DO2L
       REAL(8) :: PO4LX, ALKLX,  DICLX,  DO2LX
       REAL(8) :: CO2L,  HCO3L,  CO32L,  PCO2L, O2SATL, AOUL, EPL
-      REAL(8) :: CO2LX, HCO3LX, CO32LX, PCO2LX
 
-      REAL(8) :: TEMD, SALD,   TEMDX, SALDX
+      REAL(8) :: TEMD,  SALD,   TEMDX!  SALDX
       REAL(8) :: PO4D,  ALKD,   DICD,   DO2D
       REAL(8) :: PO4DX, ALKDX,  DICDX,  DO2DX
-      REAL(8) :: CO2D,  HCO3D,  CO32D,  PCO2D, O2SATD, AOUD, EPD
-      REAL(8) :: CO2DX, HCO3DX, CO32DX, PCO2DX
+      REAL(8) :: CO2D,  HCO3D,  CO32D,  PCO2D, O2SATD, AOUD
 
       REAL(8) :: PCO2A, PCO2AX
       REAL(8) :: TOCINI, TOCFIN
+      REAL(8) :: OLD_PO4H
 
       DATA DT    / 8.64D4 /
       DATA DELTA / 1.0D-6 /
@@ -67,35 +65,41 @@
 !--   Temperature [K]
 !--   Salinity [PSU]
       DATA TEMH, TEML, TEMD &
-     & / 2.0, 21.5, 1.75 /
+     & / 2.0, 21.5, 1.75 / !! Table 1 in Toggweiler+ (1999)
+
       DATA SALH, SALL, SALD &
-     & / 34.7, 34.7, 34.7 /
+     & / 34.7, 34.7, 34.7 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Ocean volume [m^3]
 !--   Ocean area [m^2]
 !--   Atmospheric molers [mol] = [mol/atm]
       DATA VOCN, AOCN, VATM &
-     & / 1.292D18, 3.49D14, 1.773D20 /
+     & / 1.292D18, 3.49D14, 1.773D20 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Ocean depth [m]
       DATA ZOCNH, ZOCNL, ZOCND &
-     & / 2.5D2, 1.0D2, 4.0D3 /
+     & / 250.D0, 100.D0, 4000.D0 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Ocean depth of euphotic zone [m]
-      DATA DEH, DEL / 2.5D2, 1.0D2 /
+      DATA DEH, DEL &
+     & / 250.D0, 100.D0 /
+
+!--   Ocean area [%]
+      DATA FAOCNH, FAOCNL &
+     & / 0.15D0, 0.85D0 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Transport [m^3/s]
 !--   Diffusivity [m^3/s]
-      DATA T &
-     & / 2.0D7 /
+      DATA TRAN &
+     & / 20.0D6 / !! Table 1 in Toggweiler+ (1999)
       DATA FHD, FLD, FLH &
-     & / 6.0D7, 0.0D0, 0.0D0 /
+     & / 60.0D6, 0.0D0, 0.0D0 / !! 3-300 Sv / Table 1 in Toggweiler+ (1999)
 
 !--   Piston velocity [m/day]
-      DATA PVH, PVL / 3.0D0, 3.0D0 /
+      DATA PVH, PVL / 3.0D0, 3.0D0 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Bio-production efficiency [/yr]
-      R = 1.0D0 / CV4
+      DATA R / 1.0D0 /
 
 !--   Proportional to an annual averaged solar radiation
       DATA LF / 5.0D-1 /
@@ -104,13 +108,17 @@
       DATA HSC / 2.0D-8 /
 
 !--   Rain ratio, C/P, N/P, O2/P
-      DATA RRC  / 0.25D0 /
-      DATA RCP  / 106.D0 /
-      DATA RNP  /  16.D0 /
-      DATA RO2P / 172.D0 /
+      DATA RRC  / 0.200D0 / !! Table 1 in Toggweiler+ (1999)
+      DATA RCP  / 106.0D0 /
+      DATA RNP  /  16.0D0 /
+      DATA RO2P / 172.0D0 /
+     !DATA RCP  / 162.5D0 / !! Table 1 in Toggweiler+ (1999)
+     !DATA RNP  /  15.0D0 / !! Table 1 in Toggweiler+ (1999)
+     !DATA RO2P / 169.0D0 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Biological sinking flux [molC/m^2/yr]
-      DATA CEPH / 7.5D-1 /
+      DATA CEPH / 0.75D0 / !! 0.075-7.5 molC/m^2/yr / Table 1 in Toggweiler+ (1999)
+     !DATA CEPH / 1.00D0 /
 
 !--   Initial atomospheric PCO2 [ppmv]
       DATA PCO2A / 280.D0 /
@@ -118,10 +126,8 @@
 !-- Initial condition (etc)
 
 !--   Ocean area [m^2]
-!--   H, L
-!--   15% , 85%
-      AOCNH = AOCN * 1.5D-1
-      AOCNL = AOCN * 8.5D-1
+      AOCNH = AOCN * FAOCNH
+      AOCNL = AOCN * FAOCNL
 
 !--   Ocean volume [m^3]
       VOCNH = AOCNH * ZOCNH
@@ -164,6 +170,8 @@
       EPH   = EPH   / CV4 !! [/yr]    to [/s]
       FAH   = FAH   / CV5 !! [/day]   to [/s]
       FAL   = FAL   / CV5 !! [/day]   to [/s]
+      HSC   = HSC   * CV1 !! [mol/kg] to [mol/m^3]
+      R     = R     / CV4 !! [/yr]    to [/s]
       PO4H  = PO4H  * CV1 !! [mol/kg] to [mol/m^3]
       PO4L  = PO4L  * CV1 !! [mol/kg] to [mol/m^3]
       PO4D  = PO4D  * CV1 !! [mol/kg] to [mol/m^3]
@@ -174,6 +182,7 @@
       ALKL  = ALKL  * CV1 !! [mol/kg] to [mol/m^3]
       ALKD  = ALKD  * CV1 !! [mol/kg] to [mol/m^3]
       DO2H  = DO2H  * CV1 !! [mol/kg] to [mol/m^3]
+      DO2L  = DO2L  * CV1 !! [mol/kg] to [mol/m^3]
       DO2D  = DO2D  * CV1 !! [mol/kg] to [mol/m^3]
       PCO2A = PCO2A / CV3 !! [ppmv] to [atm]
 
@@ -216,6 +225,11 @@
      &                      BT(3), K0(3), K1(3), K2(3), KB(3), KW(3),  &
      &                      ALKD, DICD, CO2D, HCO3D, CO32D, PCO2D      &
      &                    )
+
+            CALL O2SAT(TEMH, SALH, O2SATH)
+            CALL O2SAT(TEML, SALL, O2SATL)
+            CALL O2SAT(TEMD, SALD, O2SATD)
+
             TOCINI = + DICH  * VOCNH                                   &
      &               + DICL  * VOCNL                                   &
      &               + DICD  * VOCND                                   &
@@ -224,90 +238,137 @@
 
 !-- Calculation of biogeochemical tracers
 
+        !EPL = (TRAN + FLD) * PO4D !! Toggweiler and Sarmiento, 1985
+        !EPL = (TRAN + FLD) * (PO4D - PO4L)
+        !EPH = R * DEH * LF * PO4H * (PO4H / (HSC + PO4H)) * VOCNH
+         EPL = R * DEL * LF * PO4L * (PO4L / (HSC + PO4L)) * VOCNL
 
-          EPL = T * PO4D
- !--      EP_H = R * DE_H * LF * PO_H * (PO_H / (HSC + PO_H))
- !--      EP_L = R * DE_L * LF * PO_L * (PO_L / (HSC + PO_L))
+         TEMHX = TEMH
+         TEMLX = TEML
+         TEMDX = TEMD
 
-          TEMDX = TEMD &
-      &   + ((T + FHD) * (TEMH - TEMD) + FLD * (TEML - TEMD)) &
-      &   * (DT / VOCND)
+         PO4HX = PO4H                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLH) * (PO4L - PO4H)                      &
+     &             + FHD * (PO4D - PO4H)                               &
+     &             - EPH                                               &
+     &           )                                                     &
+     &           * (DT / VOCNH)
+         PO4LX = PO4L                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLD) * (PO4D - PO4L)                      &
+     &             + FLH * (PO4H - PO4L)                               &
+     &             - EPL                                               &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         PO4DX = PO4D                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FHD) * (PO4H - PO4D)                      &
+     &             + FLD * (PO4L - PO4D)                               &
+     &             + (EPH + EPL)                                       &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-          PO4HX = PO4H &
-      &   + ((T + FLH) * (PO4L - PO4H) + FHD * (PO4D - PO4H) - EPH) &
-      &   * (DT / VOCNH)
-          PO4LX = PO4L &
-      &   + ((T + FLD) * (PO4D - PO4L) + FLH * (PO4H - PO4L) - EPL) &
-      &   * (DT / VOCNL)
-          PO4DX = PO4D &
-      &   + ((T + FHD) * (PO4H - PO4D) + FLD * (PO4L - PO4D) + (EPH + EPL)) &
-      &   * (DT / VOCND)
+         ALKHX = ALKH                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLH) * (ALKL - ALKH)                      &
+     &             + FHD * (ALKD - ALKH)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPH                   &
+     &           )                                                     &
+     &           * (DT / VOCNH)
+         ALKLX = ALKL                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLD) * (ALKD - ALKL)                      &
+     &             + FLH * (ALKH - ALKL)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPL                   &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         ALKDX = ALKD                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FHD) * (ALKH - ALKD)                      &
+     &             + FLD * (ALKL - ALKD)                               &
+     &             + (2.0D0 * RRC * RCP - RNP) * (EPH + EPL)           &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-          ALKHX = ALKH &
-      &   + ((T + FLH) * (ALKL - ALKH) + FHD * (ALKD - ALKH) - (2.0D0 * RRC * RCP - RNP) * EPH) &
-      &   * (DT / VOCNH)
-          ALKLX = ALKL &
-      &   + ((T + FLD) * (ALKD - ALKL) + FLH * (ALKH - ALKL) - (2.0D0 * RRC * RCP - RNP) * EPL) &
-      &   * (DT / VOCNL)
-          ALKDX = ALKD &
-      &   + ((T + FHD) * (ALKH - ALKD) + FLD * (ALKL - ALKD) + (2.0D0 * RRC * RCP - RNP) * (EPH + EPL)) &
-      &   * (DT / VOCND)
+         DICHX = DICH                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLH) * (DICL - DICH)                      &
+     &             + FHD * (DICD - DICH)                               &
+     &             - (1.0D0 + RRC) * RCP * EPH                         &
+     &             + FAH * CV1 * K0(1) * (PCO2A - PCO2H)               &
+     &           )                                                     &
+     &           * (DT / VOCNH)
+         DICLX = DICL                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLD) * (DICD - DICL)                      &
+     &             + FLH * (DICH - DICL)                               &
+     &             - (1.0D0 + RRC) * RCP * EPL                         &
+     &             + FAL * CV1 * K0(2) * (PCO2A - PCO2L)               &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         DICDX = DICD                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FHD) * (DICH - DICD)                      &
+     &             + FLD * (DICL - DICD)                               &
+     &             + (1.0D0 + RRC) * RCP * (EPH + EPL)                 &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-          DICHX = DICH &
-      &   + ((T + FLH) * (DICL - DICH) + FHD * (DICD - DICH) &
-          &     - (1.0D0 + RRC) * RCP * EPH + FAH * CV1 * K0(1) * (PCO2A - PCO2H)) &
-      & * (DT / VOCNH)
-          DICLX = DICL &
-      &   + ((T + FLD) * (DICD - DICL) + FLH * (DICH - DICL) &
-          &     - (1.0D0 + RRC) * RCP * EPL + FAL * CV1 * K0(2) * (PCO2A - PCO2L)) &
-      &   * (DT / VOCNL)
-          DICDX = DICD &
-      &   + ((T + FHD) * (DICH - DICD) + FLD * (DICL - DICD) + (1.0D0 + RRC) * RCP * (EPH + EPL)) &
-      & * (DT / VOCND)
-
-          DO2HX = DO2H &
-      &   + ((T + FLH) * (O2SATL - DO2H) + FHD * (O2SATH - DO2H) + RO2P * EPH + FAH * (O2SATH - DO2H)) &
-      &   * (DT / VOCNH)
-          DO2LX = DO2L + ((T + FLD) * (DO2D - DO2L) + FLH * (DO2H - DO2L) + RO2P * EPL) &
-      &* (DT / VOCNL)
-          DO2DX = DO2D &
-      &   + ((T + FHD) * (DO2H - DO2D) + FLD * (O2SATL - DO2D) - RO2P * (EPH + EPL)) &
-      &* (DT / VOCND)
+         DO2HX = DO2H                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLH) * (O2SATL - DO2H)                    &
+     &             + FHD * (O2SATH - DO2H)                             &
+     &             + RO2P * EPH                                        &
+     &             + FAH * (O2SATH - DO2H)                             &
+     &           )                                                     &
+     &           * (DT / VOCNH)
+         DO2LX = DO2L                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FLD) * (DO2D - DO2L)                      &
+     &             + FLH * (DO2H - DO2L)                               &
+     &             + RO2P * EPL                                        &
+     &             + FAL * (O2SATL - DO2L)                             &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         DO2DX = DO2D                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FHD) * (DO2H - DO2D)                      &
+     &             + FLD * (O2SATL - DO2D)                             &
+     &             - RO2P * (EPH + EPL)                                &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
 !-- Calculation of carbonate system
 
          CALL CO2_NIBUN(                                               &
      &                   BT(1), K0(1), K1(1), K2(1), KB(1), KW(1),     &
-     &                   ALKHX, DICHX, CO2HX, HCO3H, CO32H, PCO2H      &
+     &                   ALKHX, DICHX, CO2H, HCO3H, CO32H, PCO2H       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(2), K0(2), K1(2), K2(2), KB(2), KW(2),     &
-     &                   ALKLX, DICLX, CO2LX, HCO3L, CO32L, PCO2L      &
+     &                   ALKLX, DICLX, CO2L, HCO3L, CO32L, PCO2L       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(3), K0(3), K1(3), K2(3), KB(3), KW(3),     &
-     &                   ALKDX, DICDX, CO2DX, HCO3D, CO32D, PCO2D      &
+     &                   ALKDX, DICDX, CO2D, HCO3D, CO32D, PCO2D       &
      &                 )
 
 !-- Calculation of atmospheric PCO2
 
          PCO2AX = PCO2A                                                &
      &    + (                                                          &
-     &        + K0(1) * FAH * (PCO2H - PCO2A)                          &
-     &        + K0(2) * FAL * (PCO2L - PCO2A)                          &
+     &        + FAH * CV1 * K0(1) * (PCO2H - PCO2A)                    &
+     &        + FAL * CV1 * K0(2) * (PCO2L - PCO2A)                    &
      &      )                                                          &
      &      * (DT / VATM)
 
-!-- Equilibrium condition
-
-         IF (ABS((PO4HX / PO4H) - 1.0D0) <= DELTA) THEN
-           WRITE(*,*) 'TIMESTEP =', I
-           EXIT
-         ENDIF
-
 !-- Next loop
 
-!        TEMD  = TEMDX
+         OLD_PO4H = PO4H
+         TEMH  = TEMHX
+         TEML  = TEMLX
+         TEMD  = TEMDX
          PO4H  = PO4HX
          PO4L  = PO4LX
          PO4D  = PO4DX
@@ -322,6 +383,13 @@
          DO2D  = DO2DX
          PCO2A = PCO2AX
 
+!-- Equilibrium condition
+
+         IF (ABS((PO4H / OLD_PO4H) - 1.0D0) <= DELTA) THEN
+           WRITE(*,*) 'TIMESTEP =', I
+           EXIT
+         ENDIF
+
       ENDDO
 
 !-- Final total carbon
@@ -331,7 +399,7 @@
      &         + DICD  * VOCND                                         &
      &         + PCO2A * VATM
 
-!-- Oxygen utilization
+!-- Oxygen saturation
 
       CALL O2SAT(TEMH, SALH, O2SATH)
       CALL O2SAT(TEML, SALL, O2SATL)
@@ -373,8 +441,8 @@
       PCO2L = CV3 * PCO2L                     !! [atm]     to [ppmv]
       PCO2D = CV3 * PCO2D                     !! [atm]     to [ppmv]
       PCO2A = CV3 * PCO2A                     !! [atm]     to [ppmv]
-      TOCINI = TOCINI * 1.D-15 * 12.0         !! [molC]    to [PgC]
-      TOCFIN = TOCFIN * 1.D-15 * 12.0         !! [molC]    to [PgC]
+      TOCINI = TOCINI * 12.D-15               !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 12.D-15               !! [molC]    to [PgC]
 
 !-- Output
 

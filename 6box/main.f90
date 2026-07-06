@@ -23,14 +23,14 @@
       REAL(8) :: CV1, CV2, CV3, CV4, CV5
 
       REAL(8) :: VOCN, AOCN, VATM
-      REAL(8) :: ZOCNP, DEP, AOCNP, VOCNP
-      REAL(8) :: ZOCNS, DES, AOCNS, VOCNS
-      REAL(8) :: ZOCNL, DEL, AOCNL, VOCNL
-      REAL(8) :: ZOCNN, DEN, AOCNN, VOCNN
-      REAL(8) :: ZOCNM,      AOCNM, VOCNM
-      REAL(8) :: ZOCND,             VOCND
+      REAL(8) :: ZOCNP, DEP, AOCNP, FAOCNP, VOCNP
+      REAL(8) :: ZOCNS, DES, AOCNS, FAOCNS, VOCNS
+      REAL(8) :: ZOCNL, DEL, AOCNL, FAOCNL, VOCNL
+      REAL(8) :: ZOCNN, DEN, AOCNN, FAOCNN, VOCNN
+      REAL(8) :: ZOCNM,      AOCNM, FAOCNM, VOCNM
+      REAL(8) :: ZOCND,                     VOCND
 
-      REAL(8) :: T, FPD, FND, FSM, FLM, FPS, FSL, FLN
+      REAL(8) :: TRAN, FPD, FND, FSM, FLM, FPS, FSL, FLN
       REAL(8) :: PVP, PVS, PVL, PVN
       REAL(8) :: FAP, FAS, FAL, FAN
       REAL(8) :: CEPP, CEPS, CEPN
@@ -40,44 +40,39 @@
       REAL(8) :: K0(NBOX), K1(NBOX), K2(NBOX)
       REAL(8) :: KB(NBOX), KW(NBOX), FH(NBOX)
 
-      REAL(8) :: TEMP, SALP,   TEMPX, SALPX
+      REAL(8) :: TEMP,  SALP,   TEMPX!  SALPX
       REAL(8) :: PO4P,  ALKP,   DICP,   DO2P
       REAL(8) :: PO4PX, ALKPX,  DICPX,  DO2PX
       REAL(8) :: CO2P,  HCO3P,  CO32P,  PCO2P, O2SATP, AOUP, EPP
-      REAL(8) :: CO2PX, HCO3PX, CO32PX, PCO2PX
 
-      REAL(8) :: TEMS, SALS,   TEMSX, SALSX
+      REAL(8) :: TEMS,  SALS,   TEMSX!  SALSX
       REAL(8) :: PO4S,  ALKS,   DICS,   DO2S
       REAL(8) :: PO4SX, ALKSX,  DICSX,  DO2SX
       REAL(8) :: CO2S,  HCO3S,  CO32S,  PCO2S, O2SATS, AOUS, EPS
-      REAL(8) :: CO2SX, HCO3SX, CO32SX, PCO2SX
 
-      REAL(8) :: TEML, SALL,   TEMLX, SALLX
+      REAL(8) :: TEML,  SALL,   TEMLX!  SALLX
       REAL(8) :: PO4L,  ALKL,   DICL,   DO2L
       REAL(8) :: PO4LX, ALKLX,  DICLX,  DO2LX
       REAL(8) :: CO2L,  HCO3L,  CO32L,  PCO2L, O2SATL, AOUL, EPL
-      REAL(8) :: CO2LX, HCO3LX, CO32LX, PCO2LX
 
-      REAL(8) :: TEMN, SALN,   TEMNX, SALNX
+      REAL(8) :: TEMN,  SALN,   TEMNX!  SALNX
       REAL(8) :: PO4N,  ALKN,   DICN,   DO2N
       REAL(8) :: PO4NX, ALKNX,  DICNX,  DO2NX
       REAL(8) :: CO2N,  HCO3N,  CO32N,  PCO2N, O2SATN, AOUN, EPN
-      REAL(8) :: CO2NX, HCO3NX, CO32NX, PCO2NX
 
-      REAL(8) :: TEMM, SALM,   TEMMX, SALMX
+      REAL(8) :: TEMM,  SALM,   TEMMX!  SALMX
       REAL(8) :: PO4M,  ALKM,   DICM,   DO2M
       REAL(8) :: PO4MX, ALKMX,  DICMX,  DO2MX
-      REAL(8) :: CO2M,  HCO3M,  CO32M,  PCO2M, O2SATM, AOUM, EPM
-      REAL(8) :: CO2MX, HCO3MX, CO32MX, PCO2MX
+      REAL(8) :: CO2M,  HCO3M,  CO32M,  PCO2M, O2SATM, AOUM
 
-      REAL(8) :: TEMD, SALD,   TEMDX, SALDX
+      REAL(8) :: TEMD,  SALD,   TEMDX!  SALDX
       REAL(8) :: PO4D,  ALKD,   DICD,   DO2D
       REAL(8) :: PO4DX, ALKDX,  DICDX,  DO2DX
-      REAL(8) :: CO2D,  HCO3D,  CO32D,  PCO2D, O2SATD, AOUD, EPD
-      REAL(8) :: CO2DX, HCO3DX, CO32DX, PCO2DX
+      REAL(8) :: CO2D,  HCO3D,  CO32D,  PCO2D, O2SATD, AOUD
 
       REAL(8) :: PCO2A, PCO2AX
       REAL(8) :: TOCINI, TOCFIN
+      REAL(8) :: OLD_PO4P
 
       DATA DT    / 8.64D4 /
       DATA DELTA / 1.0D-6 /
@@ -91,39 +86,43 @@
 !--   Temperature [K]
 !--   Salinity [PSU]
       DATA TEMP, TEMS, TEML, TEMN, TEMM, TEMD &
-     & / 1.0, 8.0, 21.5, 3.0, 10.0, 1.75 /
+     & / 1.0, 8.0, 21.5, 3.0, 10.0, 1.75 / !! Table 1,2,3 in Toggweiler+ (1999)
       DATA SALP, SALS, SALL, SALN, SALM, SALD &
-     & / 34.7, 34.7, 34.7, 34.7, 34.7, 34.7 /
+     & / 34.7, 34.7, 34.7, 34.7, 34.7, 34.7 / !! Table 1,2,3 in Toggweiler+ (1999)
 
 !--   Ocean volume [m^3]
 !--   Ocean area [m^2]
 !--   Atmospheric molers [mol] = [mol/atm]
       DATA VOCN, AOCN, VATM &
-     & / 1.292D18, 3.49D14, 1.773D20 /
+     & / 1.292D18, 3.49D14, 1.773D20 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Ocean depth [m]
       DATA ZOCNP, ZOCNS, ZOCNL, ZOCNN, ZOCNM, ZOCND &
-     & / 2.5D2, 2.5D2, 1.0D2, 2.5D2, 9.0D2, 4.0D3 /
+     & / 250.D0, 250.D0, 100.D0, 250.D0, 900.0D0, 4000.D0 / !! Table 1,2,3 in Toggweiler+ (1999)
 
 !--   Ocean depth of euphotic zone [m]
       DATA DEP, DES, DEL, DEN &
-     & / 2.5D2, 2.5D2, 1.0D2, 2.5D2 /
+     & / 100.D0, 100.D0, 100.D0, 100.D0 /
+
+!--   Ocean area [%]
+      DATA FAOCNP, FAOCNS, FAOCNL, FAOCNN, FAOCNM &
+     & / 0.05D0, 0.10D0, 0.75D0, 0.10D0, 0.85D0 / !! Table 1,2,3 in Toggweiler et al. (1999)
 
 !--   Transport [m^3/s]
 !--   Diffusivity [m^3/s]
-      DATA T &
-     & / 2.0D7 /
+      DATA TRAN &
+     & / 20.0D6 /
       DATA FPD, FND, FSM, FLM, FLN &
-     & / 6.0D7, 0.0D0, 0.0D0, 4.0D7, 0.0D0 /
+     & / 60.0D6, 0.0D0, 0.0D0, 40.0D6, 0.0D0 / !! 3-300 Sv / Table 1,2,3 in Toggweiler et al. (1999)
       DATA FPS, FSL, FLN &
-     & / 0.0D0, 0.0D0, 0.0D0 /
+     & / 0.0D0, 0.0D0, 0.0D0 / !! Table 1,2,3 in Toggweiler et al. (1999)
 
 !--   Piston velocity [m/day]
       DATA PVP, PVS, PVL, PVN &
-     & / 3.0D0, 3.0D0, 3.0D0, 3.0D0 /
+     & / 3.0D0, 3.0D0, 3.0D0, 3.0D0 / !! Table 1,2,3 in Toggweiler et al. (1999)
 
 !--   Bio-production efficiency [/yr]
-      R = 1.0D0 / CV4
+      DATA R / 1.0D0 /
 
 !--   Proportional to an annual averaged solar radiation
       DATA LF / 5.0D-1 /
@@ -133,17 +132,21 @@
 
 !--   Rain ratio, C/P, N/P, O2/P
       DATA RRC  / 0.25D0 /
-      DATA RCP  / 106.D0 /
-      DATA RNP  /  16.D0 /
-      DATA RO2P / 172.D0 /
+     !DATA RCP  / 106.0D0 /
+     !DATA RNP  /  16.0D0 /
+     !DATA RO2P / 172.0D0 /
+      DATA RCP  / 162.5D0 / !! Table 1 in Toggweiler+ (1999)
+      DATA RNP  /  15.0D0 / !! Table 1 in Toggweiler+ (1999)
+      DATA RO2P / 169.0D0 / !! Table 1 in Toggweiler+ (1999)
 
 !--   Remineralization fraction
-      GM  = 0.80D0
+      DATA GM / 0.80D0 /
       RGM = 1.0D0 - GM
 
 !--   Biological sinking flux [molC/m^2/yr]
       DATA CEPP, CEPS, CEPN &
-     & / 3.0D0, 7.5D-1, 1.0D0 /
+!    & / 1.00D0, 1.50D0, 3.00D0 / !! 0.15-15.0 molC/m^2/yr / Table 3 in Toggweiler+ (1999)
+     & / 1.00D0, 3.00D0, 3.00D0 /
 
 !--   Initial atomospheric PCO2 [ppmv]
       DATA PCO2A / 280.D0 /
@@ -151,13 +154,11 @@
 !-- Initial condition (etc)
 
 !--   Ocean area [m^2]
-!--   P, S, L, N, M
-!--   5% , 10% , 75% , 10%, 85%
-      AOCNP = AOCN * 5.0D-2
-      AOCNS = AOCN * 1.0D-1
-      AOCNL = AOCN * 7.5D-1
-      AOCNN = AOCN * 1.0D-1
-      AOCNM = AOCN * 8.5D-1
+      AOCNP = AOCN * FAOCNP
+      AOCNS = AOCN * FAOCNS
+      AOCNL = AOCN * FAOCNL
+      AOCNN = AOCN * FAOCNN
+      AOCNM = AOCN * FAOCNM
 
 !--   Ocean volume [m^3]
       VOCNP = AOCNP * ZOCNP
@@ -182,19 +183,23 @@
 
 !--   Phosphate [mol/kg]
       DATA PO4P, PO4S, PO4L, PO4N, PO4M, PO4D &
-     & / 2.00D-6, 2.33D-6, 0.0D-6, 1.0D-6, 2.142D-6, 2.142D-6 /
+     & / 2.09D-6, 2.09D-6, 2.09D-6, 2.09D-6, 2.09D-6, 2.09D-6 /
+!    & / 2.00D-6, 2.33D-6, 0.0D-6, 1.0D-6, 2.142D-6, 2.142D-6 /
 
 !--   Alkalinity [eq/kg]
       DATA ALKP, ALKS, ALKL, ALKN, ALKM, ALKD &
-     & / 2.360D-3, 2.325D-3, 2.277D-3, 2.324D-3, 2.3738D-3, 2.3738D-3 /
+     & / 2.371D-3, 2.371D-3, 2.371D-3, 2.371D-3, 2.371D-3, 2.371D-3 /
+!    & / 2.360D-3, 2.325D-3, 2.277D-3, 2.324D-3, 2.3738D-3, 2.3738D-3 /
 
 !--   Dissolved inorganic carbon [mol/kg]
       DATA DICP, DICS, DICL, DICN, DICM, DICD &
-     & / 2.150D-3, 2.107D-3, 1.933D-3, 2.106D-3, 2.2561D-3, 2.2561D-3 /
+     & / 2.258D-3, 2.258D-3, 2.258D-3, 2.258D-3, 2.258D-3, 2.258D-3 /
+!    & / 2.150D-3, 2.107D-3, 1.933D-3, 2.106D-3, 2.2561D-3, 2.2561D-3 /
 
 !--   Dissolved oxygen [mol/kg]
-      DATA DO2P, DO2S, DO2N, DO2M, DO2D &
-     & / 3.50D-4, 3.00D-4, 3.00D-4, 1.50D-4, 2.50D-4 /
+      DATA DO2P, DO2S, DO2L, DO2N, DO2M, DO2D &
+     & / 1.60D-4, 1.60D-4, 1.60D-4, 1.60D-4, 1.60D-4, 1.60D-4 /
+!    & / 3.50D-4, 3.00D-4, 3.00D-4, 3.00D-4, 1.50D-4, 2.50D-4 /
 
 !-- Unit conversion
 
@@ -205,6 +210,8 @@
       FAS   = FAS   / CV5 !! [/day]   to [/s]
       FAL   = FAL   / CV5 !! [/day]   to [/s]
       FAN   = FAN   / CV5 !! [/day]   to [/s]
+      HSC   = HSC   * CV1 !! [mol/kg] to [mol/m^3]
+      R     = R     / CV4 !! [/yr]    to [/s]
       PO4P  = PO4P  * CV1 !! [mol/kg] to [mol/m^3]
       PO4S  = PO4S  * CV1 !! [mol/kg] to [mol/m^3]
       PO4L  = PO4L  * CV1 !! [mol/kg] to [mol/m^3]
@@ -225,6 +232,7 @@
       ALKD  = ALKD  * CV1 !! [mol/kg] to [mol/m^3]
       DO2P  = DO2P  * CV1 !! [mol/kg] to [mol/m^3]
       DO2S  = DO2S  * CV1 !! [mol/kg] to [mol/m^3]
+      DO2L  = DO2L  * CV1 !! [mol/kg] to [mol/m^3]
       DO2N  = DO2N  * CV1 !! [mol/kg] to [mol/m^3]
       DO2M  = DO2M  * CV1 !! [mol/kg] to [mol/m^3]
       DO2D  = DO2D  * CV1 !! [mol/kg] to [mol/m^3]
@@ -296,6 +304,14 @@
      &                      BT(6), K0(6), K1(6), K2(6), KB(6), KW(6),  &
      &                      ALKD, DICD, CO2D, HCO3D, CO32D, PCO2D      &
      &                    )
+
+            CALL O2SAT(TEMP, SALP, O2SATP)
+            CALL O2SAT(TEMS, SALS, O2SATS)
+            CALL O2SAT(TEML, SALL, O2SATL)
+            CALL O2SAT(TEMN, SALN, O2SATN)
+            CALL O2SAT(TEMM, SALM, O2SATM)
+            CALL O2SAT(TEMD, SALD, O2SATD)
+
             TOCINI = + DICP  * VOCNP                                   &
      &               + DICS  * VOCNS                                   &
      &               + DICL  * VOCNL                                   &
@@ -306,123 +322,252 @@
          ENDIF
 
 !-- Calculation of biogeochemical tracers
-!2345&78901234567890123456789012345678901234567890123456789012345678901&
 
-         !-- 生物生産
-         EPL = FSL * (PO4S - PO4L) + FLN * (PO4N - PO4L) + FLM * (PO4M - PO4L)
-!--      EP_H = R * DE_H * LF * PO_H * (PO_H / (HSC + PO_H))
-!--      EP_L = R * DE_L * LF * PO_L * (PO_L / (HSC + PO_L))
+!        EPL = + FSL * (PO4S - PO4L)                                   &
+!    &         + FLN * (PO4N - PO4L)                                   &
+!    &         + FLM * (PO4M - PO4L)
+         EPL = R * DEL * LF * PO4L * (PO4L / (HSC + PO4L)) * VOCNL
 
-         !-- 温度
-         TEMMX = TEMM + (T * (TEMS - TEMM) + FLM * (TEML - TEMM)) * (DT / VOCNM)
-         TEMDX = TEMD + (T * (TEMN - TEMD) + FPD * (TEMP - TEMD)) * (DT / VOCND)
+         TEMPX = TEMP
+         TEMSX = TEMS
+         TEMLX = TEML
+         TEMNX = TEMN
+         TEMMX = TEMM
+         TEMDX = TEMD
 
-         !-- 栄養塩
-         PO4PX = PO4P + ((T + FPD) * (PO4D - PO4P) + FPS * (PO4S - PO4P) - EPP) * (DT / VOCNP)
-         PO4SX = PO4S + ((T + FPS) * (PO4P - PO4S) + FSL * (PO4L - PO4S) - EPS) * (DT / VOCNS)
-         PO4LX = PO4L + (FSL * (PO4S - PO4L) + FLN * (PO4N - PO4L) + FLM * (PO4M - PO4L) &
-         & - EPL) * (DT / VOCNL)
-         PO4NX = PO4N + (T * (PO4M - PO4N) + FLN * (PO4L - PO4N) + (T + FND) * (PO4D - PO4N) &
-         & - EPN) * (DT / VOCNN)
-         PO4MX = PO4M + ((T + FSM) * (PO4S - PO4M) + FLM * (PO4L - PO4M) &
-         & + (GM * (EPS + EPL))) * (DT / VOCNM)
-         PO4DX = PO4D + ((T + FND) * (PO4N - PO4D) + FPD * (PO4P - PO4D) &
-         & + (RGM * (EPS + EPL) + (EPP + EPN))) * (DT / VOCND)
+         PO4PX = PO4P                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPD) * (PO4D - PO4P)                      &
+     &             + FPS * (PO4S - PO4P)                               &
+     &             - EPP                                               &
+     &           )                                                     &
+     &           * (DT / VOCNP)
+         PO4SX = PO4S                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPS) * (PO4P - PO4S)                      &
+     &             + FSL * (PO4L - PO4S)                               &
+     &             - EPS                                               &
+     &           )                                                     &
+     &           * (DT / VOCNS)
+         PO4LX = PO4L                                                  &
+     &         + (                                                     &
+     &             + FSL * (PO4S - PO4L)                               &
+     &             + FLN * (PO4N - PO4L)                               &
+     &             + FLM * (PO4M - PO4L)                               &
+     &             - EPL                                               &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         PO4NX = PO4N                                                  &
+     &         + (                                                     &
+     &             + TRAN * (PO4M - PO4N)                              &
+     &             + FLN * (PO4L - PO4N)                               &
+     &             + FND * (PO4D - PO4N)                               &
+     &             - EPN                                               &
+     &           )                                                     &
+     &           * (DT / VOCNN)
+         PO4MX = PO4M                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FSM) * (PO4S - PO4M)                      &
+     &             + FLM * (PO4L - PO4M)                               &
+     &             + (GM * (EPS + EPL))                                &
+     &           )                                                     &
+     &           * (DT / VOCNM)
+         PO4DX = PO4D                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FND) * (PO4N - PO4D)                      &
+     &             + FPD * (PO4P - PO4D)                               &
+     &             + (RGM * (EPS + EPL) + (EPP + EPN))                 &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-         !-- アルカリ度
-         !-- (2.0D0 * RRC * RCP - RNP) *
-         ALKPX = ALKP + ((T + FPD) * (ALKD - ALKP) + FPS * (ALKS - ALKP) &
-         & - (2.0D0 * RRC * RCP - RNP) * EPP) * (DT / VOCNP)
-         ALKSX = ALKS + ((T + FPS) * (ALKP - ALKS) + FSL * (ALKL - ALKS) &
-         & - (2.0D0 * RRC * RCP - RNP) * EPS) * (DT / VOCNS)
-         ALKLX = ALKL + (FSL * (ALKS - ALKL) + FLN * (ALKN - ALKL) + FLM * (ALKM - ALKL) &
-         & - (2.0D0 * RRC * RCP - RNP) * EPL) * (DT / VOCNL)
-         ALKNX = ALKN + (T * (ALKM - ALKN) + FLN * (ALKL - ALKN) + (T + FND) * (ALKD - ALKN) &
-         & - (2.0D0 * RRC * RCP - RNP) * EPN) * (DT / VOCNN)
-         ALKMX = ALKM + ((T + FSM) * (ALKS - ALKM) + FLM * (ALKL - ALKM) &
-         & + (2.0D0 * RRC * RCP - RNP) * (GM * (EPS + EPL))) * (DT / VOCNM)
-         ALKDX = ALKD + ((T + FND) * (ALKN - ALKD) + FPD * (ALKP - ALKD) &
-         & + (2.0D0 * RRC * RCP - RNP) * (RGM * (EPS + EPL) + (EPP + EPN))) * (DT / VOCND)
+         ALKPX = ALKP                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPD) * (ALKD - ALKP)                      &
+     &             + FPS * (ALKS - ALKP)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPP                   &
+     &           )                                                     &
+     &           * (DT / VOCNP)
+         ALKSX = ALKS                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPS) * (ALKP - ALKS)                      &
+     &             + FSL * (ALKL - ALKS)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPS                   &
+     &           )                                                     &
+     &           * (DT / VOCNS)
+         ALKLX = ALKL                                                  &
+     &         + (                                                     &
+     &             + FSL * (ALKS - ALKL)                               &
+     &             + FLN * (ALKN - ALKL)                               &
+     &             + FLM * (ALKM - ALKL)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPL                   &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         ALKNX = ALKN                                                  &
+     &         + (                                                     &
+     &             + TRAN * (ALKM - ALKN)                              &
+     &             + FLN * (ALKL - ALKN)                               &
+     &             + FND * (ALKD - ALKN)                               &
+     &             - (2.0D0 * RRC * RCP - RNP) * EPN                   &
+     &           )                                                     &
+     &           * (DT / VOCNN)
+         ALKMX = ALKM                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FSM) * (ALKS - ALKM)                      &
+     &             + FLM * (ALKL - ALKM)                               &
+     &             + (2.0D0 * RRC * RCP - RNP) * (GM * (EPS + EPL))    &
+     &           )                                                     &
+     &           * (DT / VOCNM)
+         ALKDX = ALKD                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FND) * (ALKN - ALKD)                      &
+     &             + FPD * (ALKP - ALKD)                               &
+     &             + (2.0D0 * RRC * RCP - RNP)                         &
+     &               * (RGM * (EPS + EPL) + (EPP + EPN))               &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-         !-- 全炭酸
-         !--(1.0D0 + RRC) * RCP *
-         DICPX = DICP + ((T + FPD) * (DICD - DICP) + FPS * (DICS - DICP) &
-         & - (1.0D0 + RRC) * RCP * EPP) * (DT / VOCNP)
-         DICSX = DICS + ((T + FPS) * (DICP - DICS) + FSL * (DICL - DICS) &
-         & - (1.0D0 + RRC) * RCP * EPS) * (DT / VOCNS)
-         DICLX = DICL + (FSL * (DICS - DICL) + FLN * (DICN - DICL) + FLM * (DICM - DICL) &
-         & - (1.0D0 + RRC) * RCP * EPL) * (DT / VOCNL)
-         DICNX = DICN + (T * (DICM - DICN) + FLN * (DICL - DICN) + (T + FND) * (DICD - DICN) &
-         & - (1.0D0 + RRC) * RCP * EPN) * (DT / VOCNN)
-         DICMX = DICM + ((T + FSM) * (DICS - DICM) + FLM * (DICL - DICM) &
-         & + (1.0D0 + RRC) * RCP * (GM * (EPS + EPL))) * (DT / VOCNM)
-         DICDX = DICD + ((T + FND) * (DICN - DICD) + FPD * (DICP - DICD) &
-         & + (1.0D0 + RRC) * RCP * (RGM * (EPS + EPL) + (EPP + EPN))) * (DT / VOCND)
+         DICPX = DICP                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPD) * (DICD - DICP)                      &
+     &             + FPS * (DICS - DICP)                               &
+     &             - (1.0D0 + RRC) * RCP * EPP                         &
+     &           )                                                     &
+     &           * (DT / VOCNP)
+         DICSX = DICS                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPS) * (DICP - DICS)                      &
+     &             + FSL * (DICL - DICS)                               &
+     &             - (1.0D0 + RRC) * RCP * EPS                         &
+     &           )                                                     &
+     &           * (DT / VOCNS)
+         DICLX = DICL                                                  &
+     &         + (                                                     &
+     &             + FSL * (DICS - DICL)                               &
+     &             + FLN * (DICN - DICL)                               &
+     &             + FLM * (DICM - DICL)                               &
+     &             - (1.0D0 + RRC) * RCP * EPL                         &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         DICNX = DICN                                                  &
+     &         + (                                                     &
+     &             + TRAN * (DICM - DICN)                              &
+     &             + FLN * (DICL - DICN)                               &
+     &             + FND * (DICD - DICN)                               &
+     &             - (1.0D0 + RRC) * RCP * EPN                         &
+     &           )                                                     &
+     &           * (DT / VOCNN)
+         DICMX = DICM                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FSM) * (DICS - DICM)                      &
+     &             + FLM * (DICL - DICM)                               &
+     &             + (1.0D0 + RRC) * RCP * (GM * (EPS + EPL))          &
+     &           )                                                     &
+     &           * (DT / VOCNM)
+         DICDX = DICD                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FND) * (DICN - DICD)                      &
+     &             + FPD * (DICP - DICD)                               &
+     &             + (1.0D0 + RRC) * RCP                               &
+     &               * (RGM * (EPS + EPL) + (EPP + EPN))               &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
-         !-- 酸素
-         !--RDO2P *
-         DO2PX = DO2P + ((T + FPD) * (DO2D - DO2P) + FPS * (DO2S - DO2P) &
-         & - RDO2P * EPP) * (DT / VOCNP)
-         DO2SX = DO2S + ((T + FPS) * (DO2P - DO2S) + FSL * (DO2L - DO2S) &
-         & - RDO2P * EPS) * (DT / VOCNS)
-         DO2NX = DO2N + (T * (DO2M - DO2N) + FLN * (DO2L - DO2N) + (T + FND) * (DO2D - DO2N) &
-         & - RDO2P * EPN) * (DT / VOCNN)
-         DO2MX = DO2M + ((T + FSM) * (DO2S - DO2M) + FLM * (DO2L - DO2M) &
-         & + RDO2P * (GM * (EPS + EPL))) * (DT / VOCNM)
-         DO2DX = DO2D + ((T + FND) * (DO2N - DO2D) + FPD * (DO2P - DO2D) &
-         & + RDO2P * (RGM * (EPS + EPL) + (EPP + EPN))) * (DT / VOCND)
+         DO2PX = DO2P                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPD) * (DO2D - DO2P)                      &
+     &             + FPS * (DO2S - DO2P)                               &
+     &             + RO2P * EPP                                        &
+     &             + FAP * (O2SATP - DO2P)                             &
+     &           )                                                     &
+     &           * (DT / VOCNP)
+         DO2SX = DO2S                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FPS) * (DO2P - DO2S)                      &
+     &             + FSL * (DO2L - DO2S)                               &
+     &             + RO2P * EPS                                        &
+     &             + FAS * (O2SATS - DO2S)                             &
+     &           )                                                     &
+     &           * (DT / VOCNS)
+         DO2LX = DO2L                                                  &
+     &         + (                                                     &
+     &             + FSL * (DO2S - DO2L)                               &
+     &             + FLN * (DO2N - DO2L)                               &
+     &             + FLM * (DO2M - DO2L)                               &
+     &             + RO2P * EPL                                        &
+     &             + FAL * (O2SATL - DO2L)                             &
+     &           )                                                     &
+     &           * (DT / VOCNL)
+         DO2NX = DO2N                                                  &
+     &         + (                                                     &
+     &             + TRAN * (DO2M - DO2N)                              &
+     &             + FLN * (DO2L - DO2N)                               &
+     &             + FND * (DO2D - DO2N)                               &
+     &             + RO2P * EPN                                        &
+     &             + FAN * (O2SATN - DO2N)                             &
+     &           )                                                     &
+     &           * (DT / VOCNN)
+         DO2MX = DO2M                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FSM) * (DO2S - DO2M)                      &
+     &             + FLM * (DO2L - DO2M)                               &
+     &             - RO2P * (GM * (EPS + EPL))                         &
+     &           )                                                     &
+     &           * (DT / VOCNM)
+         DO2DX = DO2D                                                  &
+     &         + (                                                     &
+     &             + (TRAN + FND) * (DO2N - DO2D)                      &
+     &             + FPD * (DO2P - DO2D)                               &
+     &             - RO2P * (RGM * (EPS + EPL) + (EPP + EPN))          &
+     &           )                                                     &
+     &           * (DT / VOCND)
 
 !-- Calculation of carbonate system
 
          CALL CO2_NIBUN(                                               &
      &                   BT(1), K0(1), K1(1), K2(1), KB(1), KW(1),     &
-     &                   ALKPX, DICPX, CO2PX, HCO3P, CO32P, PCO2P      &
+     &                   ALKPX, DICPX, CO2P, HCO3P, CO32P, PCO2P       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(2), K0(2), K1(2), K2(2), KB(2), KW(2),     &
-     &                   ALKSX, DICSX, CO2SX, HCO3S, CO32S, PCO2S      &
+     &                   ALKSX, DICSX, CO2S, HCO3S, CO32S, PCO2S       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(3), K0(3), K1(3), K2(3), KB(3), KW(3),     &
-     &                   ALKLX, DICLX, CO2LX, HCO3L, CO32L, PCO2L      &
+     &                   ALKLX, DICLX, CO2L, HCO3L, CO32L, PCO2L       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(4), K0(4), K1(4), K2(4), KB(4), KW(4),     &
-     &                   ALKNX, DICNX, CO2NX, HCO3N, CO32N, PCO2N      &
-     &                   ALKNX, DICNX, CO2N, PCO2N
+     &                   ALKNX, DICNX, CO2N, HCO3N, CO32N, PCO2N       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(5), K0(5), K1(5), K2(5), KB(5), KW(5),     &
-     &                   ALKMX, DICMX, CO2MX, HCO3M, CO32M, PCO2M      &
+     &                   ALKMX, DICMX, CO2M, HCO3M, CO32M, PCO2M       &
      &                 )
          CALL CO2_NIBUN(                                               &
      &                   BT(6), K0(6), K1(6), K2(6), KB(6), KW(6),     &
-     &                   ALKDX, DICDX, CO2DX, HCO3D, CO32D, PCO2D      &
+     &                   ALKDX, DICDX, CO2D, HCO3D, CO32D, PCO2D       &
      &                 )
 
 !-- Calculation of atmospheric PCO2
 
-!2345&78901234567890123456789012345678901234567890123456789012345678901&
          PCO2AX = PCO2A                                                &
      &          + (                                                    &
-     &              + K0(1) * FAP * (PCO2P - PCO2A)                    &
-     &              + K0(2) * FAS * (PCO2S - PCO2A)                    &
-     &              + K0(3) * FAL * (PCO2L - PCO2A)                    &
-     &              + K0(4) * FAN * (PCO2N - PCO2A)                    &
+     &              + FAP * CV1 * K0(1) * (PCO2P - PCO2A)              &
+     &              + FAS * CV1 * K0(2) * (PCO2S - PCO2A)              &
+     &              + FAL * CV1 * K0(3) * (PCO2L - PCO2A)              &
+     &              + FAN * CV1 * K0(4) * (PCO2N - PCO2A)              &
      &            )                                                    &
      &            * (DT / VATM)
 
-!-- Equilibrium condition
-
-         IF (ABS((PO4PX / PO4P) - 1.0D0) <= DELTA) THEN
-            WRITE(*,*) 'TIMESTEP =', I
-            EXIT
-         ENDIF
-
 !-- Next loop
 
-!        TEMM  = TEMMX
-!        TEMD  = TEMDX
+         OLD_PO4P = PO4P
+         TEMP  = TEMPX
+         TEMS  = TEMSX
+         TEML  = TEMLX
+         TEMN  = TEMNX
+         TEMM  = TEMMX
+         TEMD  = TEMDX
          PO4P  = PO4PX
          PO4S  = PO4SX
          PO4L  = PO4LX
@@ -448,6 +593,13 @@
          DO2D  = DO2DX
          PCO2A = PCO2AX
 
+!-- Equilibrium condition
+
+         IF (ABS((PO4P / OLD_PO4P) - 1.0D0) <= DELTA) THEN
+            WRITE(*,*) 'TIMESTEP =', I
+            EXIT
+         ENDIF
+
       ENDDO
 
 !-- Final total carbon
@@ -460,7 +612,7 @@
      &         + DICD  * VOCND                                         &
      &         + PCO2A * VATM
 
-!-- Oxygen utilization
+!-- Oxygen saturation
 
       CALL O2SAT(TEMP, SALP, O2SATP)
       CALL O2SAT(TEMS, SALS, O2SATS)
@@ -478,9 +630,10 @@
 
 !-- Unit conversion
 
-      EPP   = CV4 * EPP * RCP * 1.D-15 * 12.0 !! [molP/s] to [PgC/yr]
-      EPS   = CV4 * EPS * RCP * 1.D-15 * 12.0 !! [molP/s] to [PgC/yr]
-      EPN   = CV4 * EPN * RCP * 1.D-15 * 12.0 !! [molP/s] to [PgC/yr]
+      EPP   = CV4 * EPP * RCP * 1.D-15 * 12.0 !! [molP/s]  to [PgC/yr]
+      EPS   = CV4 * EPS * RCP * 1.D-15 * 12.0 !! [molP/s]  to [PgC/yr]
+      EPL   = CV4 * EPL * RCP * 1.D-15 * 12.0 !! [molP/s]  to [PgC/yr]
+      EPN   = CV4 * EPN * RCP * 1.D-15 * 12.0 !! [molP/s]  to [PgC/yr]
       PO4P  = CV2 * 1.D+6 * PO4P              !! [mol/m^3] to [umol/kg]
       PO4S  = CV2 * 1.D+6 * PO4S              !! [mol/m^3] to [umol/kg]
       PO4L  = CV2 * 1.D+6 * PO4L              !! [mol/m^3] to [umol/kg]
@@ -536,8 +689,8 @@
       PCO2M = CV3 * PCO2M                     !! [atm]     to [ppmv]
       PCO2D = CV3 * PCO2D                     !! [atm]     to [ppmv]
       PCO2A = CV3 * PCO2A                     !! [atm]     to [ppmv]
-      TOCINI = TOCINI * 1.D-15 * 12.0         !! [molC]    to [PgC]
-      TOCFIN = TOCFIN * 1.D-15 * 12.0         !! [molC]    to [PgC]
+      TOCINI = TOCINI * 12.D-15               !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 12.D-15               !! [molC]    to [PgC]
 
 !-- Output
 
@@ -557,6 +710,7 @@
       WRITE(*,*) ''
       WRITE(*,*) 'EP (P)                   :', EPP, 'PgC/yr'
       WRITE(*,*) 'EP (S)                   :', EPS, 'PgC/yr'
+      WRITE(*,*) 'EP (L)                   :', EPL, 'PgC/yr'
       WRITE(*,*) 'EP (N)                   :', EPN, 'PgC/yr'
       WRITE(*,*) ''
       WRITE(*,*) 'PO4 (P)                  :', PO4P, 'umol/kg'

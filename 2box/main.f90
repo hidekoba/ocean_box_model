@@ -26,7 +26,7 @@
       REAL(8) :: ZOCNS, AOCNS, VOCNS
       REAL(8) :: ZOCND, VOCND
 
-      REAL(8) :: TRAN, FSD, PVS, FAS
+      REAL(8) :: FSD, PVS, FAS
       REAL(8) :: R, LF, HSC
       REAL(8) :: RRC, RCP, RNP, RO2P, CEPS
       REAL(8) :: BTS, K0S, K1S, K2S, KBS, KWS, FHS
@@ -42,6 +42,7 @@
       REAL(8) :: CO2D,  HCO3D, CO32D, PCO2D, O2SATD, AOUD
       REAL(8) :: PCO2A, PCO2AX
       REAL(8) :: TOCINI, TOCFIN
+      REAL(8) :: OLD_PO4S
 
       LOGICAL :: AOGE
       LOGICAL :: OFIXDB
@@ -73,11 +74,11 @@
 
 !--   Transport [m^3/s]
 !--   Diffusivity [m^3/s]
-!     DATA TRAN, FSD / 0.0D0, 6.0D7 /
-!     DATA TRAN, FSD / 0.0D0, 0.0D7 /
-!     DATA TRAN, FSD / 0.0D0, 8.193D7 / !! tau_mix =  500 yr
-      DATA TRAN, FSD / 0.0D0, 4.096D7 / !! tau_mix = 1000 yr
-!     DATA TRAN, FSD / 0.0D0, 2.731D7 / !! tau_mix = 1500 yr
+!     DATA FSD / 6.0D7 /
+!     DATA FSD / 0.0D7 /
+!     DATA FSD / 8.193D7 / !! tau_mix =  500 yr
+      DATA FSD / 4.096D7 / !! tau_mix = 1000 yr
+!     DATA FSD / 2.731D7 / !! tau_mix = 1500 yr
 !     1 / 1000              [1/yr]
 !     1 / 1000 * VOCN       [m^3/yr]
 !     1 / 1000 * VOCN / CV4 [m^3/s]
@@ -178,11 +179,11 @@
          CALL CHEMEQCONST(                                             &
      &                     TEMS, SALS,                                 &
      &                     BTS, K0S, K1S, K2S, KBS, KWS, FHS           &
-                         )
+     &                   )
          CALL CHEMEQCONST(                                             &
      &                     TEMD, SALD,                                 &
      &                     BTD, K0D, K1D, K2D, KBD, KWD, FHD           &
-                         )
+     &                   )
 
 !-- Initial CO2 and PCO2
 !-- Initial total carbon
@@ -196,36 +197,28 @@
      &                      BTS, K0S, K1S, K2S, KBS, KWS,              &
      &                      ALKD, DICD, CO2D, HCO3D, CO32D, PCO2D      &
      &                    )
+
+            CALL O2SAT(TEMS, SALS, O2SATS)
+            CALL O2SAT(TEMD, SALD, O2SATD)
+
             TOCINI = DICS * VOCNS + DICD * VOCND + PCO2A * VATM
          ENDIF
 
 !-- Calculation of biogeochemical tracers
 
-!        EPS = R * DE_S * LF * PO_S * (PO_S / (HSC + PO_S))
-
          TEMSX = TEMS
          TEMDX = TEMD
-!        TEMSX = TEMS                                                  &
-!    &          + (                                                    &
-!    &              + (TRAN + FSD) * (TEMD - TEMS)                     &
-!    &            )                                                    &
-!    &            * (DT / VOCNS)
-!        TEMDX = TEMD                                                  &
-!    &          + (                                                    &
-!    &              + (TRAN + FSD) * (TEMS - TEMD)                     &
-!    &            )                                                    &
-!    &            * (DT / VOCND)
 
          PO4SX = PO4S                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (PO4D - PO4S)                      &
+     &             + FSD * (PO4D - PO4S)                               &
      &             + (- EPS)                                           &
      &           )                                                     &
      &           * (DT / VOCNS)
          IF (.NOT.OFIXDB) THEN
          PO4DX = PO4D                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (PO4S - PO4D)                      &
+     &             + FSD * (PO4S - PO4D)                               &
      &             + (+ EPS)                                           &
      &           )                                                     &
      &           * (DT / VOCND)
@@ -235,14 +228,14 @@
 
          ALKSX = ALKS                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (ALKD - ALKS)                      &
+     &             + FSD * (ALKD - ALKS)                               &
      &             + ( + 2.0D0 * RRC * RCP - RNP) * (- EPS)            &
      &           )                                                     &
      &           * (DT / VOCNS)
          IF (.NOT.OFIXDB) THEN
          ALKDX = ALKD                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (ALKS - ALKD)                      &
+     &             + FSD * (ALKS - ALKD)                               &
      &             + ( + 2.0D0 * RRC * RCP - RNP) * (+ EPS)            &
      &           )                                                     &
      &           * (DT / VOCND)
@@ -253,7 +246,7 @@
          IF (AOGE) THEN
          DICSX = DICS                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (DICD - DICS)                      &
+     &             + FSD * (DICD - DICS)                               &
      &             + (1.0D0 + RRC) * RCP * (- EPS)                     &
      &             + FAS * CV1 * K0S * (PCO2A - PCO2S)                 &
      &           )                                                     &
@@ -261,7 +254,7 @@
          ELSEIF (.NOT.AOGE) THEN
          DICSX = DICS                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (DICD - DICS)                      &
+     &             + FSD * (DICD - DICS)                               &
      &             + (1.0D0 + RRC) * RCP * (- EPS)                     &
      &           )                                                     &
      &           * (DT / VOCNS)
@@ -269,7 +262,7 @@
          IF (.NOT.OFIXDB) THEN
          DICDX = DICD                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (DICS - DICD)                      &
+     &             + FSD * (DICS - DICD)                               &
      &             + (1.0D0 + RRC) * RCP * (+ EPS)                     &
      &           )                                                     &
      &           * (DT / VOCND)
@@ -279,14 +272,15 @@
 
          DO2SX = DO2S                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (DO2D - DO2S)                      &
+     &             + FSD * (DO2D - DO2S)                               &
      &             - RO2P * (- EPS)                                    &
+     &             + FAS * (O2SATS - DO2S)                             &
      &           )                                                     &
      &           * (DT / VOCNS)
          IF (.NOT.OFIXDB) THEN
          DO2DX = DO2D                                                  &
      &         + (                                                     &
-     &             + (TRAN + FSD) * (DO2S - DO2D)                      &
+     &             + FSD * (DO2S - DO2D)                               &
      &             - RO2P * (+ EPS)                                    &
      &           )                                                     &
      &           * (DT / VOCND)
@@ -310,24 +304,16 @@
          IF (AOGE) THEN
          PCO2AX = PCO2A                                                &
      &          + (                                                    &
-     &              + K0S * FAS * CV1* (PCO2S - PCO2A)                 &
+     &              + FAS * CV1 * K0S * (PCO2S - PCO2A)                &
      &            )                                                    &
      &            * (DT / VATM)
          ELSEIF (.NOT.AOGE) THEN
          PCO2AX = PCO2A
          ENDIF
 
-
-!-- Equilibrium condition
-
-!        WRITE(*,*) I, ABS((PO4SX/PO4S) - 1.0D0)
-!        IF (ABS((PO4SX / PO4S) - 1.0D0) <= DELTA) THEN
-!          WRITE(*,*) 'TIMESTEP =', I
-!          EXIT
-!        ENDIF
-
 !-- Next loop
 
+         OLD_PO4S = PO4S
          TEMS  = TEMSX
          TEMD  = TEMDX
          PO4S  = PO4SX
@@ -340,13 +326,21 @@
          DO2D  = DO2DX
          PCO2A = PCO2AX
 
+!-- Equilibrium condition
+
+         IF (ABS((PO4S / OLD_PO4S) - 1.0D0) <= DELTA) THEN
+           WRITE(*,*) 'TIMESTEP =', I
+           EXIT
+         ENDIF
+
+
       ENDDO
 
 !-- Final total carbon
 
       TOCFIN = DICS * VOCNS + DICD * VOCND + PCO2A * VATM
 
-!-- Oxygen utilization
+!-- Oxygen saturation
 
       CALL O2SAT(TEMS, SALS, O2SATS)
       CALL O2SAT(TEMD, SALD, O2SATD)
@@ -356,28 +350,28 @@
 
 !-- Unit conversion
 
-      EPS   = CV4 * EPS * RCP * 1.D-15 * 12.0  !! [molP/s]  to [PgC/yr]
-      PO4S  = CV2 * 1.D+6 * PO4S               !! [mol/m^3] to [umol/kg]
-      PO4D  = CV2 * 1.D+6 * PO4D               !! [mol/m^3] to [umol/kg]
-      DICS  = CV2 * 1.D+6 * DICS               !! [mol/m^3] to [umol/kg]
-      DICD  = CV2 * 1.D+6 * DICD               !! [mol/m^3] to [umol/kg]
-      ALKS  = CV2 * 1.D+6 * ALKS               !! [mol/m^3] to [umol/kg]
-      ALKD  = CV2 * 1.D+6 * ALKD               !! [mol/m^3] to [umol/kg]
-      DO2S  = CV2 * 1.D+6 * DO2S               !! [mol/m^3] to [umol/kg]
-      DO2D  = CV2 * 1.D+6 * DO2D               !! [mol/m^3] to [umol/kg]
-      AOUS  = CV2 * 1.D+6 * AOUS               !! [mol/m^3] to [umol/kg]
-      AOUD  = CV2 * 1.D+6 * AOUD               !! [mol/m^3] to [umol/kg]
-      CO2S  = CV2 * 1.D+6 * CO2S               !! [mol/m^3] to [umol/kg]
-      CO2D  = CV2 * 1.D+6 * CO2D               !! [mol/m^3] to [umol/kg]
-      HCO3S = CV2 * 1.D+6 * HCO3S              !! [mol/m^3] to [umol/kg]
-      HCO3D = CV2 * 1.D+6 * HCO3D              !! [mol/m^3] to [umol/kg]
-      CO32S = CV2 * 1.D+6 * CO32S              !! [mol/m^3] to [umol/kg]
-      CO32D = CV2 * 1.D+6 * CO32D              !! [mol/m^3] to [umol/kg]
-      PCO2S = CV3 * PCO2S                      !! [atm]     to [ppmv]
-      PCO2D = CV3 * PCO2D                      !! [atm]     to [ppmv]
-      PCO2A = CV3 * PCO2A                      !! [atm]     to [ppmv]
-      TOCINI = TOCINI * 1.D-15 * 12.0          !! [molC]    to [PgC]
-      TOCFIN = TOCFIN * 1.D-15 * 12.0          !! [molC]    to [PgC]
+      EPS   = CV4 * EPS * RCP * 1.D-15 * 12.0 !! [molP/s]  to [PgC/yr]
+      PO4S  = CV2 * 1.D+6 * PO4S              !! [mol/m^3] to [umol/kg]
+      PO4D  = CV2 * 1.D+6 * PO4D              !! [mol/m^3] to [umol/kg]
+      DICS  = CV2 * 1.D+6 * DICS              !! [mol/m^3] to [umol/kg]
+      DICD  = CV2 * 1.D+6 * DICD              !! [mol/m^3] to [umol/kg]
+      ALKS  = CV2 * 1.D+6 * ALKS              !! [mol/m^3] to [umol/kg]
+      ALKD  = CV2 * 1.D+6 * ALKD              !! [mol/m^3] to [umol/kg]
+      DO2S  = CV2 * 1.D+6 * DO2S              !! [mol/m^3] to [umol/kg]
+      DO2D  = CV2 * 1.D+6 * DO2D              !! [mol/m^3] to [umol/kg]
+      AOUS  = CV2 * 1.D+6 * AOUS              !! [mol/m^3] to [umol/kg]
+      AOUD  = CV2 * 1.D+6 * AOUD              !! [mol/m^3] to [umol/kg]
+      CO2S  = CV2 * 1.D+6 * CO2S              !! [mol/m^3] to [umol/kg]
+      CO2D  = CV2 * 1.D+6 * CO2D              !! [mol/m^3] to [umol/kg]
+      HCO3S = CV2 * 1.D+6 * HCO3S             !! [mol/m^3] to [umol/kg]
+      HCO3D = CV2 * 1.D+6 * HCO3D             !! [mol/m^3] to [umol/kg]
+      CO32S = CV2 * 1.D+6 * CO32S             !! [mol/m^3] to [umol/kg]
+      CO32D = CV2 * 1.D+6 * CO32D             !! [mol/m^3] to [umol/kg]
+      PCO2S = CV3 * PCO2S                     !! [atm]     to [ppmv]
+      PCO2D = CV3 * PCO2D                     !! [atm]     to [ppmv]
+      PCO2A = CV3 * PCO2A                     !! [atm]     to [ppmv]
+      TOCINI = TOCINI * 12.D-15               !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 12.D-15               !! [molC]    to [PgC]
 
 !-- Output
 
