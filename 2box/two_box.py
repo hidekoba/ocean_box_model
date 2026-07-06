@@ -137,6 +137,8 @@ def create_dataframe(out: dict, box1_name: str = 'Surface (S)', box2_name: str =
         ('PCO2 (ppmv)', 'Surface', out.get('PCO2S_ppmv')),
         ('PCO2 (ppmv)', 'Deep', out.get('PCO2D_ppmv')),
         ('PCO2 (ppmv)', 'Atmosphere', out.get('PCO2A_ppmv')),
+        ('Total Carbon (PgC)', 'Initial', out.get('TOCINI_PgC')),
+        ('Total Carbon (PgC)', 'Final', out.get('TOCFIN_PgC')),
     ]
     df = pd.DataFrame(rows, columns=['Quantity', 'Box', 'Value'])
     return df
@@ -253,10 +255,10 @@ def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name=
         else:
             PCO2AX = PCO2A_atm
 
-       ## simple convergence check on PO4 relative change
-       #rel_change = abs(PO4SX - PO4S) / max(abs(PO4S), 1.0e-30)
-       #if rel_change <= 1.0e-6:
-       #    break
+        # simple convergence check on PO4 relative change
+        rel_change = abs(PO4SX - PO4S) / max(abs(PO4S), 1.0e-30)
+        if rel_change <= 1.0e-6:
+            break
 
         # Update state
         TEMS = TEMSX
@@ -305,8 +307,8 @@ def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name=
         'PCO2S_ppmv': CV3 * PCO2S,
         'PCO2D_ppmv': CV3 * PCO2D,
         'PCO2A_ppmv': CV3 * PCO2A_atm,
-        'TOCINI_mol': TOCINI if 'TOCINI' in locals() else None,
-        'TOCFIN_mol': TOCFIN,
+        'TOCINI_PgC': TOCINI * 12.0e-15 if 'TOCINI' in locals() else None,
+        'TOCFIN_PgC': TOCFIN * 12.0e-15,
     }
 
     if verbose:
