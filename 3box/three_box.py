@@ -132,7 +132,7 @@ def co2_nibun(BT, K0, K1, K2, KB, KW, AT, CT):
 
 
 def default_params():
-    """Parameters copied from main(1).f90."""
+    """Parameters"""
     CV1 = 1.0250e3
     CV2 = 9.7561e-4
     CV3 = 1.0000e6
@@ -312,7 +312,7 @@ def step(state, params, aux):
         * params["DEL"]
         * params["LF"]
         * state["PO4L"]
-        * (state["PO4L"] / (params["HSC"] * params["CV1"] + state["PO4L"]))
+        * (state["PO4L"] / (params["HSC"] + state["PO4L"]))
         * VOCNL
     )
 
