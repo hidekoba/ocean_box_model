@@ -2,7 +2,7 @@
 """
 seven_box.py
 
-Python port of the simple 7-box ocean biogeochemistry model from main(7).f90.
+Python port of the simple 7-box ocean biogeochemistry model
 
 Boxes:
   P: polar / high-latitude surface box
@@ -17,14 +17,6 @@ Run:
   python3 seven_box.py
   python3 seven_box.py --save-csv seven_box_output.csv
   python3 seven_box.py --save-history seven_box_history.csv
-
-Notes:
-  - The Fortran code calculates DO2LX, but the state-update block in main(7).f90
-    appears to omit `DO2L = DO2LX`. This Python version updates DO2L, treating
-    the omission as a typo. Use --fortran-compat-do2l-omit to reproduce that
-    exact omission.
-  - The DIC equations follow main(7).f90: air-sea CO2 exchange affects atmospheric
-    PCO2, but the opposite DIC flux is not applied to the surface boxes.
 """
 import argparse
 import math
@@ -145,7 +137,7 @@ def co2_nibun(BT, K0, K1, K2, KB, KW, AT, CT):
 # Parameters and initialization
 # ---------------------------------------------------------------------
 def default_params():
-    """Parameters copied from main(7).f90."""
+    """Parameters"""
     CV1 = 1.0250e3
     CV2 = 9.7561e-4
     CV3 = 1.0000e6
