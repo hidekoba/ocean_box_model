@@ -278,7 +278,7 @@ def carbonate_all(state, params):
 
 
 def step(state, params, aux):
-    """One forward-Euler step using the intended equations from main(1).f90."""
+    """One forward-Euler step using the intended equations"""
     DT = params["DT"]
     T = params["T"]
     FHD = params["FHD"]
