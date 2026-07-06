@@ -140,21 +140,24 @@
 !--   Phosphate [mol/kg]
       DATA PO4H, PO4L, PO4D &
      & / 2.10D-6, 2.10D-6, 2.10D-6 /
+!    & / 2.09D-6, 2.09D-6, 2.09D-6 / !! Toggweiler and Sarmiento (1985)
 !    & / 1.421D-6, 0.2D-6, 2.142D-6 /
 
 !--   Alkalinity [eq/kg]
       DATA ALKH, ALKL, ALKD &
      & / 2.374D-3, 2.374D-3, 2.374D-3 /
+!    & / 2.371D-3, 2.371D-3, 2.371D-3 / !! Toggweiler and Sarmiento (1985)
 !    & / 2.3378D-3, 2.2767D-3, 2.3738D-3 /
 
 !--   Dissolved inorganic carbon [mol/kg]
       DATA DICH, DICL, DICD &
      & / 2.235D-3, 2.235D-3, 2.235D-3 /
+!    & / 2.258D-3, 2.258D-3, 2.258D-3 / !! Toggweiler and Sarmiento (1985)
 !    & / 2.1391D-3, 1.9327D-3, 2.2561D-3 /
 
 !--   Dissolved oxygen [mol/kg]
-      DATA DO2H, DO2D &
-     & / 3.25D-4, 1.70D-4 /
+      DATA DO2H, DO2L, DO2D &
+     & / 1.60D-4, 1.60D-4, 1.60D-4 /
 
 !-- Unit conversion
 
@@ -220,57 +223,56 @@
          ENDIF
 
 !-- Calculation of biogeochemical tracers
-!2345&78901234567890123456789012345678901234567890123456789012345678901&
 
 
-!         EPL = T * PO4D
-!!--      EP_H = R * DE_H * LF * PO_H * (PO_H / (HSC + PO_H))
-!!--      EP_L = R * DE_L * LF * PO_L * (PO_L / (HSC + PO_L))
-!
-!         TEMDX = TEMD &
-!     &   + ((T + FHD) * (TEMH - TEMD) + FLD * (TEML - TEMD)) &
-!     &   * (DT / VOCND)
-!
-!         PO4HX = PO4H &
-!     &   + ((T + FLH) * (PO4L - PO4H) + FHD * (PO4D - PO4H) - EPH)
-!     &   * (DT / VOCNH)
-!         PO4LX = PO4L &
-!     &   + ((T + FLD) * (PO4D - PO4L) + FLH * (PO4H - PO4L) - EPL)
-!     &   * (DT / VOCNL)
-!         PO4DX = PO4D &
-!     &   + ((T + FHD) * (PO4H - PO4D) + FLD * (PO4L - PO4D) + (EPH + EPL))
-!     &   * (DT / VOCND)
-!
-!         ALKHX = ALKH &
-!     &   + ((T + FLH) * (ALKL - ALKH) + FHD * (ALKD - ALKH) - (2.0D0 * RRC * RCP - RNP) * EPH)
-!     &   * (DT / VOCNH)
-!         ALKLX = ALKL &
-!     &   + ((T + FLD) * (ALKD - ALKL) + FLH * (ALKH - ALKL) - (2.0D0 * RRC * RCP - RNP) * EPL)
-!     &   * (DT / VOCNL)
-!         ALKDX = ALKD &
-!     &   + ((T + FHD) * (ALKH - ALKD) + FLD * (ALKL - ALKD) + (2.0D0 * RRC * RCP - RNP) * (EPH + EPL))
-!     &   * (DT / VOCND)
-!
-!         DICHX = DICH &
-!     &   + ((T + FLH) * (DICL - DICH) + FHD * (DICD - DICH) &
-!         &     - (1.0D0 + RRC) * RCP * EPH + FAH * CV1 * K0(1) * (PCO2A - PCO2H))
-!     & * (DT / VOCNH)
-!         DICLX = DICL &
-!     &   + ((T + FLD) * (DICD - DICL) + FLH * (DICH - DICL) &
-!         &     - (1.0D0 + RRC) * RCP * EPL + FAL * CV1 * K0(2) * (PCO2A - PCO2L))
-!     &   * (DT / VOCNL)
-!         DICDX = DICD &
-!     &   + ((T + FHD) * (DICH - DICD) + FLD * (DICL - DICD) + (1.0D0 + RRC) * RCP * (EPH + EPL))
-!     & * (DT / VOCND)
-!
-!         DO2HX = DO2H &
-!     &   + ((T + FLH) * (O2SATL - DO2H) + FHD * (O2SATH - DO2H) + RDO2P * EPH + FAH * (O2SATH - DO2H))
-!     &   * (DT / VOCNH)
-!!        DO2LX = DO2L + ((T + FLD) * (DO2D - DO2L) + FLH * (DO2H - DO2L) + RDO2P * EPL)
-!!    &* (DT / VOCNL)
-!         DO2DX = DO2D &
-!     &   + ((T + FHD) * (DO2H - DO2D) + FLD * (O2SATL - DO2D) - RDO2P * (EPH + EPL))
-!     &* (DT / VOCND)
+          EPL = T * PO4D
+ !--      EP_H = R * DE_H * LF * PO_H * (PO_H / (HSC + PO_H))
+ !--      EP_L = R * DE_L * LF * PO_L * (PO_L / (HSC + PO_L))
+
+          TEMDX = TEMD &
+      &   + ((T + FHD) * (TEMH - TEMD) + FLD * (TEML - TEMD)) &
+      &   * (DT / VOCND)
+
+          PO4HX = PO4H &
+      &   + ((T + FLH) * (PO4L - PO4H) + FHD * (PO4D - PO4H) - EPH) &
+      &   * (DT / VOCNH)
+          PO4LX = PO4L &
+      &   + ((T + FLD) * (PO4D - PO4L) + FLH * (PO4H - PO4L) - EPL) &
+      &   * (DT / VOCNL)
+          PO4DX = PO4D &
+      &   + ((T + FHD) * (PO4H - PO4D) + FLD * (PO4L - PO4D) + (EPH + EPL)) &
+      &   * (DT / VOCND)
+
+          ALKHX = ALKH &
+      &   + ((T + FLH) * (ALKL - ALKH) + FHD * (ALKD - ALKH) - (2.0D0 * RRC * RCP - RNP) * EPH) &
+      &   * (DT / VOCNH)
+          ALKLX = ALKL &
+      &   + ((T + FLD) * (ALKD - ALKL) + FLH * (ALKH - ALKL) - (2.0D0 * RRC * RCP - RNP) * EPL) &
+      &   * (DT / VOCNL)
+          ALKDX = ALKD &
+      &   + ((T + FHD) * (ALKH - ALKD) + FLD * (ALKL - ALKD) + (2.0D0 * RRC * RCP - RNP) * (EPH + EPL)) &
+      &   * (DT / VOCND)
+
+          DICHX = DICH &
+      &   + ((T + FLH) * (DICL - DICH) + FHD * (DICD - DICH) &
+          &     - (1.0D0 + RRC) * RCP * EPH + FAH * CV1 * K0(1) * (PCO2A - PCO2H)) &
+      & * (DT / VOCNH)
+          DICLX = DICL &
+      &   + ((T + FLD) * (DICD - DICL) + FLH * (DICH - DICL) &
+          &     - (1.0D0 + RRC) * RCP * EPL + FAL * CV1 * K0(2) * (PCO2A - PCO2L)) &
+      &   * (DT / VOCNL)
+          DICDX = DICD &
+      &   + ((T + FHD) * (DICH - DICD) + FLD * (DICL - DICD) + (1.0D0 + RRC) * RCP * (EPH + EPL)) &
+      & * (DT / VOCND)
+
+          DO2HX = DO2H &
+      &   + ((T + FLH) * (O2SATL - DO2H) + FHD * (O2SATH - DO2H) + RO2P * EPH + FAH * (O2SATH - DO2H)) &
+      &   * (DT / VOCNH)
+          DO2LX = DO2L + ((T + FLD) * (DO2D - DO2L) + FLH * (DO2H - DO2L) + RO2P * EPL) &
+      &* (DT / VOCNL)
+          DO2DX = DO2D &
+      &   + ((T + FHD) * (DO2H - DO2D) + FLD * (O2SATL - DO2D) - RO2P * (EPH + EPL)) &
+      &* (DT / VOCND)
 
 !-- Calculation of carbonate system
 
@@ -316,6 +318,7 @@
          DICL  = DICLX
          DICD  = DICDX
          DO2H  = DO2HX
+         DO2L  = DO2LX
          DO2D  = DO2DX
          PCO2A = PCO2AX
 
@@ -366,10 +369,12 @@
       CO32H = CV2 * 1.D+6 * CO32H             !! [mol/m^3] to [umol/kg]
       CO32L = CV2 * 1.D+6 * CO32L             !! [mol/m^3] to [umol/kg]
       CO32D = CV2 * 1.D+6 * CO32D             !! [mol/m^3] to [umol/kg]
-      PCO2H = CV3 * PCO2H                     !! [atm] to [ppmv]
-      PCO2L = CV3 * PCO2L                     !! [atm] to [ppmv]
-      PCO2D = CV3 * PCO2D                     !! [atm] to [ppmv]
-      PCO2A = CV3 * PCO2A                     !! [atm] to [ppmv]
+      PCO2H = CV3 * PCO2H                     !! [atm]     to [ppmv]
+      PCO2L = CV3 * PCO2L                     !! [atm]     to [ppmv]
+      PCO2D = CV3 * PCO2D                     !! [atm]     to [ppmv]
+      PCO2A = CV3 * PCO2A                     !! [atm]     to [ppmv]
+      TOCINI = TOCINI * 1.D-15 * 12.0         !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 1.D-15 * 12.0         !! [molC]    to [PgC]
 
 !-- Output
 
@@ -382,6 +387,7 @@
       WRITE(*,*) 'Salinity (D)             :', SALD, 'PSU'
       WRITE(*,*) ''
       WRITE(*,*) 'EP (H)                   :', EPH, 'PgC/yr'
+      WRITE(*,*) 'EP (L)                   :', EPL, 'PgC/yr'
       WRITE(*,*) ''
       WRITE(*,*) 'PO4 (H)                  :', PO4H, 'umol/kg'
       WRITE(*,*) 'PO4 (L)                  :', PO4L, 'umol/kg'
@@ -420,8 +426,8 @@
       WRITE(*,*) 'PCO2 (D)                 :', PCO2D, 'ppmv'
       WRITE(*,*) 'PCO2 (ATM)               :', PCO2A, 'ppmv'
       WRITE(*,*) ''
-      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'mol'
-      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'mol'
+      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'PgC'
+      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'PgC'
       WRITE(*,*) ''
 
       END PROGRAM

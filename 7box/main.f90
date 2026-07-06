@@ -589,6 +589,8 @@
       PCO2A = CV3 * PCO2A                     !! [atm]     to [ppmv]
       PCO2D = CV3 * PCO2D                     !! [atm]     to [ppmv]
       PCO2Z = CV3 * PCO2Z                     !! [atm]     to [ppmv]
+      TOCINI = TOCINI * 1.D-15 * 12.0         !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 1.D-15 * 12.0         !! [molC]    to [PgC]
 
 !-- Output
 
@@ -685,8 +687,8 @@
       WRITE(*,*) 'PCO2 (D)                 :', PCO2D, 'ppmv'
       WRITE(*,*) 'PCO2 (ATM)               :', PCO2Z, 'ppmv'
       WRITE(*,*) ''
-      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'mol'
-      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'mol'
+      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'PgC'
+      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'PgC'
       WRITE(*,*) ''
 
       END PROGRAM

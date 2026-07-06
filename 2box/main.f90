@@ -175,13 +175,13 @@
 
 !-- Calculation of equilibrium constant
 
-         CALL CHEMEQCONST(
-                           TEMS, SALS,                                 &
-                           BTS, K0S, K1S, K2S, KBS, KWS, FHS           &
+         CALL CHEMEQCONST(                                             &
+     &                     TEMS, SALS,                                 &
+     &                     BTS, K0S, K1S, K2S, KBS, KWS, FHS           &
                          )
-         CALL CHEMEQCONST(
-                           TEMD, SALD,                                 &
-                           BTD, K0D, K1D, K2D, KBD, KWD, FHD           &
+         CALL CHEMEQCONST(                                             &
+     &                     TEMD, SALD,                                 &
+     &                     BTD, K0D, K1D, K2D, KBD, KWD, FHD           &
                          )
 
 !-- Initial CO2 and PCO2
@@ -376,6 +376,8 @@
       PCO2S = CV3 * PCO2S                      !! [atm]     to [ppmv]
       PCO2D = CV3 * PCO2D                      !! [atm]     to [ppmv]
       PCO2A = CV3 * PCO2A                      !! [atm]     to [ppmv]
+      TOCINI = TOCINI * 1.D-15 * 12.0          !! [molC]    to [PgC]
+      TOCFIN = TOCFIN * 1.D-15 * 12.0          !! [molC]    to [PgC]
 
 !-- Output
 
@@ -429,8 +431,8 @@
 !     WRITE(*,*) 'KBD',KBD
 !     WRITE(*,*) 'KWD',KWD
 !     WRITE(*,*) ''
-      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'mol'
-      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'mol'
+      WRITE(*,*) 'Total Carbon (Initial)   :', TOCINI, 'PgC'
+      WRITE(*,*) 'Total Carbon (Final)     :', TOCFIN, 'PgC'
       WRITE(*,*) ''
 
       END PROGRAM
