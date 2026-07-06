@@ -3,11 +3,13 @@
 two_box.py
 
 Python port of the simple 2-box ocean biogeochemistry model
-from the Fortran sources in this directory (main.f90, chemeq.f90,
-co2.f90, o2.f90).
 
-This script is written to run standalone (requires only NumPy)
-and is suitable for Google Colab. Use `python3 two_box.py` to run.
+Boxes:
+  S: surface box
+  D: deep box
+
+Run:
+  python3 two_box.py
 """
 from math import exp, log, log10, sqrt
 import math
@@ -76,7 +78,7 @@ def o2sat(TEM, SAL):
 def co2_nibun(BT, K0, K1, K2, KW, KB, AT, CT):
     """Solve carbonate system from alkalinity `AT` and DIC `CT`.
     Returns (CO2, HCO3, CO32, PCO2)
-    Units: inputs AT,CT in [mol/m^3] (same as main.f90)."""
+    Units: inputs AT,CT in [mol/m^3]"""
     # conversion factors from Fortran
     CV2 = 9.7561e-4  # [mol/m^3] to [mol/kg]
     ATX = CV2 * AT
@@ -145,7 +147,7 @@ def create_dataframe(out: dict, box1_name: str = 'Surface (S)', box2_name: str =
 
 
 def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name='Deep (D)'):
-    # Parameters copied from main.f90
+    # Parameters
     CV1 = 1.0250e3
     CV2 = 9.7561e-4
     CV3 = 1.0000e6
@@ -179,7 +181,7 @@ def run_model(max_iter=100000, verbose=True, box1_name='Surface (S)', box2_name=
     AOGE = False
     OFIXDB = True
 
-    # initial tracers (given in main.f90 in mol/kg -> convert to mol/m^3)
+    # initial tracers (given in mol/kg -> convert to mol/m^3)
     PO4S = 2.20e-6 * CV1
     PO4D = 2.20e-6 * CV1
     ALKS = 2.371e-3 * CV1
