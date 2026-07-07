@@ -4,8 +4,8 @@
 
 ### 問題 / Question
 
-λ を変えると ECS はどう変わるか。  
-How does ECS change when λ is varied?
+$\lambda$ を変えると ECS はどう変わるか。  
+How does ECS change when $\lambda$ is varied?
 
 ### 解答例 / Expected Answer
 
@@ -17,7 +17,7 @@ $$
 
 で決まる。
 
-したがって、λ が小さいほど平衡気温上昇は大きくなる。
+したがって、$\lambda$ が小さいほど平衡気温上昇は大きくなる。
 
 つまり、気候フィードバックが弱いモデルほど温暖化しやすい。
 
@@ -27,7 +27,7 @@ $$
 ECS=\frac{F_{2\times CO_2}}{\lambda}.
 $$
 
-Therefore, a smaller λ leads to a larger equilibrium temperature increase. In other words, a model with weaker climate feedback exhibits greater warming.
+Therefore, a smaller $\lambda$ leads to a larger equilibrium temperature increase. In other words, a model with weaker climate feedback exhibits greater warming.
 
 ---
 
@@ -94,15 +94,15 @@ Explain why ECS and TCR are different in the Mini CMIP experiment.
 
 ### 解答例 / Expected Answer
 
-ECS は主に気候フィードバック λ によって決まる。
+ECS は主に気候フィードバック $\lambda$ によって決まる。
 
-一方、TCR は λ に加えて海洋熱容量 C の影響も受ける。
+一方、TCR は $\lambda$ に加えて海洋熱容量 $C$ の影響も受ける。
 
 そのため、ECS が同程度でも、海洋の熱吸収が大きいモデルでは TCR は小さくなる。
 
-ECS is mainly determined by the climate feedback parameter λ.
+ECS is mainly determined by the climate feedback parameter $\lambda$.
 
-In contrast, TCR is influenced by both λ and the ocean heat capacity C.
+In contrast, TCR is influenced by both $\lambda$ and the ocean heat capacity C.
 
 Therefore, models with similar ECS values can have different TCR values depending on the strength of ocean heat uptake.
 
