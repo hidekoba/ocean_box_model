@@ -11,9 +11,9 @@ How does ECS change when λ is varied?
 
 ECS は
 
-\[
+$$
 ECS=\frac{F_{2\times CO_2}}{\lambda}
-\]
+$$
 
 で決まる。
 
@@ -23,9 +23,9 @@ ECS=\frac{F_{2\times CO_2}}{\lambda}
 
 ECS is determined by
 
-\[
+$$
 ECS=\frac{F_{2\times CO_2}}{\lambda}.
-\]
+$$
 
 Therefore, a smaller λ leads to a larger equilibrium temperature increase. In other words, a model with weaker climate feedback exhibits greater warming.
 
@@ -44,9 +44,9 @@ What changes when the heat capacity C is varied?
 
 一方で平衡状態は
 
-\[
+$$
 T=\frac{F}{\lambda}
-\]
+$$
 
 なので、最終温度は変化しない。
 
@@ -56,9 +56,9 @@ A larger heat capacity slows the temperature response.
 
 However, the equilibrium temperature is
 
-\[
+$$
 T=\frac{F}{\lambda},
-\]
+$$
 
 so the final equilibrium temperature does not change.
 
@@ -1462,8 +1462,8 @@ Explain each PSLNMAD box in terms of geography and depth.
 
 ### 解答例 / Expected answers
 
-P は太平洋表層、S は南大洋表層、L は低緯度表層、N は北大西洋表層である。M は中層、A は北大西洋起源深層水の経路、D はより古い深層水である。  
-P is Pacific surface, S is Southern Ocean surface, L is low-latitude surface, and N is North Atlantic surface. M is mid-depth, A is the Atlantic deep pathway, and D is older deep water.
+P は太平洋表層、S は極域表層、L は低緯度表層、N は北大西洋表層である。M は中層、A は北大西洋起源深層水の経路、D はより古い深層水である。  
+P is Pacific surface, S is Polar surface, L is low-latitude surface, and N is North Atlantic surface. M is mid-depth, A is the Atlantic deep pathway, and D is older deep water.
 
 ---
 
@@ -1645,7 +1645,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+Ideal Age とは何か説明せよ。  
+Explain what Ideal Age is.
+
 ### 解答例 / Expected answers
+
+Ideal Age は、水が最後に表層と接してから経過した時間を表すモデル内トレーサーである。  
+Ideal Age is a model tracer representing the time elapsed since water last contacted the surface.
 
 ---
 
@@ -1653,7 +1659,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+表層 box で age を 0 にリセットする理由を説明せよ。  
+Explain why age is reset to 0 in surface boxes.
+
 ### 解答例 / Expected answers
+
+表層水は大気と接しており、そこで新しくベンチレートされた水として扱うため、age を 0 に戻す。  
+Surface water is in contact with the atmosphere and is treated as newly ventilated water, so age is reset to 0.
 
 ---
 
@@ -1661,7 +1673,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+A と D の age が異なる理由を説明せよ。  
+Explain why age differs between A and D.
+
 ### 解答例 / Expected answers
+
+A は N で沈み込んだ水が最初に入る深層経路であり、D はその下流にある。したがって D の方が表層から隔離される時間が長くなりやすい。  
+A is the first deep pathway receiving water sinking from N, while D is downstream of A. Therefore, D tends to be isolated from the surface for longer.
 
 ---
 
@@ -1669,7 +1687,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+Q を大きくすると、内部 box の age はどう変化するか。  
+How does age in interior boxes change when Q is increased?
+
 ### 解答例 / Expected answers
+
+Q が大きくなると循環が速くなり、内部水がより早く表層と交換されるため、Ideal Age は小さくなりやすい。  
+When Q increases, circulation becomes faster and interior water exchanges with the surface more quickly, so Ideal Age tends to decrease.
 
 ---
 
@@ -1677,7 +1701,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+Ideal Age と O2, \( \Delta^{14}\mathrm{C} \) の関係を説明せよ。  
+Explain the relationship between Ideal Age, O2, and \( \Delta^{14}\mathrm{C} \).
+
 ### 解答例 / Expected answers
+
+Ideal Age が大きい水は、長く内部にあり、有機物分解によって O2 が消費されやすい。また 14C の放射壊変が進むため、\( \Delta^{14}\mathrm{C} \) が低くなりやすい。  
+Water with larger Ideal Age has stayed in the interior longer, so O2 tends to be consumed by organic matter decomposition. Radiocarbon decay also proceeds longer, so \( \Delta^{14}\mathrm{C} \) tends to become lower.
 
 ---
 
@@ -1687,7 +1717,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+生物ポンプによって、表層と内部の DIC, \( \mathrm{PO4} \), O2 はどう変化するか。  
+How does the biological pump change DIC, \( \mathrm{PO4} \), and O2 in the surface and interior?
+
 ### 解答例 / Expected answers
+
+表層では生物生産により DIC と \( \mathrm{PO4} \) が取り除かれる。内部では有機物の再無機化により DIC と \( \mathrm{PO4} \) が増え、O2 が消費される。  
+At the surface, biological production removes DIC and \( \mathrm{PO4} \). In the interior, remineralization increases DIC and \( \mathrm{PO4} \), while consuming O2.
 
 ---
 
@@ -1695,7 +1731,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+A と D を分けることで、炭素循環について何が見やすくなるか。  
+What becomes easier to examine in carbon cycling by separating A and D?
+
 ### 解答例 / Expected answers
+
+A と D を分けることで、比較的新しい北大西洋起源深層水と、より古い深層水における DIC, \( \mathrm{PO4} \), O2 の違いを見られる。  
+Separating A and D allows us to see differences in DIC, \( \mathrm{PO4} \), and O2 between relatively young North Atlantic-origin deep water and older deep water.
 
 ---
 
@@ -1703,7 +1745,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+再無機化により、DIC と O2 はなぜ逆向きに変化するか。  
+Why do DIC and O2 change in opposite directions during remineralization?
+
 ### 解答例 / Expected answers
+
+再無機化では有機物が分解され、炭素と栄養塩が水中に戻るため DIC と \( \mathrm{PO4} \) は増える。一方、その分解には酸素が使われるため O2 は減る。  
+During remineralization, organic matter decomposes and returns carbon and nutrients to seawater, increasing DIC and \( \mathrm{PO4} \). Oxygen is consumed during decomposition, so O2 decreases.
 
 ---
 
@@ -1711,7 +1759,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+生物ポンプを強くすると、D の DIC と O2 はどう変わるか。  
+How do DIC and O2 in D change when the biological pump is strengthened?
+
 ### 解答例 / Expected answers
+
+生物ポンプを強くすると、表層から内部へ運ばれる有機物が増えるため、D では再無機化により DIC が増え、O2 が減りやすい。  
+When the biological pump is strengthened, more organic matter is transported from the surface to the interior. In D, remineralization tends to increase DIC and decrease O2.
 
 ---
 
@@ -1719,7 +1773,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+ベンチレーションが強くなると、D の DIC と O2 はどう変わると考えられるか。  
+How do DIC and O2 in D change when ventilation becomes stronger?
+
 ### 解答例 / Expected answers
+
+ベンチレーションが強くなると、深層水が表層とより速く交換されるため、DIC は蓄積しにくくなり、O2 は高く保たれやすい。  
+When ventilation becomes stronger, deep water exchanges with the surface more rapidly. DIC tends to accumulate less, and O2 tends to remain higher.
 
 ---
 
@@ -1729,7 +1789,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+\( \delta^{13}\mathrm{C} \) は何を考える手がかりになるか。  
+What does \( \delta^{13}\mathrm{C} \) help us understand?
+
 ### 解答例 / Expected answers
+
+\( \delta^{13}\mathrm{C} \) は、生物ポンプ、再無機化、水塊混合を考える手がかりになる。表層での生物生産や内部での有機物分解により変化する。  
+\( \delta^{13}\mathrm{C} \) helps us understand the biological pump, remineralization, and water-mass mixing. It changes through surface biological production and interior organic matter decomposition.
 
 ---
 
@@ -1737,7 +1803,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+\( \Delta^{14}\mathrm{C} \) は何を考える手がかりになるか。  
+What does \( \Delta^{14}\mathrm{C} \) help us understand?
+
 ### 解答例 / Expected answers
+
+\( \Delta^{14}\mathrm{C} \) は、ベンチレーション、表層からの隔離時間、水塊年齢を考える手がかりになる。古い水ほど 14C が放射壊変し、\( \Delta^{14}\mathrm{C} \) が低くなりやすい。  
+\( \Delta^{14}\mathrm{C} \) helps us understand ventilation, isolation time from the surface, and water-mass age. Older water experiences more radiocarbon decay and tends to have lower \( \Delta^{14}\mathrm{C} \).
 
 ---
 
@@ -1745,7 +1817,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+A と D で \( \Delta^{14}\mathrm{C} \) が異なる理由を説明せよ。  
+Explain why \( \Delta^{14}\mathrm{C} \) differs between A and D.
+
 ### 解答例 / Expected answers
+
+A は N から沈み込んだ比較的新しい深層水の経路であり、D はその下流にあるより古い深層水である。そのため D の方が表層から長く隔離され、\( \Delta^{14}\mathrm{C} \) が低くなりやすい。  
+A is the relatively young deep pathway from N, while D is older deep water downstream of A. Therefore, D is isolated from the surface for longer and tends to have lower \( \Delta^{14}\mathrm{C} \).
 
 ---
 
@@ -1753,7 +1831,13 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+ベンチレーションが強くなると \( \Delta^{14}\mathrm{C} \) はどう変わるか。  
+How does \( \Delta^{14}\mathrm{C} \) change when ventilation becomes stronger?
+
 ### 解答例 / Expected answers
+
+ベンチレーションが強くなると、内部水がより速く表層と交換されるため、水塊年齢は小さくなり、\( \Delta^{14}\mathrm{C} \) は高くなりやすい。  
+When ventilation becomes stronger, interior water exchanges with the surface more rapidly, so water age decreases and \( \Delta^{14}\mathrm{C} \) tends to become higher.
 
 ---
 
@@ -1761,6 +1845,84 @@ Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. There
 
 ### 問題 / Question
 
+\( \delta^{13}\mathrm{C} \) と \( \Delta^{14}\mathrm{C} \) を同時に見る意味を説明せよ。  
+Explain why it is useful to examine \( \delta^{13}\mathrm{C} \) and \( \Delta^{14}\mathrm{C} \) together.
+
 ### 解答例 / Expected answers
+
+\( \delta^{13}\mathrm{C} \) は生物ポンプや再無機化の影響を受け、\( \Delta^{14}\mathrm{C} \) は主にベンチレーションや隔離時間を反映する。両方を見ることで、炭素蓄積の原因が生物過程なのかベンチレーション変化なのかを区別しやすくなる。  
+\( \delta^{13}\mathrm{C} \) is affected by the biological pump and remineralization, while \( \Delta^{14}\mathrm{C} \) mainly reflects ventilation and isolation time. Examining both helps distinguish whether carbon storage is caused by biological processes or ventilation changes.
+
+---
+
+# 06-08 Seven-box model
+
+## 課題 1 / Exercise 1
+
+### 問題 / Question
+
+なぜ A と D を分けるのか説明せよ。  
+Explain why A and D are distinguished.
+
+### 解答例 / Expected answers
+
+深層水の経路と年齢を区別するため。  
+To distinguish between deep-water pathways and water age.
+
+---
+
+## 課題 2 / Exercise 2
+
+### 問題 / Question
+
+Ideal Age と Δ14C の関係を説明せよ。  
+Explain the relationship between "Ideal Age" and Δ14C.
+
+### 解答例 / Expected answers
+
+Ideal Age が大きいほど Δ14C は低い。  
+The higher the Ideal Age, the lower the Δ14C.
+
+---
+
+## 課題 3 / Exercise 3
+
+### 問題 / Question
+
+Biological pump が DIC に与える影響を説明せよ。  
+Explain the effect of the biological pump on DIC.
+
+### 解答例 / Expected answers
+
+生物ポンプは深層へ炭素を輸送し DIC を増やす。  
+The biological pump transports carbon to the deep ocean, increasing DIC.
+
+---
+
+## 課題 4 / Exercise 4
+
+### 問題 / Question
+
+O2 と再無機化の関係を説明せよ。  
+Explain the relationship between O2 and remineralization.
+
+### 解答例 / Expected answers
+
+再無機化で O2 は消費される。  
+O2 is consumed during remineralization.
+
+---
+
+## 課題 5 / Exercise 5
+
+### 問題 / Question
+
+δ13C と Δ14C を同時に使う利点を説明せよ。  
+Explain the advantages of using δ13C and Δ14C together.
+
+### 解答例 / Expected answers
+
+生物過程とベンチレーション過程を区別しやすくなる。  
+It makes it easier to distinguish between biological processes and ventilation processes.
 
 ---
