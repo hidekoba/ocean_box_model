@@ -720,7 +720,7 @@ Choose one parameter that seems most effective for lowering atmospheric pCO2 and
 
 このモデルでは、`FHD` や `CEPH` が大気 pCO2 に効きやすい。`FHD` を弱めると深層炭素が大気へ出にくくなり、`CEPH` を強めると南大洋表層から炭素を深層へ輸送しやすくなるためである。  
 
-In this model, `FHD` and `CEPH` are among the most effective parameters controlling atmospheric pCO2. Weakening `FHD` makes it more difficult for deep-ocean carbon to reach the atmosphere, whereas increasing `CEPH` enhances carbon transport from the Southern Ocean surface to the deep ocean.
+In this model, `FHD` and `CEPH` are among the most effective parameters controlling atmospheric pCO2. Weakening `FHD` makes it more difficult for deep-ocean carbon to reach the atmosphere, whereas increasing `CEPH` enhances carbon transport from the Subpolar surface to the deep ocean.
 
 ---
 
@@ -822,7 +822,7 @@ Explain the difference between the roles of the H box and the N box.
 ### 解答例 / Expected answers
 
 H box は南大洋表層を表し、深層水の湧昇と大気海洋 CO2 交換に関係する。N box は北大西洋表層を表し、低緯度から来た水が沈み込む場所を表す。  
-The H box represents the Southern Ocean surface and is related to deep-water upwelling and air-sea CO2 exchange. The N box represents the North Atlantic surface, where water from low latitudes sinks.
+The H box represents the Subpolar surface and is related to deep-water upwelling and air-sea CO2 exchange. The N box represents the North Atlantic surface, where water from low latitudes sinks.
 
 ---
 
@@ -836,7 +836,7 @@ Explain why weakening `FHD` tends to lower atmospheric pCO2.
 ### 解答例 / Expected answers
 
 `FHD` を弱めると、深層 D と南大洋 H の交換が弱くなる。そのため、深層に蓄積した DIC が南大洋表層へ上がりにくくなり、大気へ CO2 が放出されにくくなる。  
-Weakening `FHD` reduces exchange between deep D and Southern Ocean H. Therefore, DIC stored in the deep ocean is less able to reach the Southern Ocean surface and outgas to the atmosphere.
+Weakening `FHD` reduces exchange between deep D and Southern Ocean H. Therefore, DIC stored in the deep ocean is less able to reach the Subpolar surface and outgas to the atmosphere.
 
 ---
 
@@ -888,13 +888,13 @@ Example: In the combined scenario, Southern Ocean ventilation was weakened, the 
 
 ### 問題 / Question
 
-4-box モデルの D box を 1 つの箱として扱うことの問題点を説明せよ。  
-Explain the limitation of treating the D box as a single box in the 4-box model.
+4-box から 6-box に拡張する理由を説明せよ。  
+Explain why we extend from 4-box to 6-box.
 
 ### 解答例 / Expected answers
 
-I, D, B を分けることで、内部海洋の水塊構造を表現できる。これにより、ベンチレーション年齢、O2 消費、深層炭素貯蔵の違いを考えられる。  
-By separating I, D, and B, we can represent the water-mass structure of the ocean interior. This allows us to consider differences in ventilation age, O2 consumption, and deep carbon storage.
+4-box では極域表層と低緯度表層の違い、中層と深層の違いを表現しにくい。6-box に拡張すると、P によって表層の地理的違いを、M によって内部海洋の鉛直構造を表現できる。  
+In 4-box, it is difficult to represent the difference between Polar surface and low-latitude surface, and the difference between mid-depth and deep water. Extending to 6-box allows P to represent geographic surface differences and M to represent vertical structure in the interior ocean.
 
 ---
 
@@ -902,13 +902,13 @@ By separating I, D, and B, we can represent the water-mass structure of the ocea
 
 ### 問題 / Question
 
-6-box モデルで I, D, B を分ける科学的な意味を説明せよ。  
-Explain the scientific meaning of separating I, D, and B in the 6-box model.
+PSLNMD の 6 つの箱の意味を説明せよ。  
+Explain the meaning of the six boxes in PSLNMD.
 
 ### 解答例 / Expected answers
 
-循環経路を \\(N \\rightarrow I \\rightarrow D \\rightarrow B \\rightarrow H \\rightarrow L \\rightarrow N\\) と置いたので、N に入れた染料はまず I へ行き、その後 D, B, H, L へ広がる。  
-Because the circulation pathway is \\(N \\rightarrow I \\rightarrow D \\rightarrow B \\rightarrow H \\rightarrow L \\rightarrow N\\), dye released in N first moves to I, then to D, B, H, and L.
+P は極域表層、S は亜寒帯表層、L は低緯度表層、N は北大西洋表層、M は中層、D は深層を表す。  
+P is Polar surface, S is Sub-polar surface, L is low-latitude surface, N is North Atlantic surface, M is mid-depth, and D is deep ocean.
 
 ---
 
@@ -916,13 +916,13 @@ Because the circulation pathway is \\(N \\rightarrow I \\rightarrow D \\rightarr
 
 ### 問題 / Question
 
-N box に入れた染料は、どの順番で各箱に広がるか。  
-In what order does dye released in the N box spread to other boxes?
+P を独立させることで、何が新しく表現できるようになるか。  
+What becomes newly representable by separating P?
 
 ### 解答例 / Expected answers
 
-Q を小さくすると、内部水が表層と交換されにくくなり、内部に長くとどまる。そのため ideal age は大きくなる。  
-When Q is reduced, interior water exchanges less efficiently with the surface and remains in the interior longer. Therefore, ideal age increases.
+P を独立させることで、極域表層を低緯度表層 L と区別できる。これにより、表層海洋の地理的違い、大気 CO2 交換、生物ポンプ、水塊経路の違いを考えられる。  
+By separating P, Polar surface can be distinguished from low-latitude surface L. This allows geographic differences in surface ocean, air-sea CO2 exchange, biological pump, and water-mass pathways to be considered.
 
 ---
 
@@ -930,13 +930,13 @@ When Q is reduced, interior water exchanges less efficiently with the surface an
 
 ### 問題 / Question
 
-循環 Q を小さくすると、ideal age はどう変化するか。  
-What happens to ideal age when circulation strength Q is reduced?
+M を追加することで、何が新しく表現できるようになるか。  
+What becomes newly representable by adding M?
 
 ### 解答例 / Expected answers
 
-D box を 1 つにすると、中層水、深層水、底層水の違いを表現できない。そのため、水塊の年齢、O2、栄養塩、DIC の鉛直構造を表しにくい。  
-If the D box is treated as one box, differences among intermediate, deep, and bottom waters cannot be represented. Therefore, it is difficult to represent vertical structures of water age, O2, nutrients, and DIC.
+M を追加することで、内部海洋を深層 D だけでなく中層 M と深層 D に分けられる。これにより、ベンチレーション年齢、O2、DIC、同位体の鉛直差を考えられる。  
+By adding M, the ocean interior can be divided into mid-depth M and deep D instead of only D. This allows vertical differences in ventilation age, O2, DIC, and isotopes to be considered.
 
 ---
 
@@ -944,13 +944,13 @@ If the D box is treated as one box, differences among intermediate, deep, and bo
 
 ### 問題 / Question
 
-Ideal age と O2-like tracer の関係を説明せよ。  
-Explain the relation between ideal age and the O2-like tracer.
+N に入れた染料と S に入れた染料で、D への届き方が異なる理由を説明せよ。  
+Explain why dye released in N and dye released in S reach D differently.
 
 ### 解答例 / Expected answers
 
-Ideal age が大きい水は長い時間内部にあるため、O2 が消費されやすい。そのため、古い水ほど O2-like tracer は低くなりやすい。  
-Water with large ideal age has spent a long time in the interior, so O2 is more strongly consumed. Therefore, older water tends to have lower O2-like tracer values.
+N は沈み込みの入口なので、N に入れた染料は M, D へ入りやすい。一方、S は南大洋表層であり、表層経路 P, L, N を通ってから内部へ入るため、D への届き方が異なる。  
+N is the entrance of sinking, so dye released in N easily enters M and D. S is the Subpolar surface, so dye released in S first follows the surface pathway P, L, N before entering the interior. Therefore, arrival at D differs.
 
 ---
 
@@ -960,19 +960,75 @@ Water with large ideal age has spent a long time in the interior, so O2 is more 
 
 ### 問題 / Question
 
-1 本の閉じた循環では、なぜ各箱の質量保存が満たされやすいのか。  
-Why is mass conservation easy to satisfy in a single closed loop circulation?
-
----
+PSLNMD の各 box を、地理と深さの観点から説明せよ。  
+Explain each PSLNMD box in terms of geography and depth.
 
 ### 解答例 / Expected answers
 
-1 本の閉じた循環では、各箱に入る流量と出る流量が同じ \\(Q\\) になるため、質量収支が 0 になりやすい。  
-In a single closed loop, each box receives and loses the same transport \\(Q\\), so the mass balance tends to be zero.
+P は極域表層、S は亜寒帯表層、L は低緯度表層、N は北大西洋表層を表す。これらは表層 box である。M は中層、D は深層であり、内部海洋の鉛直構造を表す。  
+P is Polar surface, S is Subpolar surface, L is low-latitude surface, and N is North Atlantic surface. These are surface boxes. M is mid-depth and D is deep, representing vertical structure in the ocean interior.
 
 ---
 
 ## 課題 2 / Exercise 2
+
+### 問題 / Question
+
+S box が炭素循環において重要である理由を説明せよ。  
+Explain why the S box is important for carbon cycling.
+
+### 解答例 / Expected answers
+
+S は深層水が表層へ戻る場所として重要であり、深層に蓄積された DIC が大気と再びつながる窓になる。そのため、大気 CO2 を考える上で重要である。  
+S is important because it is where deep water returns to the surface and where DIC stored in the deep ocean can reconnect with the atmosphere. Therefore, it is important for atmospheric CO2.
+
+---
+
+## 課題 3 / Exercise 3
+
+### 問題 / Question
+
+P と L を分ける意味を説明せよ。  
+Explain the meaning of separating P and L.
+
+### 解答例 / Expected answers
+
+P と L を分けることで、極域表層とその他の低緯度表層を区別できる。これにより、表層海洋の地理的違い、大気 CO2 交換、生物ポンプ、水塊経路の違いを考えられる。  
+Separating P and L distinguishes Polar surface from other low-latitude surface waters. This allows geographic differences in surface ocean, air-sea CO2 exchange, biological pump, and water-mass pathways to be considered.
+
+---
+
+## 課題 4 / Exercise 4
+
+### 問題 / Question
+
+M と D を分ける意味を説明せよ。  
+Explain the meaning of separating M and D.
+
+### 解答例 / Expected answers
+
+M と D を分けることで、中層水と深層水の違いを表現できる。これにより、ベンチレーション年齢、O2、DIC、\\( \\Delta^{14}\\mathrm{C} \\) などの鉛直差を扱える。  
+Separating M and D represents differences between mid-depth and deep water. This allows vertical differences in ventilation age, O2, DIC, and \\( \\Delta^{14}\\mathrm{C} \\) to be treated.
+
+---
+
+## 課題 5 / Exercise 5
+
+### 問題 / Question
+
+N → M → D → S → P → L → N という経路を、水塊の沈み込み・湧昇・表層戻り経路として説明せよ。  
+Explain the pathway N → M → D → S → P → L → N in terms of sinking, upwelling, and surface return flow.
+
+### 解答例 / Expected answers
+
+N で沈み込んだ水は M を通って D に入り、深層に炭素を蓄積する。その後、D の水は S で表層へ戻り、P と L を通って N へ戻る。この経路は、内部循環と表層戻り経路を単純化したものである。  
+Water sinking in N enters M and then D, storing carbon in the deep ocean. It then returns to the surface in S and moves through P and L back to N. This pathway is a simplified representation of interior circulation and surface return flow.
+
+---
+
+# 05-03 Six-box model
+
+## 課題 1 / Exercise 1
 
 ### 問題 / Question
 
@@ -981,67 +1037,8 @@ Explain the advantage of using a transport matrix.
 
 ### 解答例 / Expected answers
 
-輸送行列を使うと、箱が増えても保存則をまとめて書ける。また、Python で行列計算として実装できるため、複雑な循環でも整理しやすい。  
-A transport matrix allows conservation equations to be written compactly even when the number of boxes increases. It can be implemented as matrix operations in Python, making complex circulation easier to organize.
-
----
-
-## 課題 3 / Exercise 3
-
-### 問題 / Question
-
-追加交換 \\(D \\leftrightarrow H\\) は、どのような海洋過程の簡略表現と考えられるか。  
-What ocean process can the additional exchange \\(D \\leftrightarrow H\\) represent?
-
-### 解答例 / Expected answers
-
-\\(D \\leftrightarrow H\\) は、南大洋での深層水の湧昇や鉛直混合、深層ベンチレーションの簡略表現と考えられる。  
-\\(D \\leftrightarrow H\\) can represent Southern Ocean deep-water upwelling, vertical mixing, or deep ventilation in a simplified way.
-
----
-
-## 課題 4 / Exercise 4
-
-### 問題 / Question
-
-トレーサー総量が保存されるか確認する理由を説明せよ。  
-Explain why we check whether total tracer amount is conserved.
-
-### 解答例 / Expected answers
-
-トレーサー総量が保存されない場合、流量の符号、行列の作り方、体積で割る処理などにバグがある可能性がある。保存トレーサーを使った確認は、モデルの基本的なデバッグである。  
-If total tracer amount is not conserved, there may be bugs in flux signs, matrix construction, or volume normalization. Checking conservation using a passive tracer is a basic model-debugging step.
-
----
-
-## 課題 5 / Exercise 5
-
-### 問題 / Question
-
-自分で追加交換を 1 つ設定し、その効果を説明せよ。  
-Set one additional exchange yourself and explain its effect.
-
-### 解答例 / Expected answers
-
-\\(I \\leftrightarrow L\\) を追加すると、中層と低緯度表層の交換が強まり、N から入れた染料がより早く L に現れる。このように追加交換は水塊の広がり方を変える。  
-Example: Adding \\(I \\leftrightarrow L\\) strengthens exchange between intermediate water and the low-latitude surface, causing dye released in N to appear in L more quickly. Thus, additional exchange changes water-mass spreading.
-
-
----
-
-# 05-03a Six-box model
-
-## 課題 1 / Exercise 1
-
-### 問題 / Question
-
-受動トレーサーを使うと、何を調べられるか。  
-What can we investigate using a passive tracer?
-
-### 解答例 / Expected answers
-
-受動トレーサーを使うと、水がどの経路で運ばれるか、どの箱とどの箱がつながっているか、どれくらいの時間で内部へ広がるかを調べられる。  
-A passive tracer can be used to examine water pathways, connectivity among boxes, and the timescale over which tracer spreads into the interior.
+輸送行列を使うと、box 間の流れをまとめて扱える。箱が増えても式を整理しやすく、Python では `F @ C` として一括計算できる。  
+A transport matrix allows flows among boxes to be handled together. Even when the number of boxes increases, equations remain organized and can be computed in Python as `F @ C`.
 
 ---
 
@@ -1049,27 +1046,26 @@ A passive tracer can be used to examine water pathways, connectivity among boxes
 
 ### 問題 / Question
 
-N に入れた染料と H に入れた染料では、内部への広がり方がなぜ違うのか。  
-Why do dyes released in N and H spread into the interior differently?
+`N → M` の流れは、輸送行列のどの成分に対応するか。  
+Which elements of the transport matrix correspond to the flow `N → M`?
 
 ### 解答例 / Expected answers
 
-N は沈み込みの入口なので、N に入れた染料は I, D, B へ入りやすい。一方、H は南大洋表層であり、まず L へ流れやすい。そのため内部への入り方が違う。  
-N is the entrance of sinking, so dye released in N enters I, D, and B easily. H is the Southern Ocean surface and tends to flow first toward L. Therefore, the pathways differ.
-
+`N → M` では、M が N から受け取るので `F[M, N]` が正になる。また N から流出するので `F[N, N]` に負の成分が入る。  
+For `N → M`, M receives from N, so `F[M, N]` is positive. N loses water, so a negative term is added to `F[N, N]`.
 ---
 
 ## 課題 3 / Exercise 3
 
 ### 問題 / Question
 
-Surface-origin tracer は何を見るためのものか。  
-What is a surface-origin tracer used for?
+保存トレーサーの総量を確認する理由を説明せよ。  
+Explain why we check the total amount of a passive tracer.
 
 ### 解答例 / Expected answers
 
-Surface-origin tracer は、内部水がどの表層ボックスの影響を受けているかを調べるためのものである。  
-A surface-origin tracer is used to diagnose which surface box influences interior water.
+受動トレーサーは生成・消滅しないため、総量が保存されるはずである。保存されなければ、輸送行列の符号、体積で割る処理、追加交換の入れ方にバグがある可能性がある。  
+A passive tracer has no source or sink, so its total amount should be conserved. If not, there may be a bug in matrix signs, volume division, or extra exchanges.
 
 ---
 
@@ -1077,13 +1073,13 @@ A surface-origin tracer is used to diagnose which surface box influences interio
 
 ### 問題 / Question
 
-Source-sink tracer と一度だけ入れる dye tracer の違いを説明せよ。  
-Explain the difference between a source-sink tracer and a one-time dye tracer.
+Q を大きくすると、染料の広がり方はどう変わるか。  
+How does dye spreading change when Q is increased?
 
 ### 解答例 / Expected answers
 
-Dye tracer は最初に一度だけ入れるトレーサーであり、その後は輸送されるだけである。Source-sink tracer は、ある箱に継続的な供給や消費を持つ。  
-A dye tracer is released once and then only transported. A source-sink tracer has continuous input or removal in one or more boxes.
+Q を大きくすると、水の移動が速くなるため、染料はより早く M や D へ到達する。  
+When Q is increased, water moves faster, so dye reaches M and D earlier.
 
 ---
 
@@ -1091,85 +1087,13 @@ A dye tracer is released once and then only transported. A source-sink tracer ha
 
 ### 問題 / Question
 
-Decay を持つトレーサーは、なぜ水塊年齢の情報を持ちうるのか。  
-Why can a tracer with decay contain information about water-mass age?
+追加交換を入れるとき、どのようなバグが起こりやすいか。  
+What kinds of bugs are likely when adding extra exchanges?
 
 ### 解答例 / Expected answers
 
-Decay を持つトレーサーは、時間が経つほど濃度が低下する。そのため、古い水では信号が弱くなり、水塊が最後に表層と接してからの時間に関する情報を持ちうる。  
-A tracer with decay decreases over time. Therefore, older water has a weaker signal, and the tracer can contain information about the time since last surface contact.
-
----
-
-# 05-03b Six-box model
-
-## 課題 1 / Exercise 1
-
-### 問題 / Question
-
-Ideal age の定義を説明せよ。  
-Explain the definition of ideal age.
-
-### 解答例 / Expected answers
-
-Ideal age は、表層では 0 にリセットされ、内部では時間とともに増えるトレーサーである。最後に表層と接してからの時間を表す簡略的な指標である。  
-Ideal age is a tracer that is reset to zero at the surface and increases with time in the interior. It is a simplified measure of time since last contact with the surface.
-
----
-
-## 課題 2 / Exercise 2
-
-### 問題 / Question
-
-循環 Q を小さくすると、D box と B box の ideal age はどう変化するか。  
-When circulation Q is reduced, what happens to ideal age in D and B?
-
-### 解答例 / Expected answers
-
-Q を小さくすると、内部水の交換が遅くなり、D box や B box に水が長くとどまる。そのため ideal age は大きくなる。  
-When Q is reduced, exchange of interior water becomes slower, and water remains longer in D and B. Therefore, ideal age increases.
-
----
-
-## 課題 3 / Exercise 3
-
-### 問題 / Question
-
-D-H exchange を強めると、D box の age はどう変化するか。  
-When D-H exchange is strengthened, what happens to age in D?
-
-### 解答例 / Expected answers
-
-D-H exchange を強めると、D box が南大洋表層 H とより強くつながる。そのため D box の age は小さくなりやすい。  
-Strengthening D-H exchange connects the D box more strongly to the Southern Ocean surface H. Therefore, age in D tends to decrease.
-
----
-
-## 課題 4 / Exercise 4
-
-### 問題 / Question
-
-Ideal age が大きい水ほど O2 が低くなりやすい理由を説明せよ。  
-Explain why water with larger ideal age tends to have lower O2.
-
-### 解答例 / Expected answers
-
-Ideal age が大きい水は長い時間内部にあり、その間に有機物分解によって O2 が消費される。そのため古い水ほど O2 が低くなりやすい。  
-Water with larger ideal age has spent a longer time in the interior, during which O2 is consumed by organic matter decomposition. Therefore, older water tends to have lower O2.
-
----
-
-## 課題 5 / Exercise 5
-
-### 問題 / Question
-
-Ideal age と decaying tracer から求める apparent age が完全に一致しない理由を説明せよ。  
-Explain why ideal age and apparent age from a decaying tracer do not perfectly match.
-
-### 解答例 / Expected answers
-
-Decaying tracer の apparent age は、濃度の減衰から推定される。しかし実際の箱内水は複数の経路や年齢を持つ水の混合であるため、単一の ideal age と完全には一致しない。  
-Apparent age from a decaying tracer is inferred from concentration decay. However, water in a box is a mixture of waters with different pathways and ages, so it does not perfectly match a single ideal age.
+追加交換では、片方向だけを入れてしまう、対角成分を引き忘れる、符号を逆にする、体積で割る場所を間違える、などのバグが起こりやすい。  
+Common bugs include adding only one direction of an exchange, forgetting to subtract from the diagonal, reversing signs, or applying volume division incorrectly.
 
 ---
 
@@ -1179,13 +1103,13 @@ Apparent age from a decaying tracer is inferred from concentration decay. Howeve
 
 ### 問題 / Question
 
-生物ポンプは PO4, DIC, O2 をそれぞれどのように変えるか。  
-How does the biological pump change PO4, DIC, and O2?
+N に入れた染料が M と D に入りやすい理由を説明せよ。  
+Explain why dye released in N easily enters M and D.
 
 ### 解答例 / Expected answers
 
-生物ポンプは表層で PO4 と DIC を取り除き、内部で再無機化により PO4 と DIC を増やす。O2 は表層では生成に対応して増え、内部では再無機化により消費される。  
-The biological pump removes PO4 and DIC from the surface and increases PO4 and DIC in the interior through remineralization. O2 increases in association with production at the surface and is consumed in the interior.
+N は北大西洋表層であり、沈み込みの入口として設定されている。そのため N に入った染料は表層に留まらず、M を通って D へ輸送されやすい。  
+N is the North Atlantic surface box and is set as the entrance of sinking. Therefore, dye released in N does not remain at the surface, but is transported through M into D.
 
 ---
 
@@ -1193,13 +1117,10 @@ The biological pump removes PO4 and DIC from the surface and increases PO4 and D
 
 ### 問題 / Question
 
-再無機化が内部で起こると、DIC と O2 はどのように変化するか。  
-When remineralization occurs in the interior, how do DIC and O2 change?
+S に入れた染料と P に入れた染料では、D への届き方がどう違うか。  
+How does the arrival at D differ between dye released in S and dye released in P?
 
 ### 解答例 / Expected answers
-
-再無機化が内部で起こると、有機物が分解されるため DIC が増え、O2 が消費されて減る。  
-When remineralization occurs in the interior, organic matter is decomposed, increasing DIC and consuming O2.
 
 ---
 
@@ -1207,13 +1128,13 @@ When remineralization occurs in the interior, organic matter is decomposed, incr
 
 ### 問題 / Question
 
-DIC が増えると pCO2 はどう変化するか。ALK が増えると pCO2 はどう変化するか。  
-How does pCO2 change when DIC increases? How does pCO2 change when ALK increases?
+Origin tracer は何を見るためのものか。  
+What is an origin tracer used for?
 
 ### 解答例 / Expected answers
 
-DIC が増えると pCO2 は上がりやすい。ALK が増えると、同じ DIC に対して pCO2 は下がりやすい。  
-Increasing DIC tends to increase pCO2. Increasing ALK tends to decrease pCO2 for the same DIC.
+Origin tracer は、内部の M や D がどの表層 box の影響を強く受けているかを見るためのトレーサーである。  
+An origin tracer is used to diagnose which surface box most strongly influences interior boxes such as M and D.
 
 ---
 
@@ -1221,13 +1142,13 @@ Increasing DIC tends to increase pCO2. Increasing ALK tends to decrease pCO2 for
 
 ### 問題 / Question
 
-生物ポンプを強めると、大気 pCO2 はなぜ低下しやすいか。  
-Why does strengthening the biological pump tend to lower atmospheric pCO2?
+Source-sink tracer と dye tracer の違いを説明せよ。  
+Explain the difference between a source-sink tracer and a dye tracer.
 
 ### 解答例 / Expected answers
 
-生物ポンプを強めると、表層から炭素が取り除かれて内部へ輸送される。そのため表層 pCO2 が下がり、大気から CO2 を取り込みやすくなる。  
-A stronger biological pump removes carbon from the surface and transfers it to the interior. This lowers surface pCO2 and tends to draw CO2 from the atmosphere.
+Dye tracer は最初に一度だけ入れるトレーサーである。Source-sink tracer は、ある box に継続的な供給や消費を持つトレーサーである。  
+A dye tracer is released once at the beginning. A source-sink tracer has continuous supply or removal in one or more boxes.
 
 ---
 
@@ -1235,13 +1156,13 @@ A stronger biological pump removes carbon from the surface and transfers it to t
 
 ### 問題 / Question
 
-D-H exchange を弱めると、大気 pCO2 が変化する理由を説明せよ。  
-Explain why atmospheric pCO2 changes when D-H exchange is weakened.
+Decay を持つトレーサーが、なぜ水塊年齢の理解につながるのか。  
+Why does a tracer with decay help us understand water-mass age?
 
 ### 解答例 / Expected answers
 
-D-H exchange は深層炭素が南大洋表層へ戻る経路を表す。これを弱めると、深層に蓄積した DIC が表層へ戻りにくくなり、大気 CO2 交換が変化する。  
-D-H exchange represents a pathway for deep carbon to return to the Southern Ocean surface. Weakening it makes deep DIC less able to return to the surface, altering air-sea CO2 exchange.
+Decay を持つトレーサーは、時間が経つほど濃度が低下する。そのため、表層から長く隔離された古い水では信号が弱くなり、水塊年齢の情報を持ちうる。  
+A tracer with decay decreases over time. Therefore, in old water isolated from the surface for a long time, the signal becomes weaker and can contain information about water-mass age.
 
 ---
 
@@ -1251,13 +1172,13 @@ D-H exchange represents a pathway for deep carbon to return to the Southern Ocea
 
 ### 問題 / Question
 
-\\( \\delta^{13}\\mathrm{C} \\) は何を見るために使えるか。  
-What can \\( \\delta^{13}\\mathrm{C} \\) be used to examine?
+なぜ表層の Ideal Age は 0 yr なのか説明しなさい。  
+Explain why the surface Ideal Age is always 0 yr.
 
 ### 解答例 / Expected answers
 
-\\( \\delta^{13}\\mathrm{C} \\) は、生物ポンプ、表層での同位体分別、再無機化、水塊混合の影響を見るために使える。  
-\\( \\delta^{13}\\mathrm{C} \\) can be used to examine biological pump effects, isotope fractionation at the surface, remineralization, and water-mass mixing.
+表層は常に大気と接触するため年齢はリセットされる。  
+Surface water is continuously reset by contact with the atmosphere.
 
 ---
 
@@ -1265,13 +1186,13 @@ What can \\( \\delta^{13}\\mathrm{C} \\) be used to examine?
 
 ### 問題 / Question
 
-\\( \\Delta^{14}\\mathrm{C} \\) は何を見るために使えるか。  
-What can \\( \\Delta^{14}\\mathrm{C} \\) be used to examine?
+なぜ D は M より古くなるのか。  
+Why does D become older than M?
 
 ### 解答例 / Expected answers
 
-\\( \\Delta^{14}\\mathrm{C} \\) は、海水がどれくらい長く表層から隔離されていたか、つまりベンチレーションや古い水を見るために使える。  
-\\( \\Delta^{14}\\mathrm{C} \\) can be used to examine how long seawater has been isolated from the surface, that is, ventilation and old water.
+D は表層から最も隔離されるため最も古くなる。  
+D is most isolated from the surface and therefore oldest.
 
 ---
 
@@ -1279,41 +1200,13 @@ What can \\( \\Delta^{14}\\mathrm{C} \\) be used to examine?
 
 ### 問題 / Question
 
-生物ポンプが内部の \\( \\delta^{13}\\mathrm{C} \\) を低くしやすい理由を説明せよ。  
-Explain why the biological pump tends to lower interior \\( \\delta^{13}\\mathrm{C} \\).
+循環が強くなると Ideal Age はどう変わるか。  
+How does stronger circulation affect Ideal Age?
 
 ### 解答例 / Expected answers
 
-生物は軽い \\(^{12}\\mathrm{C}\\) を取り込みやすいため、有機物は低い \\( \\delta^{13}\\mathrm{C} \\) を持つ。その有機物が内部で再無機化されると、内部 DIC の \\( \\delta^{13}\\mathrm{C} \\) は低くなりやすい。  
-Biology preferentially takes up light \\(^{12}\\mathrm{C}\\), so organic matter has low \\( \\delta^{13}\\mathrm{C} \\). When this organic matter is remineralized in the interior, interior DIC tends to become lower in \\( \\delta^{13}\\mathrm{C} \\).
-
----
-
-## 課題 4 / Exercise 4
-
-### 問題 / Question
-
-ベンチレーションが弱いと \\( \\Delta^{14}\\mathrm{C} \\) が低くなりやすい理由を説明せよ。  
-Explain why \\( \\Delta^{14}\\mathrm{C} \\) tends to become lower when ventilation is weak.
-
-### 解答例 / Expected answers
-
-ベンチレーションが弱いと、内部水が表層から長く隔離される。その間に \\(^{14}\\mathrm{C}\\) が放射壊変するため、\\( \\Delta^{14}\\mathrm{C} \\) が低くなりやすい。  
-When ventilation is weak, interior water is isolated from the surface for a longer time. During this time, \\(^{14}\\mathrm{C}\\) radioactively decays, so \\( \\Delta^{14}\\mathrm{C} \\) tends to become lower.
-
----
-
-## 課題 5 / Exercise 5
-
-### 問題 / Question
-
-Ideal age と radiocarbon age が完全には一致しない理由を説明せよ。  
-Explain why ideal age and radiocarbon age do not perfectly match.
-
-### 解答例 / Expected answers
-
-Ideal age はモデル内で直接追跡される年齢である。一方、radiocarbon age は減衰トレーサーから推定される見かけの年齢であり、箱内の水は複数の経路や年齢を持つ水の混合であるため、完全には一致しない。  
-Ideal age is directly tracked in the model. Radiocarbon age is an apparent age inferred from a decaying tracer. Because water in a box is a mixture of waters with different pathways and ages, the two do not perfectly match.
+循環が強いほどベンチレーションが速くなり Ideal Age は若くなる。  
+Stronger circulation ventilates the ocean faster, reducing Ideal Age.
 
 ---
 
@@ -1323,13 +1216,13 @@ Ideal age is directly tracked in the model. Radiocarbon age is an apparent age i
 
 ### 問題 / Question
 
-4-box から 6-box に拡張することで、新しく何が表現できるようになったか。  
-What becomes newly representable by extending from 4-box to 6-box?
+保存トレーサーと DIC の違いを説明せよ。  
+Explain the difference between a passive tracer and DIC.
 
 ### 解答例 / Expected answers
 
-6-box にすると、中層 I、深層 D、底層 B を分けられるため、内部海洋の鉛直構造、水塊年齢、ベンチレーション差、O2 や炭素同位体の違いを表現できる。  
-With 6 boxes, intermediate I, deep D, and bottom B can be separated, allowing vertical structure, water-mass age, ventilation differences, and O2 and carbon-isotope differences to be represented.
+DIC は輸送だけでなく生物活動や大気海洋交換でも変化する。  
+DIC changes through biology and air-sea exchange as well as transport.
 
 ---
 
@@ -1337,13 +1230,13 @@ With 6 boxes, intermediate I, deep D, and bottom B can be separated, allowing ve
 
 ### 問題 / Question
 
-Ideal age は何を表すか。  
-What does ideal age represent?
+生物ポンプによって表層 DIC はどう変化するか。  
+How does the biological pump change surface DIC?
 
 ### 解答例 / Expected answers
 
-Ideal age は、表層で 0 にリセットされ、内部で時間とともに増えるトレーサーであり、最後に表層と接してからの時間を表す簡略指標である。  
-Ideal age is reset to zero at the surface and increases with time in the interior. It is a simplified measure of time since last surface contact.
+生物生産によって表層 DIC は減少する。  
+Surface DIC decreases because of biological production.
 
 ---
 
@@ -1351,13 +1244,101 @@ Ideal age is reset to zero at the surface and increases with time in the interio
 
 ### 問題 / Question
 
-D-H exchange を強めると、D box の age と \\( \\Delta^{14}\\mathrm{C} \\) はどう変わるか。  
-When D-H exchange is strengthened, how do age and \\( \\Delta^{14}\\mathrm{C} \\) in D change?
+PO4 と O2 はなぜ逆向きに変化するか。  
+Why do PO4 and O2 vary in opposite directions?
 
 ### 解答例 / Expected answers
 
-D-H exchange を強めると、D box は南大洋表層 H と強くつながるため、age は小さくなりやすく、\\( \\Delta^{14}\\mathrm{C} \\) は高くなりやすい。  
-Strengthening D-H exchange connects D more strongly to Southern Ocean surface H, so age tends to decrease and \\( \\Delta^{14}\\mathrm{C} \\) tends to increase.
+再無機化では栄養塩が放出され、酸素が消費される。  
+Remineralization releases nutrients while consuming oxygen.
+
+---
+
+# 05-07 Six-box model
+
+## 課題 1 / Exercise 1
+
+### 問題 / Question
+
+δ13C が生物ポンプの指標になる理由を説明せよ。  
+Explain why δ13C is an indicator of the biological pump.
+
+### 解答例 / Expected answers
+
+生物は 12C を優先的に利用するため、δ13C は生物活動を反映する。  
+Biology preferentially uses 12C, so δ13C reflects biological activity.
+
+---
+
+## 課題 2 / Exercise 2
+
+### 問題 / Question
+
+Δ14C がベンチレーション年代の指標になる理由を説明せよ。  
+Explain why Δ14C indicates ventilation age.
+
+### 解答例 / Expected answers
+
+14C は放射壊変するため、古い水ほど Δ14C が低い。  
+Because 14C decays, older water has lower Δ14C.
+
+---
+
+## 課題 3 / Exercise 3
+
+### 問題 / Question
+
+Ideal Age と Δ14C の関係を説明せよ。  
+Explain the relationship between Ideal Age and Δ14C.
+
+### 解答例 / Expected answers
+
+Ideal Age が大きいほど、大気から隔離される時間が長くなり Δ14C は低下する。  
+Larger Ideal Age means longer isolation from the atmosphere and therefore lower Δ14C.
+
+---
+
+# 05-08 Six-box model
+
+## 課題 1 / Exercise 1
+
+### 問題 / Question
+
+なぜ輸送行列を使うのか説明しなさい。  
+Explain why we use a transport matrix.
+
+### 解答例 / Expected answers
+
+輸送行列を使うことで、多数の box 間輸送を統一的に表現し、Python では `F @ C` の形で計算できる。  
+Using a transport matrix allows many box-to-box transports to be represented consistently and computed as `F @ C`.
+
+---
+
+## 課題 2 / Exercise 2
+
+### 問題 / Question
+
+N に入れた染料が D に届く理由を説明しなさい。  
+Explain why dye released in N reaches D.
+
+### 解答例 / Expected answers
+
+N は沈み込みの入口なので、染料は M を経由して D に運ばれる。  
+N is the entrance of sinking, so dye is transported through M into D.
+
+---
+
+## 課題 3 / Exercise 3
+
+### 問題 / Question
+
+Ideal Age が大きいほど Δ14C が低くなる理由を説明しなさい。  
+Explain why larger Ideal Age corresponds to lower Δ14C.
+
+### 解答例 / Expected answers
+
+Ideal Age が大きいほど大気から長く隔離され、14C が放射壊変するため Δ14C は低くなる。  
+Larger Ideal Age means longer isolation from the atmosphere, allowing more radioactive decay of 14C.
 
 ---
 
@@ -1365,13 +1346,13 @@ Strengthening D-H exchange connects D more strongly to Southern Ocean surface H,
 
 ### 問題 / Question
 
-古い水ほど O2 が低くなりやすい理由を説明せよ。  
-Explain why older water tends to have lower O2.
+生物ポンプは DIC・PO4・O2 をどのように変化させるか説明しなさい。  
+Explain how the biological pump changes DIC, PO4, and O2.
 
 ### 解答例 / Expected answers
 
-古い水は長い時間内部にあり、その間に有機物分解によって O2 が消費されるため、O2 が低くなりやすい。  
-Older water spends a long time in the interior, during which O2 is consumed by organic matter decomposition, so O2 tends to become lower.
+表層では DIC が減少し、内部では再無機化により DIC と PO4 が増え、O2 は減少する。  
+Surface DIC decreases, while remineralization increases DIC and PO4 and decreases O2 in the interior.
 
 ---
 
@@ -1379,13 +1360,13 @@ Older water spends a long time in the interior, during which O2 is consumed by o
 
 ### 問題 / Question
 
-\\( \\delta^{13}\\mathrm{C} \\) と \\( \\Delta^{14}\\mathrm{C} \\) は、それぞれ何を見るために使えるか。  
-What can \\( \\delta^{13}\\mathrm{C} \\) and \\( \\Delta^{14}\\mathrm{C} \\) each be used to examine?
+PSLNMD の限界は何か。PSLNMAD では何を改善するのか。  
+What are the limitations of PSLNMD? What is improved in PSLNMAD?
 
 ### 解答例 / Expected answers
 
-\\( \\delta^{13}\\mathrm{C} \\) は主に生物ポンプ、再無機化、水塊混合を見るために使える。\\( \\Delta^{14}\\mathrm{C} \\) は主にベンチレーション、古い水、表層からの隔離時間を見るために使える。  
-\\( \\delta^{13}\\mathrm{C} \\) is mainly used to examine biological pump, remineralization, and water-mass mixing. \\( \\Delta^{14}\\mathrm{C} \\) is mainly used to examine ventilation, old water, and isolation time from the surface.
+PSLNMD は深層を 1 box として扱う。PSLNMAD では北大西洋起源深層水 A を独立させ、深層循環をより現実的に表現する。  
+PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North Atlantic-origin deep water (A) as a separate entity, thereby representing deep-ocean circulation more realistically.
 
 ---
 
@@ -1393,13 +1374,8 @@ What can \\( \\delta^{13}\\mathrm{C} \\) and \\( \\Delta^{14}\\mathrm{C} \\) eac
 
 ### 問題 / Question
 
-6-box モデルの限界を 3 つ挙げよ。  
-List three limitations of the 6-box model.
 
 ### 解答例 / Expected answers
-
-6-box モデルは、水平分布、季節変化、海氷、風の空間構造、鉄制限、生態系の多様性、連続的な鉛直構造を明示的には表現できない。  
-The 6-box model cannot explicitly represent horizontal distributions, seasonality, sea ice, spatial wind structure, iron limitation, ecosystem diversity, or continuous vertical structure.
 
 ---
 
