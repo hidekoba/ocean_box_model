@@ -718,7 +718,7 @@ Choose one parameter that seems most effective for lowering atmospheric pCO2 and
 
 ### 解答例 / Expected answers
 
-このモデルでは、`FHD` や `CEPH` が大気 pCO2 に効きやすい。`FHD` を弱めると深層炭素が大気へ出にくくなり、`CEPH` を強めると南大洋表層から炭素を深層へ輸送しやすくなるためである。  
+このモデルでは、`FHD` や `CEPH` が大気 pCO2 に効きやすい。`FHD` を弱めると深層炭素が大気へ出にくくなり、`CEPH` を強めると亜寒帯域表層から炭素を深層へ輸送しやすくなるためである。  
 
 In this model, `FHD` and `CEPH` are among the most effective parameters controlling atmospheric pCO2. Weakening `FHD` makes it more difficult for deep-ocean carbon to reach the atmosphere, whereas increasing `CEPH` enhances carbon transport from the Subpolar surface to the deep ocean.
 
@@ -821,7 +821,7 @@ Explain the difference between the roles of the H box and the N box.
 
 ### 解答例 / Expected answers
 
-H box は南大洋表層を表し、深層水の湧昇と大気海洋 CO2 交換に関係する。N box は北大西洋表層を表し、低緯度から来た水が沈み込む場所を表す。  
+H box は亜寒帯域表層を表し、深層水の湧昇と大気海洋 CO2 交換に関係する。N box は北大西洋表層を表し、低緯度から来た水が沈み込む場所を表す。  
 The H box represents the Subpolar surface and is related to deep-water upwelling and air-sea CO2 exchange. The N box represents the North Atlantic surface, where water from low latitudes sinks.
 
 ---
@@ -835,7 +835,7 @@ Explain why weakening `FHD` tends to lower atmospheric pCO2.
 
 ### 解答例 / Expected answers
 
-`FHD` を弱めると、深層 D と南大洋 H の交換が弱くなる。そのため、深層に蓄積した DIC が南大洋表層へ上がりにくくなり、大気へ CO2 が放出されにくくなる。  
+`FHD` を弱めると、深層 D と南大洋 H の交換が弱くなる。そのため、深層に蓄積した DIC が亜寒帯域表層へ上がりにくくなり、大気へ CO2 が放出されにくくなる。  
 Weakening `FHD` reduces exchange between deep D and Southern Ocean H. Therefore, DIC stored in the deep ocean is less able to reach the Subpolar surface and outgas to the atmosphere.
 
 ---
@@ -949,7 +949,7 @@ Explain why dye released in N and dye released in S reach D differently.
 
 ### 解答例 / Expected answers
 
-N は沈み込みの入口なので、N に入れた染料は M, D へ入りやすい。一方、S は南大洋表層であり、表層経路 P, L, N を通ってから内部へ入るため、D への届き方が異なる。  
+N は沈み込みの入口なので、N に入れた染料は M, D へ入りやすい。一方、S は亜寒帯域表層であり、表層経路 P, L, N を通ってから内部へ入るため、D への届き方が異なる。  
 N is the entrance of sinking, so dye released in N easily enters M and D. S is the Subpolar surface, so dye released in S first follows the surface pathway P, L, N before entering the interior. Therefore, arrival at D differs.
 
 ---
