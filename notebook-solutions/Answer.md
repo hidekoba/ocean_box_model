@@ -1385,7 +1385,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+6-box model から 7-box model へ拡張する理由を説明せよ。  
+Explain why we extend 6-box model to 7-box model.
+
 ### 解答例 / Expected answers
+
+6-box model では深層 D が 1 つの箱で表される。7-box model では A を追加することで、北大西洋で沈み込んだ深層水の経路と、より古い深層 D を区別できる。  
+In the 6-box model, the deep ocean is represented by one D box. In the 7-box model, adding A allows the North Atlantic-origin deep pathway to be distinguished from older deep water D.
 
 ---
 
@@ -1393,7 +1399,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A box の意味を説明せよ。  
+Explain the meaning of the A box.
+
 ### 解答例 / Expected answers
+
+A は北大西洋起源深層水の経路を表す box である。N で沈み込んだ水が D へ入る前に通る深層として考える。  
+A represents the North Atlantic-origin deep pathway. It is the deep layer through which water sinking in N passes before entering D.
 
 ---
 
@@ -1401,7 +1413,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A は大気ではない。この点がなぜ重要か説明せよ。  
+A is not the atmosphere. Explain why this point is important.
+
 ### 解答例 / Expected answers
+
+A を大気と誤解すると、モデルの構造を完全に取り違える。A は水塊の box であり、大気 CO2 reservoir ではない。  
+If A is confused with the atmosphere, the model structure is misunderstood. A is a water-mass box, not an atmospheric CO2 reservoir.
 
 ---
 
@@ -1409,7 +1427,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+N → A → D という経路は、どのような水塊過程を表しているか。  
+What water-mass process is represented by the pathway N → A → D?
+
 ### 解答例 / Expected answers
+
+N → A → D は、北大西洋で沈み込んだ水が深層経路 A を通り、さらに古い深層 D へ広がる過程を表す。  
+N → A → D represents water sinking in the North Atlantic, passing through the deep pathway A, and spreading into older deep water D.
 
 ---
 
@@ -1417,7 +1441,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A と D を分けることで、炭素循環や同位体で何を見やすくなるか。  
+What becomes easier to examine in carbon cycling and isotopes by separating A and D?
+
 ### 解答例 / Expected answers
+
+A と D を分けることで、DIC, O2, Ideal Age, δ13C, Δ14C などが、北大西洋起源深層水と古い深層水でどう違うかを調べやすくなる。  
+By separating A and D, it becomes easier to examine how DIC, O2, Ideal Age, δ13C, and Δ14C differ between North Atlantic-origin deep water and older deep water.
 
 ---
 
@@ -1427,7 +1457,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+7-box model の各 box を、地理と深さの観点から説明せよ。  
+Explain each PSLNMAD box in terms of geography and depth.
+
 ### 解答例 / Expected answers
+
+P は太平洋表層、S は南大洋表層、L は低緯度表層、N は北大西洋表層である。M は中層、A は北大西洋起源深層水の経路、D はより古い深層水である。  
+P is Pacific surface, S is Southern Ocean surface, L is low-latitude surface, and N is North Atlantic surface. M is mid-depth, A is the Atlantic deep pathway, and D is older deep water.
 
 ---
 
@@ -1435,7 +1471,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A box が大気ではないことを説明せよ。  
+Explain why the A box is not the atmosphere.
+
 ### 解答例 / Expected answers
+
+A は atmospheric box ではなく、水塊の box である。北大西洋で沈み込んだ水が深層 D へ入る前に通る深層経路を表す。  
+A is not an atmospheric box but a water-mass box. It represents the deep pathway through which North Atlantic sinking water passes before entering D.
 
 ---
 
@@ -1443,7 +1485,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A と D を分ける意味を説明せよ。  
+Explain the meaning of separating A and D.
+
 ### 解答例 / Expected answers
+
+A と D を分けることで、比較的新しい北大西洋起源深層水と、より古く隔離された深層水を区別できる。  
+Separating A and D distinguishes relatively young North Atlantic-origin deep water from older and more isolated deep water.
 
 ---
 
@@ -1451,7 +1499,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+N → A → D → S という経路を、水塊形成と湧昇の観点から説明せよ。  
+Explain the pathway N → A → D → S in terms of water-mass formation and upwelling.
+
 ### 解答例 / Expected answers
+
+N で沈み込んだ水は A を通って D に入り、さらに S で表層へ戻る。この経路は深層水形成、深層貯蔵、南大洋湧昇を単純化して表す。  
+Water sinking in N passes through A into D and later returns to the surface in S. This pathway simplifies deep-water formation, deep storage, and Southern Ocean upwelling.
 
 ---
 
@@ -1459,7 +1513,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A と D を分けることが、Δ14C の解釈にどう役立つか説明せよ。  
+Explain how separating A and D helps interpret Δ14C.
+
 ### 解答例 / Expected answers
+
+Δ14C は表層から隔離された時間に敏感である。A と D を分けることで、比較的新しい深層水と古い深層水の Δ14C 差を表現しやすくなる。  
+Δ14C is sensitive to isolation time from the surface. Separating A and D makes it easier to represent Δ14C differences between relatively young deep water and older deep water.
 
 ---
 
@@ -1469,7 +1529,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+なぜ列和が 0 になる必要があるか説明せよ。  
+Explain why the column sums must be zero.
+
 ### 解答例 / Expected answers
+
+保存則を満たすため列和は 0 である必要がある。  
+Column sums must vanish to conserve tracer.
 
 ---
 
@@ -1477,7 +1543,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A を追加すると輸送行列はどのように変わるか。  
+How does the transport matrix change when A is added?
+
 ### 解答例 / Expected answers
+
+N→A→D が追加され、深層経路が分離される。  
+N→A→D separates the Atlantic deep pathway.
 
 ---
 
@@ -1485,23 +1557,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
-### 解答例 / Expected answers
-
----
-
-## 課題 4 / Exercise 4
-
-### 問題 / Question
+6×6 行列との違いを説明せよ。  
+Explain the differences compared to a 6×6 matrix.
 
 ### 解答例 / Expected answers
 
----
-
-## 課題 5 / Exercise 5
-
-### 問題 / Question
-
-### 解答例 / Expected answers
+7×7 行列では A を独立変数として扱い、より現実的な深層循環を表現できる。  
+The 7×7 matrix explicitly represents the Atlantic deep pathway.
 
 ---
 
@@ -1511,7 +1573,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+N に入れた染料が A に先に届く理由を説明せよ。  
+Explain why dye released in N reaches A first.
+
 ### 解答例 / Expected answers
+
+PSLNMAD では N → A → D という経路を設定しているため、N に入れた染料は D より先に A に届く。A は北大西洋で沈み込んだ水が通る深層経路である。  
+In PSLNMAD, the pathway is N → A → D, so dye released in N reaches A before D. A is the deep pathway through which North Atlantic sinking water passes.
 
 ---
 
@@ -1519,7 +1587,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+A と D の染料時系列の違いは何を意味するか。  
+What does the difference between dye time series in A and D mean?
+
 ### 解答例 / Expected answers
+
+A に先に染料が現れ、D には遅れて現れることは、A が D の上流にあることを示す。これは A が比較的新しい北大西洋起源深層水を表し、D がより古い深層水を表すという解釈と整合的である。  
+Dye appears first in A and later in D, showing that A is upstream of D. This is consistent with A representing relatively young North Atlantic-origin deep water and D representing older deep water.
 
 ---
 
@@ -1527,7 +1601,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+S に入れた染料が A に届くまでの経路を説明せよ。  
+Explain the pathway by which dye released in S reaches A.
+
 ### 解答例 / Expected answers
+
+S に入れた染料は、S → P → L → N という表層経路を通り、その後 N → A → D の内部経路へ入る。  
+Dye released in S follows the surface pathway S → P → L → N and then enters the interior pathway N → A → D.
 
 ---
 
@@ -1535,7 +1615,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+Origin tracer を使うことで、A と D について何が分かるか。  
+What can origin tracers tell us about A and D?
+
 ### 解答例 / Expected answers
+
+Origin tracer により、A や D がどの表層 box の影響を強く受けているかを調べられる。特に A が N-origin を強く持つかどうかを確認できる。  
+Origin tracers show which surface boxes strongly influence A and D. In particular, we can check whether A has strong N-origin influence.
 
 ---
 
@@ -1543,7 +1629,13 @@ PSLNMD treats the deep layer as a single box. In contrast, PSLNMAD treats North 
 
 ### 問題 / Question
 
+Q を大きくすると、A と D の染料濃度はどのように変化するか。  
+How do dye concentrations in A and D change when Q is increased?
+
 ### 解答例 / Expected answers
+
+Q を大きくすると輸送が速くなり、N 起源の染料は A と D により早く届く。したがって、初期の A, D の染料濃度は高くなりやすい。  
+Increasing Q speeds up transport, so N-origin dye reaches A and D earlier. Therefore, early dye concentrations in A and D tend to be higher.
 
 ---
 
