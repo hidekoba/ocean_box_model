@@ -1,0 +1,3534 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\title{LaTeX Transcription of Equations\\
+\large J. R. Toggweiler (1999), ``Variation of atmospheric CO$_2$ by ventilation of the ocean's deepest water''}
+\author{}
+\date{}
+
+\newcommand{\TCO}[1]{\mathrm{TCO}_{2#1}}
+\newcommand{\PO}[1]{\mathrm{PO}_{4#1}}
+\newcommand{\pCO}[1]{p\mathrm{CO}_{2#1}}
+\newcommand{\CaCO}{\mathrm{CaCO}_3}
+\newcommand{\COthree}[1]{\mathrm{CO}_{3#1}^{2-}}
+
+\begin{document}
+\maketitle
+
+\noindent
+This file transcribes the paper's numbered display equations in order, followed by prominent inline mathematical relations and parameter definitions appearing in the surrounding text and tables. Box labels are retained as subscripts: $l$ (low latitude), $h$ (high latitude), $n$ (north), $p$ (polar), $s$ (subantarctic), $m$ (thermocline/middepth), $a$ (Atlantic layer), and $d$ (deep).
+
+\section*{Numbered equations}
+
+\begin{equation}
+\frac{d O_{2d}}{dt}
+=
+\left(f_{hd}+T\right)\left(O_{2h}-O_{2d}\right)
+-r_{O_2:P}\left(P_l+P_h\right).
+\tag{1}
+\end{equation}
+
+\begin{equation}
+O_{2d}
+=
+O_{2h}
+-r_{O_2:P}
+\frac{T\PO{d}+P_h}{f_{hd}+T}.
+\tag{2}
+\end{equation}
+
+\begin{equation}
+O_{2d}
+=
+O_{2h}
+-r_{O_2:P}\PO{d}\frac{T}{f_{hd}+T}.
+\tag{3}
+\end{equation}
+
+\begin{equation}
+\frac{d\TCO{d}}{dt}
+=
+\left(f_{hd}+T\right)\left(\TCO{h}-\TCO{d}\right)
++r_{C:P}\left(P_l+P_h\right).
+\tag{4}
+\end{equation}
+
+\begin{equation}
+\TCO{d}-\TCO{h}
+=
+r_{C:P}
+\left(
+\frac{T\PO{d}}{f_{hd}+T}
++
+\frac{P_h}{f_{hd}+T}
+\right).
+\tag{5}
+\end{equation}
+
+\begin{equation}
+\frac{d\PO{h}}{dt}
+=
+T\left(\PO{l}-\PO{h}\right)
++f_{hd}\left(\PO{d}-\PO{h}\right)
+-P_h.
+\tag{6}
+\end{equation}
+
+\begin{equation}
+\PO{h}
+=
+\PO{d}\frac{f_{hd}}{f_{hd}+T}
+-
+\frac{P_h}{f_{hd}+T}.
+\tag{7}
+\end{equation}
+
+\begin{equation}
+\TCO{d}-\TCO{l}
+\simeq
+r_{C_{\mathrm{org}}:P}\PO{d}\frac{T}{f_{hd}+T}.
+\tag{8}
+\end{equation}
+
+\begin{equation}
+\PO{h}
+=
+\PO{d}\frac{f_{hd}}{f_{hd}+T}.
+\tag{9}
+\end{equation}
+
+\begin{equation}
+\frac{d\TCO{d}}{dt}
+=
+T\left(\TCO{l}-\TCO{d}\right)
++f_{hd}\left(\TCO{h}-\TCO{d}\right)
++r_{C:P}\left(P_l+P_h\right).
+\tag{10}
+\end{equation}
+
+\begin{equation}
+\TCO{d}\left(f_{hd}+T\right)
+-T\TCO{l}
+-f_{hd}\TCO{h}
+=
+r_{C:P}T\PO{h}+r_{C:P}P_h.
+\tag{11}
+\end{equation}
+
+\begin{equation}
+\PO{h}
+=
+\PO{d}-
+\frac{P_h}{f_{hd}+T}.
+\tag{12}
+\end{equation}
+
+\begin{equation}
+\TCO{d}-\TCO{l}
+\simeq
+r_{C_{\mathrm{org}}:P}\PO{d}\frac{T}{f_{hd}+T}.
+\tag{13}
+\end{equation}
+
+\begin{equation}
+\PO{h}=\PO{d}.
+\tag{14}
+\end{equation}
+
+\section*{Relations stated in the text}
+
+\subsection*{Three-box model}
+
+Complete nutrient utilization in the low-latitude box gives
+\begin{equation*}
+\PO{l}=0,
+\qquad
+P_l=T\PO{d}.
+\end{equation*}
+
+The limiting case used after equation (3) is
+\begin{equation*}
+T\gg f_{hd}
+\quad\Longrightarrow\quad
+\frac{T}{f_{hd}+T}\to 1.
+\end{equation*}
+
+The numerical example in the text is
+\begin{equation*}
+O_{2d}
+=330-170(2.15)
+\simeq -30\ \mu\mathrm{mol\,kg^{-1}}
+\qquad (f_{hd}=0).
+\end{equation*}
+
+For an observed deep-ocean oxygen concentration of roughly
+$170\ \mu\mathrm{mol\,kg^{-1}}$, the text states
+\begin{equation*}
+\frac{T}{f_{hd}+T}\simeq 0.4,
+\qquad
+f_{hd}>T.
+\end{equation*}
+
+The carbon flux per unit high-latitude area used on the horizontal axis of Figure 2 is
+\begin{equation*}
+\frac{r_{C:P}P_h}{\mathrm{AREA}\,F_H}.
+\end{equation*}
+
+\subsection*{Four-box model}
+
+The northern surface box receives nutrient-depleted low-latitude water, so
+\begin{equation*}
+\PO{n}=0.
+\end{equation*}
+
+The regional air--sea carbon-dioxide differences quoted for the modern four-box solution are
+\begin{align*}
+\Delta\pCO{,h} &= 297-264=33\ \mathrm{ppm},\\
+\Delta\pCO{,n} &= 226-264=-38\ \mathrm{ppm}.
+\end{align*}
+
+\subsection*{Six- and seven-box models}
+
+The fraction of the low-latitude and subantarctic particle fluxes remineralized below the $m$ box is
+\begin{equation*}
+1-\gamma_m.
+\end{equation*}
+
+In the seven-box model, the remainder of $P_l$ and $P_s$ after remineralization in the $m$ box is split equally between the $a$ and $d$ boxes:
+\begin{equation*}
+\frac{1-\gamma_m}{2}
+\quad\text{to each of the $a$ and $d$ boxes.}
+\end{equation*}
+
+For the northern particle flux, the fractions remineralized in the $a$ and $d$ boxes are
+\begin{equation*}
+\gamma_a,
+\qquad
+1-\gamma_a,
+\end{equation*}
+respectively.
+
+\subsection*{Carbonate compensation}
+
+The imposed weathering/compensation addition follows the stoichiometric ratio
+\begin{equation*}
+\Delta\mathrm{Alk}:\Delta\TCO{}=2:1.
+\end{equation*}
+
+For the six-box example, the text gives
+\begin{equation*}
+\Delta\COthree{d}=9\ \mu\mathrm{mol\,kg^{-1}},
+\qquad
+\Delta\mathrm{Alk}=30\ \mu\mathrm{eq\,kg^{-1}},
+\qquad
+\Delta\TCO{}=15\ \mu\mathrm{mol\,kg^{-1}}.
+\end{equation*}
+
+For the seven-box example, the corresponding values are
+\begin{equation*}
+\Delta\COthree{d}=26\ \mu\mathrm{mol\,kg^{-1}},
+\qquad
+\Delta\mathrm{Alk}=120\ \mu\mathrm{eq\,kg^{-1}},
+\qquad
+\Delta\TCO{}=60\ \mu\mathrm{mol\,kg^{-1}}.
+\end{equation*}
+
+\section*{Parameter definitions appearing in tables}
+
+\subsection*{Three-box model}
+
+\begin{align*}
+V_l &= \mathrm{AREA}(1-F_H)A_{LZ},\\
+V_h &= \mathrm{AREA}\,F_H A_{HZ},\\
+V_d &= V_T-V_l-V_h,\\
+r_{C:P} &= \frac{r_{C_{\mathrm{org}}:P}}{1-F_{CA}},\\
+r_{\mathrm{Alk}:P} &= 2F_{CA}r_{C:P}-15.
+\end{align*}
+
+The tabulated numerical values include
+\begin{align*}
+r_{C_{\mathrm{org}}:P}&=130, &
+F_{CA}&=0.20, &
+r_{C:P}&=162.5,\\
+r_{\mathrm{Alk}:P}&=50, &
+r_{O_2:P}&=169, &
+T&=20\ \mathrm{Sv}.
+\end{align*}
+
+\subsection*{Four-box model}
+
+\begin{align*}
+V_l &= \mathrm{AREA}(1-F_N-F_H)A_{LZ},\\
+V_n &= \mathrm{AREA}\,F_N A_{NZ},\\
+V_h &= \mathrm{AREA}\,F_H A_{HZ},\\
+V_d &= V_T-V_l-V_n-V_h.
+\end{align*}
+
+\subsection*{Six-box model}
+
+\begin{align*}
+V_l &= \mathrm{AREA}(1-F_N-F_S-F_P)A_{LZ},\\
+V_n &= \mathrm{AREA}\,F_N A_{NZ},\\
+V_s &= \mathrm{AREA}\,F_S A_{SZ},\\
+V_p &= \mathrm{AREA}\,F_P A_{PZ},\\
+V_m &= \mathrm{AREA}(1-F_N-F_P)A_{MZ},\\
+V_d &= V_T-V_l-V_n-V_s-V_p-V_m.
+\end{align*}
+
+\subsection*{Seven-box model}
+
+With an Atlantic-layer box added,
+\begin{equation*}
+V_d=V_T-V_l-V_n-V_s-V_p-V_m-V_a.
+\end{equation*}
+
+\section*{Notation and transcription notes}
+
+\begin{itemize}
+  \item $\TCO{i}$ denotes total dissolved inorganic carbon in box $i$.
+  \item $P_i$ denotes the sinking particle flux from surface box $i$.
+  \item $f_{ij}$ denotes exchange or mixing between boxes $i$ and $j$.
+  \item $T$ denotes conveyor transport.
+  \item The paper prints carbonate ion as $\mathrm{CO}_3^{=}$; the conventional modern LaTeX notation $\COthree{}$ is used here.
+  \item OCR-sensitive symbols and subscripts were normalized by reference to the rendered PDF pages. Equation (8) and equation (13) are intentionally identical in the paper under the stated simplifying assumptions.
+\end{itemize}
+
+\newpage
+
+%===========================================================
+% Three-box model conservation equations
+%
+% Boxes:
+%   l : low-latitude surface box
+%   h : high-latitude surface box
+%   d : deep-ocean box
+%
+% Circulation:
+%   T      : conveyor transport, d -> l -> h -> d
+%   f_{hd} : bidirectional exchange between h and d
+%
+% Biological particle fluxes:
+%   P_l : sinking phosphorus flux from box l
+%   P_h : sinking phosphorus flux from box h
+%
+% Gas flux convention:
+%   F^{\mathrm{gas}}_{X,i} > 0
+%   denotes a flux of tracer X from the atmosphere into box i.
+%===========================================================
+
+\section{Three-box model conservation equations}
+
+The three ocean boxes are denoted by
+\[
+i\in\{l,h,d\},
+\]
+where \(l\), \(h\), and \(d\) denote the low-latitude surface,
+high-latitude surface, and deep-ocean boxes, respectively.
+
+The corresponding box volumes are
+\[
+V_l,\qquad V_h,\qquad V_d.
+\]
+
+The conveyor circulation follows
+\[
+d \xrightarrow{T} l \xrightarrow{T} h \xrightarrow{T} d,
+\]
+while \(f_{hd}\) represents bidirectional exchange between
+the high-latitude and deep boxes.
+
+%-----------------------------------------------------------
+\subsection{Phosphate conservation}
+%-----------------------------------------------------------
+
+The phosphate balance in the low-latitude box is
+\begin{equation}
+V_l\frac{dPO_4^l}{dt}
+=
+T\left(PO_4^d-PO_4^l\right)
+-
+P_l.
+\label{eq:po4_l}
+\end{equation}
+
+The phosphate balance in the high-latitude box is
+\begin{equation}
+V_h\frac{dPO_4^h}{dt}
+=
+T\left(PO_4^l-PO_4^h\right)
++
+f_{hd}\left(PO_4^d-PO_4^h\right)
+-
+P_h.
+\label{eq:po4_h}
+\end{equation}
+
+The phosphate balance in the deep box is
+\begin{equation}
+V_d\frac{dPO_4^d}{dt}
+=
+T\left(PO_4^h-PO_4^d\right)
++
+f_{hd}\left(PO_4^h-PO_4^d\right)
++
+P_l+P_h.
+\label{eq:po4_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dPO_4^d}{dt}
+=
+\left(T+f_{hd}\right)
+\left(PO_4^h-PO_4^d\right)
++
+P_l+P_h.
+\end{equation}
+
+The low-latitude nutrient-utilization assumption is
+\begin{equation}
+PO_4^l=0,
+\label{eq:po4_l_zero}
+\end{equation}
+which implies
+\begin{equation}
+P_l=TPO_4^d.
+\label{eq:Pl_constraint}
+\end{equation}
+
+At steady state, the high-latitude phosphate balance becomes
+\begin{equation}
+PO_4^h
+=
+\frac{
+f_{hd}PO_4^d-P_h
+}{
+T+f_{hd}
+}.
+\label{eq:po4_h_steady}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsection{Total dissolved inorganic carbon conservation}
+%-----------------------------------------------------------
+
+Let \(r_{C:P}\) denote the total carbon-to-phosphorus ratio
+of sinking particles. The low-latitude carbon balance is
+\begin{equation}
+V_l\frac{dTCO_2^l}{dt}
+=
+T\left(TCO_2^d-TCO_2^l\right)
+-
+r_{C:P}P_l
++
+F^{\mathrm{gas}}_{C,l}.
+\label{eq:tco2_l}
+\end{equation}
+
+The high-latitude carbon balance is
+\begin{equation}
+V_h\frac{dTCO_2^h}{dt}
+=
+T\left(TCO_2^l-TCO_2^h\right)
++
+f_{hd}\left(TCO_2^d-TCO_2^h\right)
+-
+r_{C:P}P_h
++
+F^{\mathrm{gas}}_{C,h}.
+\label{eq:tco2_h}
+\end{equation}
+
+The deep-ocean carbon balance is
+\begin{equation}
+V_d\frac{dTCO_2^d}{dt}
+=
+T\left(TCO_2^h-TCO_2^d\right)
++
+f_{hd}\left(TCO_2^h-TCO_2^d\right)
++
+r_{C:P}\left(P_l+P_h\right).
+\label{eq:tco2_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dTCO_2^d}{dt}
+=
+\left(T+f_{hd}\right)
+\left(TCO_2^h-TCO_2^d\right)
++
+r_{C:P}\left(P_l+P_h\right).
+\end{equation}
+
+The atmospheric carbon inventory satisfies
+\begin{equation}
+\frac{dC_{\mathrm{atm}}}{dt}
+=
+-
+F^{\mathrm{gas}}_{C,l}
+-
+F^{\mathrm{gas}}_{C,h},
+\label{eq:carbon_atmosphere}
+\end{equation}
+provided that there are no external carbon sources or sinks.
+
+The ocean--atmosphere gas flux may be written as
+\begin{equation}
+F^{\mathrm{gas}}_{C,i}
+=
+k_iA_i
+\left(
+K_{0,i}pCO_2^{\mathrm{atm}}
+-
+[CO_2^\ast]_i
+\right),
+\qquad
+i\in\{l,h\},
+\label{eq:co2_gas_flux}
+\end{equation}
+where \(k_i\) is the piston velocity, \(A_i\) is the box area,
+\(K_{0,i}\) is the solubility coefficient, and
+\([CO_2^\ast]_i\) is the dissolved aqueous carbon dioxide
+concentration.
+
+%-----------------------------------------------------------
+\subsection{Total alkalinity conservation}
+%-----------------------------------------------------------
+
+Let \(r_{\mathrm{Alk}:P}\) denote the net alkalinity change
+associated with the export of one mole of phosphorus in
+sinking particles.
+
+The alkalinity balance in the low-latitude box is
+\begin{equation}
+V_l\frac{dAlk^l}{dt}
+=
+T\left(Alk^d-Alk^l\right)
+-
+r_{\mathrm{Alk}:P}P_l.
+\label{eq:alk_l}
+\end{equation}
+
+The alkalinity balance in the high-latitude box is
+\begin{equation}
+V_h\frac{dAlk^h}{dt}
+=
+T\left(Alk^l-Alk^h\right)
++
+f_{hd}\left(Alk^d-Alk^h\right)
+-
+r_{\mathrm{Alk}:P}P_h.
+\label{eq:alk_h}
+\end{equation}
+
+The alkalinity balance in the deep box is
+\begin{equation}
+V_d\frac{dAlk^d}{dt}
+=
+T\left(Alk^h-Alk^d\right)
++
+f_{hd}\left(Alk^h-Alk^d\right)
++
+r_{\mathrm{Alk}:P}\left(P_l+P_h\right).
+\label{eq:alk_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dAlk^d}{dt}
+=
+\left(T+f_{hd}\right)
+\left(Alk^h-Alk^d\right)
++
+r_{\mathrm{Alk}:P}\left(P_l+P_h\right).
+\end{equation}
+
+For the parameterization used in the paper,
+\begin{equation}
+r_{\mathrm{Alk}:P}
+=
+2F_{\mathrm{CaCO_3}}r_{C:P}
+-
+r_{N:P},
+\label{eq:alk_ratio}
+\end{equation}
+where \(F_{\mathrm{CaCO_3}}\) is the fraction of sinking carbon
+present as calcium carbonate and \(r_{N:P}\) is the nitrogen-to-
+phosphorus ratio of organic matter.
+
+Using
+\[
+F_{\mathrm{CaCO_3}}=0.20,
+\qquad
+r_{C:P}=162.5,
+\qquad
+r_{N:P}=15,
+\]
+gives
+\begin{equation}
+r_{\mathrm{Alk}:P}
+=
+2(0.20)(162.5)-15
+=
+50.
+\end{equation}
+
+%-----------------------------------------------------------
+\subsection{Oxygen conservation}
+%-----------------------------------------------------------
+
+Let \(r_{O_2:P}\) denote the oxygen-to-phosphorus ratio
+associated with organic-matter production and respiration.
+
+The oxygen balance in the low-latitude box is
+\begin{equation}
+V_l\frac{dO_2^l}{dt}
+=
+T\left(O_2^d-O_2^l\right)
++
+r_{O_2:P}P_l
++
+F^{\mathrm{gas}}_{O_2,l}.
+\label{eq:o2_l}
+\end{equation}
+
+The oxygen balance in the high-latitude box is
+\begin{equation}
+V_h\frac{dO_2^h}{dt}
+=
+T\left(O_2^l-O_2^h\right)
++
+f_{hd}\left(O_2^d-O_2^h\right)
++
+r_{O_2:P}P_h
++
+F^{\mathrm{gas}}_{O_2,h}.
+\label{eq:o2_h}
+\end{equation}
+
+The oxygen balance in the deep box is
+\begin{equation}
+V_d\frac{dO_2^d}{dt}
+=
+T\left(O_2^h-O_2^d\right)
++
+f_{hd}\left(O_2^h-O_2^d\right)
+-
+r_{O_2:P}\left(P_l+P_h\right).
+\label{eq:o2_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dO_2^d}{dt}
+=
+\left(T+f_{hd}\right)
+\left(O_2^h-O_2^d\right)
+-
+r_{O_2:P}\left(P_l+P_h\right).
+\label{eq:o2_d_paper}
+\end{equation}
+
+The air--sea oxygen flux can be represented by
+\begin{equation}
+F^{\mathrm{gas}}_{O_2,i}
+=
+k_iA_i
+\left(
+O_{2,i}^{\mathrm{sat}}-O_2^i
+\right),
+\qquad
+i\in\{l,h\}.
+\label{eq:o2_gas_flux}
+\end{equation}
+
+In the limit of rapid gas exchange, one may impose
+\begin{equation}
+O_2^l=O_{2,l}^{\mathrm{sat}},
+\qquad
+O_2^h=O_{2,h}^{\mathrm{sat}}.
+\label{eq:o2_saturation}
+\end{equation}
+
+Using \(P_l=TPO_4^d\), the steady-state deep-ocean oxygen
+concentration is
+\begin{equation}
+O_2^d
+=
+O_2^h
+-
+r_{O_2:P}
+\frac{
+TPO_4^d+P_h
+}{
+T+f_{hd}
+}.
+\label{eq:o2_d_steady}
+\end{equation}
+
+If \(P_h\) is small, this reduces to
+\begin{equation}
+O_2^d
+\simeq
+O_2^h
+-
+r_{O_2:P}PO_4^d
+\frac{T}{T+f_{hd}}.
+\label{eq:o2_d_steady_weak_Ph}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsection{Whole-ocean conservation checks}
+%-----------------------------------------------------------
+
+Summing the phosphate equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lPO_4^l+V_hPO_4^h+V_dPO_4^d
+\right)
+=
+0.
+\label{eq:total_po4_conservation}
+\end{equation}
+
+Summing the alkalinity equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lAlk^l+V_hAlk^h+V_dAlk^d
+\right)
+=
+0.
+\label{eq:total_alk_conservation}
+\end{equation}
+
+For carbon, including the atmosphere,
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lTCO_2^l
++
+V_hTCO_2^h
++
+V_dTCO_2^d
++
+C_{\mathrm{atm}}
+\right)
+=
+0.
+\label{eq:total_carbon_conservation}
+\end{equation}
+
+For oxygen, the biological production and respiration terms
+cancel when all ocean boxes are summed:
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lO_2^l+V_hO_2^h+V_dO_2^d
+\right)
+=
+F^{\mathrm{gas}}_{O_2,l}
++
+F^{\mathrm{gas}}_{O_2,h}.
+\label{eq:total_o2_balance}
+\end{equation}
+
+\newpage
+
+%===========================================================
+% Four-box model conservation equations
+%
+% Boxes:
+%   l : low-latitude surface box
+%   h : Southern Ocean / high-latitude surface box
+%   n : northern surface box (North Atlantic)
+%   d : deep-ocean box
+%
+% Conveyor circulation:
+%   d -> h -> l -> n -> d
+%
+% Exchange:
+%   f_{hd} : bidirectional exchange between h and d
+%
+% Biological particle fluxes:
+%   P_l : sinking phosphorus flux from box l
+%   P_h : sinking phosphorus flux from box h
+%
+% There is no particle export from the northern box:
+%   P_n = 0.
+%
+% Gas-flux convention:
+%   F^{\mathrm{gas}}_{X,i} > 0
+%   denotes a flux of tracer X from the atmosphere
+%   into surface box i.
+%===========================================================
+
+\section{Four-box model conservation equations}
+
+The four ocean boxes are denoted by
+\[
+i\in\{l,h,n,d\},
+\]
+where \(l\), \(h\), \(n\), and \(d\) denote the low-latitude
+surface, Southern Ocean surface, northern surface, and
+deep-ocean boxes, respectively.
+
+Their volumes are
+\[
+V_l,\qquad V_h,\qquad V_n,\qquad V_d.
+\]
+
+The conveyor circulation follows
+\begin{equation}
+d
+\xrightarrow{T}
+h
+\xrightarrow{T}
+l
+\xrightarrow{T}
+n
+\xrightarrow{T}
+d.
+\label{eq:four_box_conveyor}
+\end{equation}
+
+The term \(f_{hd}\) represents bidirectional exchange between
+the Southern Ocean surface box and the deep box.
+
+%===========================================================
+\subsection{Phosphate conservation}
+%===========================================================
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dPO_4^l}{dt}
+=
+T\left(PO_4^h-PO_4^l\right)
+-
+P_l.
+\label{eq:four_po4_l}
+\end{equation}
+
+\subsubsection{Southern Ocean surface box}
+
+\begin{equation}
+V_h\frac{dPO_4^h}{dt}
+=
+T\left(PO_4^d-PO_4^h\right)
++
+f_{hd}\left(PO_4^d-PO_4^h\right)
+-
+P_h.
+\label{eq:four_po4_h}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_h\frac{dPO_4^h}{dt}
+=
+\left(T+f_{hd}\right)
+\left(PO_4^d-PO_4^h\right)
+-
+P_h.
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dPO_4^n}{dt}
+=
+T\left(PO_4^l-PO_4^n\right).
+\label{eq:four_po4_n}
+\end{equation}
+
+There is no sinking particle flux from the northern box:
+\begin{equation}
+P_n=0.
+\label{eq:four_Pn_zero}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+V_d\frac{dPO_4^d}{dt}
+=
+T\left(PO_4^n-PO_4^d\right)
++
+f_{hd}\left(PO_4^h-PO_4^d\right)
++
+P_l+P_h.
+\label{eq:four_po4_d}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Nutrient-utilization constraints}
+%-----------------------------------------------------------
+
+The low-latitude biota consume all phosphate supplied to
+the low-latitude surface box:
+\begin{equation}
+PO_4^l=0.
+\label{eq:four_po4_l_zero}
+\end{equation}
+
+At steady state, equation~\eqref{eq:four_po4_l} therefore gives
+\begin{equation}
+P_l=TPO_4^h.
+\label{eq:four_Pl_constraint}
+\end{equation}
+
+Since the northern box receives nutrient-depleted water from
+the low-latitude box and has no particle export,
+\begin{equation}
+PO_4^n=0
+\label{eq:four_po4_n_zero}
+\end{equation}
+at steady state.
+
+The steady-state Southern Ocean phosphate concentration is
+\begin{equation}
+PO_4^h
+=
+PO_4^d
+-
+\frac{P_h}{T+f_{hd}}.
+\label{eq:four_po4_h_steady}
+\end{equation}
+
+In the limit of weak Southern Ocean biological production,
+\begin{equation}
+P_h\rightarrow 0,
+\end{equation}
+and therefore
+\begin{equation}
+PO_4^h\simeq PO_4^d.
+\label{eq:four_po4_h_weak_Ph}
+\end{equation}
+
+%===========================================================
+\subsection{Total dissolved inorganic carbon conservation}
+%===========================================================
+
+Let \(r_{C:P}\) denote the total carbon-to-phosphorus ratio
+of the sinking particles.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dTCO_2^l}{dt}
+=
+T\left(TCO_2^h-TCO_2^l\right)
+-
+r_{C:P}P_l
++
+F^{\mathrm{gas}}_{C,l}.
+\label{eq:four_tco2_l}
+\end{equation}
+
+\subsubsection{Southern Ocean surface box}
+
+\begin{equation}
+V_h\frac{dTCO_2^h}{dt}
+=
+T\left(TCO_2^d-TCO_2^h\right)
++
+f_{hd}\left(TCO_2^d-TCO_2^h\right)
+-
+r_{C:P}P_h
++
+F^{\mathrm{gas}}_{C,h}.
+\label{eq:four_tco2_h}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_h\frac{dTCO_2^h}{dt}
+=
+\left(T+f_{hd}\right)
+\left(TCO_2^d-TCO_2^h\right)
+-
+r_{C:P}P_h
++
+F^{\mathrm{gas}}_{C,h}.
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dTCO_2^n}{dt}
+=
+T\left(TCO_2^l-TCO_2^n\right)
++
+F^{\mathrm{gas}}_{C,n}.
+\label{eq:four_tco2_n}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+V_d\frac{dTCO_2^d}{dt}
+=
+T\left(TCO_2^n-TCO_2^d\right)
++
+f_{hd}\left(TCO_2^h-TCO_2^d\right)
++
+r_{C:P}\left(P_l+P_h\right).
+\label{eq:four_tco2_d}
+\end{equation}
+
+At steady state,
+\begin{equation}
+TCO_2^d
+=
+\frac{
+T\,TCO_2^n
++
+f_{hd}TCO_2^h
++
+r_{C:P}\left(P_l+P_h\right)
+}{
+T+f_{hd}
+}.
+\label{eq:four_tco2_d_steady}
+\end{equation}
+
+Using
+\[
+P_l=TPO_4^h,
+\]
+this becomes
+\begin{equation}
+TCO_2^d
+=
+\frac{
+T\,TCO_2^n
++
+f_{hd}TCO_2^h
++
+r_{C:P}\left(TPO_4^h+P_h\right)
+}{
+T+f_{hd}
+}.
+\label{eq:four_tco2_d_steady_sub}
+\end{equation}
+
+If gas exchange is sufficiently fast that
+\[
+TCO_2^n\simeq TCO_2^l,
+\]
+and if \(P_h\) is small, then
+\begin{equation}
+TCO_2^d-TCO_2^l
+\simeq
+r_{\mathrm{org}:P}
+PO_4^d
+\frac{T}{T+f_{hd}}.
+\label{eq:four_tco2_simplified}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Atmospheric carbon inventory}
+%-----------------------------------------------------------
+
+The atmospheric carbon inventory obeys
+\begin{equation}
+\frac{dC_{\mathrm{atm}}}{dt}
+=
+-
+F^{\mathrm{gas}}_{C,l}
+-
+F^{\mathrm{gas}}_{C,h}
+-
+F^{\mathrm{gas}}_{C,n}.
+\label{eq:four_carbon_atmosphere}
+\end{equation}
+
+A possible air--sea carbon flux parameterization is
+\begin{equation}
+F^{\mathrm{gas}}_{C,i}
+=
+k_iA_i
+\left(
+K_{0,i}pCO_2^{\mathrm{atm}}
+-
+[CO_2^\ast]_i
+\right),
+\qquad
+i\in\{l,h,n\}.
+\label{eq:four_co2_gas_flux}
+\end{equation}
+
+%===========================================================
+\subsection{Total alkalinity conservation}
+%===========================================================
+
+Let \(r_{\mathrm{Alk}:P}\) denote the net alkalinity export per
+mole of exported phosphorus.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dAlk^l}{dt}
+=
+T\left(Alk^h-Alk^l\right)
+-
+r_{\mathrm{Alk}:P}P_l.
+\label{eq:four_alk_l}
+\end{equation}
+
+\subsubsection{Southern Ocean surface box}
+
+\begin{equation}
+V_h\frac{dAlk^h}{dt}
+=
+T\left(Alk^d-Alk^h\right)
++
+f_{hd}\left(Alk^d-Alk^h\right)
+-
+r_{\mathrm{Alk}:P}P_h.
+\label{eq:four_alk_h}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_h\frac{dAlk^h}{dt}
+=
+\left(T+f_{hd}\right)
+\left(Alk^d-Alk^h\right)
+-
+r_{\mathrm{Alk}:P}P_h.
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dAlk^n}{dt}
+=
+T\left(Alk^l-Alk^n\right).
+\label{eq:four_alk_n}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+V_d\frac{dAlk^d}{dt}
+=
+T\left(Alk^n-Alk^d\right)
++
+f_{hd}\left(Alk^h-Alk^d\right)
++
+r_{\mathrm{Alk}:P}\left(P_l+P_h\right).
+\label{eq:four_alk_d}
+\end{equation}
+
+For the parameterization used in the paper,
+\begin{equation}
+r_{\mathrm{Alk}:P}
+=
+2F_{\mathrm{CaCO_3}}r_{C:P}
+-
+r_{N:P}.
+\label{eq:four_alk_ratio}
+\end{equation}
+
+Using
+\[
+F_{\mathrm{CaCO_3}}=0.20,
+\qquad
+r_{C:P}=162.5,
+\qquad
+r_{N:P}=15,
+\]
+gives
+\begin{equation}
+r_{\mathrm{Alk}:P}=50.
+\label{eq:four_alk_ratio_value}
+\end{equation}
+
+%===========================================================
+\subsection{Oxygen conservation}
+%===========================================================
+
+Let \(r_{O_2:P}\) denote the oxygen-to-phosphorus ratio of
+organic-matter production and respiration.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dO_2^l}{dt}
+=
+T\left(O_2^h-O_2^l\right)
++
+r_{O_2:P}P_l
++
+F^{\mathrm{gas}}_{O_2,l}.
+\label{eq:four_o2_l}
+\end{equation}
+
+\subsubsection{Southern Ocean surface box}
+
+\begin{equation}
+V_h\frac{dO_2^h}{dt}
+=
+T\left(O_2^d-O_2^h\right)
++
+f_{hd}\left(O_2^d-O_2^h\right)
++
+r_{O_2:P}P_h
++
+F^{\mathrm{gas}}_{O_2,h}.
+\label{eq:four_o2_h}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_h\frac{dO_2^h}{dt}
+=
+\left(T+f_{hd}\right)
+\left(O_2^d-O_2^h\right)
++
+r_{O_2:P}P_h
++
+F^{\mathrm{gas}}_{O_2,h}.
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dO_2^n}{dt}
+=
+T\left(O_2^l-O_2^n\right)
++
+F^{\mathrm{gas}}_{O_2,n}.
+\label{eq:four_o2_n}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+V_d\frac{dO_2^d}{dt}
+=
+T\left(O_2^n-O_2^d\right)
++
+f_{hd}\left(O_2^h-O_2^d\right)
+-
+r_{O_2:P}\left(P_l+P_h\right).
+\label{eq:four_o2_d}
+\end{equation}
+
+At steady state,
+\begin{equation}
+O_2^d
+=
+\frac{
+T O_2^n
++
+f_{hd}O_2^h
+-
+r_{O_2:P}\left(P_l+P_h\right)
+}{
+T+f_{hd}
+}.
+\label{eq:four_o2_d_steady}
+\end{equation}
+
+Using \(P_l=TPO_4^h\),
+\begin{equation}
+O_2^d
+=
+\frac{
+T O_2^n
++
+f_{hd}O_2^h
+-
+r_{O_2:P}\left(TPO_4^h+P_h\right)
+}{
+T+f_{hd}
+}.
+\label{eq:four_o2_d_steady_sub}
+\end{equation}
+
+The air--sea oxygen flux may be written as
+\begin{equation}
+F^{\mathrm{gas}}_{O_2,i}
+=
+k_iA_i
+\left(
+O_{2,i}^{\mathrm{sat}}-O_2^i
+\right),
+\qquad
+i\in\{l,h,n\}.
+\label{eq:four_o2_gas_flux}
+\end{equation}
+
+In the limit of rapid gas exchange,
+\begin{equation}
+O_2^l=O_{2,l}^{\mathrm{sat}},
+\qquad
+O_2^h=O_{2,h}^{\mathrm{sat}},
+\qquad
+O_2^n=O_{2,n}^{\mathrm{sat}}.
+\label{eq:four_o2_saturation}
+\end{equation}
+
+%===========================================================
+\subsection{Whole-system conservation checks}
+%===========================================================
+
+Summing all phosphate equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lPO_4^l
++
+V_hPO_4^h
++
+V_nPO_4^n
++
+V_dPO_4^d
+\right)
+=
+0.
+\label{eq:four_total_po4}
+\end{equation}
+
+Summing all alkalinity equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lAlk^l
++
+V_hAlk^h
++
+V_nAlk^n
++
+V_dAlk^d
+\right)
+=
+0.
+\label{eq:four_total_alk}
+\end{equation}
+
+Including the atmosphere, total carbon is conserved:
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lTCO_2^l
++
+V_hTCO_2^h
++
+V_nTCO_2^n
++
+V_dTCO_2^d
++
+C_{\mathrm{atm}}
+\right)
+=
+0.
+\label{eq:four_total_carbon}
+\end{equation}
+
+Summing the oceanic oxygen equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lO_2^l
++
+V_hO_2^h
++
+V_nO_2^n
++
+V_dO_2^d
+\right)
+=
+F^{\mathrm{gas}}_{O_2,l}
++
+F^{\mathrm{gas}}_{O_2,h}
++
+F^{\mathrm{gas}}_{O_2,n}.
+\label{eq:four_total_o2}
+\end{equation}
+
+\newpage
+
+%===========================================================
+% Six-box model conservation equations
+%
+% Boxes:
+%   l : low-latitude surface box
+%   n : northern surface box
+%   s : subantarctic surface box
+%   p : south-polar surface box
+%   m : thermocline and intermediate-depth box
+%   d : deep-ocean box
+%
+% Conveyor circulation:
+%   d -> p -> s -> m -> n -> d
+%
+% Bidirectional exchanges:
+%   f_{lm} : exchange between l and m
+%   f_{pd} : exchange between p and d
+%
+% Biological particle fluxes:
+%   P_l, P_n, P_s, P_p
+%
+% Particle remineralization:
+%   gamma_m(P_l+P_s) is remineralized in box m.
+%   (1-gamma_m)(P_l+P_s) is remineralized in box d.
+%   P_n and P_p are remineralized entirely in box d.
+%
+% Gas-flux convention:
+%   F^{\mathrm{gas}}_{X,i} > 0
+%   denotes flux from the atmosphere into surface box i.
+%===========================================================
+
+\section{Six-box model conservation equations}
+
+The six ocean boxes are
+\[
+i\in\{l,n,s,p,m,d\}.
+\]
+
+Their volumes are
+\[
+V_l,\quad V_n,\quad V_s,\quad
+V_p,\quad V_m,\quad V_d.
+\]
+
+The conveyor circulation follows
+\begin{equation}
+d
+\xrightarrow{T}
+p
+\xrightarrow{T}
+s
+\xrightarrow{T}
+m
+\xrightarrow{T}
+n
+\xrightarrow{T}
+d.
+\label{eq:six_conveyor}
+\end{equation}
+
+The bidirectional exchange terms are
+\[
+f_{lm}
+\quad\text{between boxes }l\text{ and }m,
+\]
+and
+\[
+f_{pd}
+\quad\text{between boxes }p\text{ and }d.
+\]
+
+Define the particle remineralization fluxes into the
+intermediate and deep boxes as
+\begin{align}
+R_m
+&=
+\gamma_m\left(P_l+P_s\right),
+\label{eq:six_Rm}
+\\
+R_d
+&=
+\left(1-\gamma_m\right)\left(P_l+P_s\right)
++
+P_p+P_n.
+\label{eq:six_Rd}
+\end{align}
+
+Thus,
+\begin{equation}
+R_m+R_d
+=
+P_l+P_s+P_p+P_n.
+\label{eq:six_particle_partition}
+\end{equation}
+
+%===========================================================
+\subsection{Phosphate conservation}
+%===========================================================
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dPO_4^l}{dt}
+=
+f_{lm}\left(PO_4^m-PO_4^l\right)
+-
+P_l.
+\label{eq:six_po4_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dPO_4^n}{dt}
+=
+T\left(PO_4^m-PO_4^n\right)
+-
+P_n.
+\label{eq:six_po4_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dPO_4^s}{dt}
+=
+T\left(PO_4^p-PO_4^s\right)
+-
+P_s.
+\label{eq:six_po4_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+V_p\frac{dPO_4^p}{dt}
+=
+T\left(PO_4^d-PO_4^p\right)
++
+f_{pd}\left(PO_4^d-PO_4^p\right)
+-
+P_p.
+\label{eq:six_po4_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dPO_4^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(PO_4^d-PO_4^p\right)
+-
+P_p.
+\label{eq:six_po4_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+V_m\frac{dPO_4^m}{dt}
+=
+T\left(PO_4^s-PO_4^m\right)
++
+f_{lm}\left(PO_4^l-PO_4^m\right)
++
+\gamma_m\left(P_l+P_s\right).
+\label{eq:six_po4_m}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dPO_4^d}{dt}
+={}&
+T\left(PO_4^n-PO_4^d\right)
++
+f_{pd}\left(PO_4^p-PO_4^d\right)
+\\
+&+
+\left(1-\gamma_m\right)
+\left(P_l+P_s\right)
++
+P_p+P_n.
+\end{split}
+\label{eq:six_po4_d}
+\end{equation}
+
+Using \(R_d\),
+\begin{equation}
+V_d\frac{dPO_4^d}{dt}
+=
+T\left(PO_4^n-PO_4^d\right)
++
+f_{pd}\left(PO_4^p-PO_4^d\right)
++
+R_d.
+\label{eq:six_po4_d_compact}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Steady-state particle-flux relations}
+%-----------------------------------------------------------
+
+At steady state, the low-latitude balance gives
+\begin{equation}
+P_l
+=
+f_{lm}\left(PO_4^m-PO_4^l\right).
+\label{eq:six_Pl_steady}
+\end{equation}
+
+If complete low-latitude nutrient utilization is imposed,
+\begin{equation}
+PO_4^l=0,
+\label{eq:six_po4_l_zero}
+\end{equation}
+then
+\begin{equation}
+P_l=f_{lm}PO_4^m.
+\label{eq:six_Pl_constraint}
+\end{equation}
+
+The steady-state northern particle flux is
+\begin{equation}
+P_n
+=
+T\left(PO_4^m-PO_4^n\right).
+\label{eq:six_Pn_steady}
+\end{equation}
+
+The steady-state subantarctic particle flux is
+\begin{equation}
+P_s
+=
+T\left(PO_4^p-PO_4^s\right).
+\label{eq:six_Ps_steady}
+\end{equation}
+
+The steady-state polar phosphate concentration is
+\begin{equation}
+PO_4^p
+=
+PO_4^d
+-
+\frac{P_p}{T+f_{pd}}.
+\label{eq:six_po4_p_steady}
+\end{equation}
+
+%===========================================================
+\subsection{Total dissolved inorganic carbon conservation}
+%===========================================================
+
+Let \(r_{C:P}\) denote the total carbon-to-phosphorus ratio
+of sinking particles.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dTCO_2^l}{dt}
+=
+f_{lm}\left(TCO_2^m-TCO_2^l\right)
+-
+r_{C:P}P_l
++
+F^{\mathrm{gas}}_{C,l}.
+\label{eq:six_tco2_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dTCO_2^n}{dt}
+=
+T\left(TCO_2^m-TCO_2^n\right)
+-
+r_{C:P}P_n
++
+F^{\mathrm{gas}}_{C,n}.
+\label{eq:six_tco2_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dTCO_2^s}{dt}
+=
+T\left(TCO_2^p-TCO_2^s\right)
+-
+r_{C:P}P_s
++
+F^{\mathrm{gas}}_{C,s}.
+\label{eq:six_tco2_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dTCO_2^p}{dt}
+={}&
+T\left(TCO_2^d-TCO_2^p\right)
++
+f_{pd}\left(TCO_2^d-TCO_2^p\right)
+\\
+&-
+r_{C:P}P_p
++
+F^{\mathrm{gas}}_{C,p}.
+\end{split}
+\label{eq:six_tco2_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dTCO_2^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(TCO_2^d-TCO_2^p\right)
+-
+r_{C:P}P_p
++
+F^{\mathrm{gas}}_{C,p}.
+\label{eq:six_tco2_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dTCO_2^m}{dt}
+={}&
+T\left(TCO_2^s-TCO_2^m\right)
++
+f_{lm}\left(TCO_2^l-TCO_2^m\right)
+\\
+&+
+r_{C:P}\gamma_m\left(P_l+P_s\right).
+\end{split}
+\label{eq:six_tco2_m}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_m\frac{dTCO_2^m}{dt}
+=
+T\left(TCO_2^s-TCO_2^m\right)
++
+f_{lm}\left(TCO_2^l-TCO_2^m\right)
++
+r_{C:P}R_m.
+\label{eq:six_tco2_m_compact}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dTCO_2^d}{dt}
+={}&
+T\left(TCO_2^n-TCO_2^d\right)
++
+f_{pd}\left(TCO_2^p-TCO_2^d\right)
+\\
+&+
+r_{C:P}
+\left[
+\left(1-\gamma_m\right)
+\left(P_l+P_s\right)
++
+P_p+P_n
+\right].
+\end{split}
+\label{eq:six_tco2_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dTCO_2^d}{dt}
+=
+T\left(TCO_2^n-TCO_2^d\right)
++
+f_{pd}\left(TCO_2^p-TCO_2^d\right)
++
+r_{C:P}R_d.
+\label{eq:six_tco2_d_compact}
+\end{equation}
+
+At steady state,
+\begin{equation}
+TCO_2^d
+=
+\frac{
+T\,TCO_2^n
++
+f_{pd}TCO_2^p
++
+r_{C:P}R_d
+}{
+T+f_{pd}
+}.
+\label{eq:six_tco2_d_steady}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Atmospheric carbon inventory}
+%-----------------------------------------------------------
+
+The atmospheric carbon inventory satisfies
+\begin{equation}
+\frac{dC_{\mathrm{atm}}}{dt}
+=
+-
+\sum_{i\in\{l,n,s,p\}}
+F^{\mathrm{gas}}_{C,i}.
+\label{eq:six_carbon_atmosphere}
+\end{equation}
+
+A possible air--sea carbon flux parameterization is
+\begin{equation}
+F^{\mathrm{gas}}_{C,i}
+=
+k_iA_i
+\left(
+K_{0,i}pCO_2^{\mathrm{atm}}
+-
+[CO_2^\ast]_i
+\right),
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:six_co2_gas_flux}
+\end{equation}
+
+%===========================================================
+\subsection{Total alkalinity conservation}
+%===========================================================
+
+Let \(r_{\mathrm{Alk}:P}\) denote the net alkalinity export
+associated with one mole of exported phosphorus.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dAlk^l}{dt}
+=
+f_{lm}\left(Alk^m-Alk^l\right)
+-
+r_{\mathrm{Alk}:P}P_l.
+\label{eq:six_alk_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dAlk^n}{dt}
+=
+T\left(Alk^m-Alk^n\right)
+-
+r_{\mathrm{Alk}:P}P_n.
+\label{eq:six_alk_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dAlk^s}{dt}
+=
+T\left(Alk^p-Alk^s\right)
+-
+r_{\mathrm{Alk}:P}P_s.
+\label{eq:six_alk_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dAlk^p}{dt}
+={}&
+T\left(Alk^d-Alk^p\right)
++
+f_{pd}\left(Alk^d-Alk^p\right)
+\\
+&-
+r_{\mathrm{Alk}:P}P_p.
+\end{split}
+\label{eq:six_alk_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dAlk^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(Alk^d-Alk^p\right)
+-
+r_{\mathrm{Alk}:P}P_p.
+\label{eq:six_alk_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dAlk^m}{dt}
+={}&
+T\left(Alk^s-Alk^m\right)
++
+f_{lm}\left(Alk^l-Alk^m\right)
+\\
+&+
+r_{\mathrm{Alk}:P}
+\gamma_m\left(P_l+P_s\right).
+\end{split}
+\label{eq:six_alk_m}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_m\frac{dAlk^m}{dt}
+=
+T\left(Alk^s-Alk^m\right)
++
+f_{lm}\left(Alk^l-Alk^m\right)
++
+r_{\mathrm{Alk}:P}R_m.
+\label{eq:six_alk_m_compact}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dAlk^d}{dt}
+={}&
+T\left(Alk^n-Alk^d\right)
++
+f_{pd}\left(Alk^p-Alk^d\right)
+\\
+&+
+r_{\mathrm{Alk}:P}
+\left[
+\left(1-\gamma_m\right)
+\left(P_l+P_s\right)
++
+P_p+P_n
+\right].
+\end{split}
+\label{eq:six_alk_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dAlk^d}{dt}
+=
+T\left(Alk^n-Alk^d\right)
++
+f_{pd}\left(Alk^p-Alk^d\right)
++
+r_{\mathrm{Alk}:P}R_d.
+\label{eq:six_alk_d_compact}
+\end{equation}
+
+For the parameterization used in the paper,
+\begin{equation}
+r_{\mathrm{Alk}:P}
+=
+2F_{\mathrm{CaCO_3}}r_{C:P}
+-
+r_{N:P}.
+\label{eq:six_alk_ratio}
+\end{equation}
+
+Using
+\[
+F_{\mathrm{CaCO_3}}=0.20,
+\qquad
+r_{C:P}=162.5,
+\qquad
+r_{N:P}=15,
+\]
+gives
+\begin{equation}
+r_{\mathrm{Alk}:P}=50.
+\label{eq:six_alk_ratio_value}
+\end{equation}
+
+%===========================================================
+\subsection{Oxygen conservation}
+%===========================================================
+
+Let \(r_{O_2:P}\) denote the oxygen-to-phosphorus ratio
+associated with organic-matter production and respiration.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dO_2^l}{dt}
+=
+f_{lm}\left(O_2^m-O_2^l\right)
++
+r_{O_2:P}P_l
++
+F^{\mathrm{gas}}_{O_2,l}.
+\label{eq:six_o2_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dO_2^n}{dt}
+=
+T\left(O_2^m-O_2^n\right)
++
+r_{O_2:P}P_n
++
+F^{\mathrm{gas}}_{O_2,n}.
+\label{eq:six_o2_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dO_2^s}{dt}
+=
+T\left(O_2^p-O_2^s\right)
++
+r_{O_2:P}P_s
++
+F^{\mathrm{gas}}_{O_2,s}.
+\label{eq:six_o2_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dO_2^p}{dt}
+={}&
+T\left(O_2^d-O_2^p\right)
++
+f_{pd}\left(O_2^d-O_2^p\right)
+\\
+&+
+r_{O_2:P}P_p
++
+F^{\mathrm{gas}}_{O_2,p}.
+\end{split}
+\label{eq:six_o2_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dO_2^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(O_2^d-O_2^p\right)
++
+r_{O_2:P}P_p
++
+F^{\mathrm{gas}}_{O_2,p}.
+\label{eq:six_o2_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dO_2^m}{dt}
+={}&
+T\left(O_2^s-O_2^m\right)
++
+f_{lm}\left(O_2^l-O_2^m\right)
+\\
+&-
+r_{O_2:P}
+\gamma_m\left(P_l+P_s\right).
+\end{split}
+\label{eq:six_o2_m}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_m\frac{dO_2^m}{dt}
+=
+T\left(O_2^s-O_2^m\right)
++
+f_{lm}\left(O_2^l-O_2^m\right)
+-
+r_{O_2:P}R_m.
+\label{eq:six_o2_m_compact}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dO_2^d}{dt}
+={}&
+T\left(O_2^n-O_2^d\right)
++
+f_{pd}\left(O_2^p-O_2^d\right)
+\\
+&-
+r_{O_2:P}
+\left[
+\left(1-\gamma_m\right)
+\left(P_l+P_s\right)
++
+P_p+P_n
+\right].
+\end{split}
+\label{eq:six_o2_d}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_d\frac{dO_2^d}{dt}
+=
+T\left(O_2^n-O_2^d\right)
++
+f_{pd}\left(O_2^p-O_2^d\right)
+-
+r_{O_2:P}R_d.
+\label{eq:six_o2_d_compact}
+\end{equation}
+
+At steady state,
+\begin{equation}
+O_2^d
+=
+\frac{
+T O_2^n
++
+f_{pd}O_2^p
+-
+r_{O_2:P}R_d
+}{
+T+f_{pd}
+}.
+\label{eq:six_o2_d_steady}
+\end{equation}
+
+The air--sea oxygen flux may be represented by
+\begin{equation}
+F^{\mathrm{gas}}_{O_2,i}
+=
+k_iA_i
+\left(
+O_{2,i}^{\mathrm{sat}}-O_2^i
+\right),
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:six_o2_gas_flux}
+\end{equation}
+
+In the limit of rapid air--sea exchange,
+\begin{equation}
+O_2^i=O_{2,i}^{\mathrm{sat}},
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:six_o2_saturation}
+\end{equation}
+
+%===========================================================
+\subsection{Whole-system conservation checks}
+%===========================================================
+
+Summing the six phosphate equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lPO_4^l
++
+V_nPO_4^n
++
+V_sPO_4^s
++
+V_pPO_4^p
++
+V_mPO_4^m
++
+V_dPO_4^d
+\right)
+=
+0.
+\label{eq:six_total_po4}
+\end{equation}
+
+Summing the six alkalinity equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lAlk^l
++
+V_nAlk^n
++
+V_sAlk^s
++
+V_pAlk^p
++
+V_mAlk^m
++
+V_dAlk^d
+\right)
+=
+0.
+\label{eq:six_total_alk}
+\end{equation}
+
+Including the atmosphere, total carbon is conserved:
+\begin{equation}
+\frac{d}{dt}
+\left[
+C_{\mathrm{atm}}
++
+\sum_{i\in\{l,n,s,p,m,d\}}
+V_iTCO_2^i
+\right]
+=
+0.
+\label{eq:six_total_carbon}
+\end{equation}
+
+The sum of the oceanic oxygen equations is
+\begin{equation}
+\frac{d}{dt}
+\left[
+\sum_{i\in\{l,n,s,p,m,d\}}
+V_iO_2^i
+\right]
+=
+\sum_{i\in\{l,n,s,p\}}
+F^{\mathrm{gas}}_{O_2,i}.
+\label{eq:six_total_o2}
+\end{equation}
+
+\newpage
+
+%===========================================================
+% Seven-box model conservation equations
+%
+% Boxes:
+%   l : low-latitude surface box
+%   n : northern surface box
+%   s : subantarctic surface box
+%   p : south-polar surface box
+%   m : thermocline and intermediate-depth box
+%   a : Atlantic / middepth box
+%   d : deepest-ocean box
+%
+% Conveyor circulation:
+%   d -> p -> s -> m -> n -> a -> d
+%
+% Bidirectional exchanges:
+%   f_{lm} : exchange between l and m
+%   f_{pd} : exchange between p and d
+%
+% Biological particle fluxes:
+%   P_l, P_n, P_s, P_p
+%
+% Remineralization partition:
+%
+%   gamma_m(P_l+P_s) is remineralized in box m.
+%
+%   The remainder of P_l+P_s is split between boxes a and d:
+%
+%       beta_a(P_l+P_s) -> box a,
+%       beta_d(P_l+P_s) -> box d,
+%
+%   where
+%
+%       beta_a + beta_d = 1-gamma_m.
+%
+%   gamma_a P_n is remineralized in box a.
+%   (1-gamma_a)P_n is remineralized in box d.
+%
+%   P_p is remineralized entirely in box d.
+%
+% Standard parameter values in Toggweiler (1999):
+%
+%   gamma_m = 0.80,
+%   beta_a  = 0.10,
+%   beta_d  = 0.10,
+%   gamma_a = 0.50.
+%
+% Gas-flux convention:
+%   F^{gas}_{X,i} > 0 denotes flux of tracer X
+%   from the atmosphere into surface box i.
+%===========================================================
+
+\section{Seven-box model conservation equations}
+
+The seven ocean boxes are denoted by
+\begin{equation}
+i\in\{l,n,s,p,m,a,d\}.
+\end{equation}
+
+Their volumes are
+\begin{equation}
+V_l,\quad
+V_n,\quad
+V_s,\quad
+V_p,\quad
+V_m,\quad
+V_a,\quad
+V_d.
+\end{equation}
+
+The conveyor circulation follows
+\begin{equation}
+d
+\xrightarrow{T}
+p
+\xrightarrow{T}
+s
+\xrightarrow{T}
+m
+\xrightarrow{T}
+n
+\xrightarrow{T}
+a
+\xrightarrow{T}
+d.
+\label{eq:seven_conveyor}
+\end{equation}
+
+The bidirectional exchange terms are
+\begin{equation}
+f_{lm}
+\quad\text{between boxes }l\text{ and }m,
+\end{equation}
+and
+\begin{equation}
+f_{pd}
+\quad\text{between boxes }p\text{ and }d.
+\end{equation}
+
+%===========================================================
+\subsection{Particle-remineralization partition}
+%===========================================================
+
+Define the phosphorus remineralization flux into box \(m\) as
+\begin{equation}
+R_m
+=
+\gamma_m\left(P_l+P_s\right).
+\label{eq:seven_Rm}
+\end{equation}
+
+Define the contributions of \(P_l+P_s\) to boxes \(a\) and
+\(d\) as
+\begin{align}
+R_{a,ls}
+&=
+\beta_a\left(P_l+P_s\right),
+\label{eq:seven_Ra_ls}
+\\
+R_{d,ls}
+&=
+\beta_d\left(P_l+P_s\right),
+\label{eq:seven_Rd_ls}
+\end{align}
+where
+\begin{equation}
+\gamma_m+\beta_a+\beta_d=1.
+\label{eq:seven_partition_sum}
+\end{equation}
+
+In the model used in the paper,
+\begin{equation}
+\beta_a=\beta_d=\frac{1-\gamma_m}{2}.
+\label{eq:seven_beta_equal}
+\end{equation}
+
+The northern particle flux is divided between boxes \(a\)
+and \(d\):
+\begin{align}
+R_{a,n}
+&=
+\gamma_aP_n,
+\label{eq:seven_Ra_n}
+\\
+R_{d,n}
+&=
+\left(1-\gamma_a\right)P_n.
+\label{eq:seven_Rd_n}
+\end{align}
+
+The total remineralization fluxes into boxes \(a\) and \(d\)
+are therefore
+\begin{align}
+R_a
+&=
+\beta_a\left(P_l+P_s\right)
++
+\gamma_aP_n,
+\label{eq:seven_Ra}
+\\
+R_d
+&=
+\beta_d\left(P_l+P_s\right)
++
+\left(1-\gamma_a\right)P_n
++
+P_p.
+\label{eq:seven_Rd}
+\end{align}
+
+The total particle-production and remineralization fluxes
+satisfy
+\begin{equation}
+R_m+R_a+R_d
+=
+P_l+P_s+P_n+P_p.
+\label{eq:seven_particle_conservation}
+\end{equation}
+
+For the standard parameter values,
+\begin{equation}
+\gamma_m=0.80,
+\qquad
+\beta_a=\beta_d=0.10,
+\qquad
+\gamma_a=0.50.
+\label{eq:seven_standard_gamma}
+\end{equation}
+
+%===========================================================
+\subsection{Phosphate conservation}
+%===========================================================
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dPO_4^l}{dt}
+=
+f_{lm}
+\left(
+PO_4^m-PO_4^l
+\right)
+-
+P_l.
+\label{eq:seven_po4_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dPO_4^n}{dt}
+=
+T
+\left(
+PO_4^m-PO_4^n
+\right)
+-
+P_n.
+\label{eq:seven_po4_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dPO_4^s}{dt}
+=
+T
+\left(
+PO_4^p-PO_4^s
+\right)
+-
+P_s.
+\label{eq:seven_po4_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dPO_4^p}{dt}
+={}&
+T
+\left(
+PO_4^d-PO_4^p
+\right)
+\\
+&+
+f_{pd}
+\left(
+PO_4^d-PO_4^p
+\right)
+-
+P_p.
+\end{split}
+\label{eq:seven_po4_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dPO_4^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(
+PO_4^d-PO_4^p
+\right)
+-
+P_p.
+\label{eq:seven_po4_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dPO_4^m}{dt}
+={}&
+T
+\left(
+PO_4^s-PO_4^m
+\right)
+\\
+&+
+f_{lm}
+\left(
+PO_4^l-PO_4^m
+\right)
++
+R_m.
+\end{split}
+\label{eq:seven_po4_m}
+\end{equation}
+
+That is,
+\begin{equation}
+\begin{split}
+V_m\frac{dPO_4^m}{dt}
+={}&
+T
+\left(
+PO_4^s-PO_4^m
+\right)
++
+f_{lm}
+\left(
+PO_4^l-PO_4^m
+\right)
+\\
+&+
+\gamma_m
+\left(
+P_l+P_s
+\right).
+\end{split}
+\label{eq:seven_po4_m_expanded}
+\end{equation}
+
+\subsubsection{Atlantic middepth box}
+
+\begin{equation}
+V_a\frac{dPO_4^a}{dt}
+=
+T
+\left(
+PO_4^n-PO_4^a
+\right)
++
+R_a.
+\label{eq:seven_po4_a}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_a\frac{dPO_4^a}{dt}
+={}&
+T
+\left(
+PO_4^n-PO_4^a
+\right)
+\\
+&+
+\beta_a
+\left(
+P_l+P_s
+\right)
++
+\gamma_aP_n.
+\end{split}
+\label{eq:seven_po4_a_expanded}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dPO_4^d}{dt}
+={}&
+T
+\left(
+PO_4^a-PO_4^d
+\right)
+\\
+&+
+f_{pd}
+\left(
+PO_4^p-PO_4^d
+\right)
++
+R_d.
+\end{split}
+\label{eq:seven_po4_d}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_d\frac{dPO_4^d}{dt}
+={}&
+T
+\left(
+PO_4^a-PO_4^d
+\right)
++
+f_{pd}
+\left(
+PO_4^p-PO_4^d
+\right)
+\\
+&+
+\beta_d
+\left(
+P_l+P_s
+\right)
++
+\left(1-\gamma_a\right)P_n
++
+P_p.
+\end{split}
+\label{eq:seven_po4_d_expanded}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Steady-state particle-flux relations}
+%-----------------------------------------------------------
+
+At steady state, the low-latitude particle flux is
+\begin{equation}
+P_l
+=
+f_{lm}
+\left(
+PO_4^m-PO_4^l
+\right).
+\label{eq:seven_Pl_steady}
+\end{equation}
+
+If complete low-latitude nutrient utilization is imposed,
+\begin{equation}
+PO_4^l=0,
+\label{eq:seven_po4_l_zero}
+\end{equation}
+then
+\begin{equation}
+P_l=f_{lm}PO_4^m.
+\label{eq:seven_Pl_constraint}
+\end{equation}
+
+The northern particle flux satisfies
+\begin{equation}
+P_n
+=
+T
+\left(
+PO_4^m-PO_4^n
+\right).
+\label{eq:seven_Pn_steady}
+\end{equation}
+
+The subantarctic particle flux satisfies
+\begin{equation}
+P_s
+=
+T
+\left(
+PO_4^p-PO_4^s
+\right).
+\label{eq:seven_Ps_steady}
+\end{equation}
+
+The steady-state polar phosphate concentration is
+\begin{equation}
+PO_4^p
+=
+PO_4^d
+-
+\frac{P_p}{T+f_{pd}}.
+\label{eq:seven_po4_p_steady}
+\end{equation}
+
+The steady-state Atlantic-box concentration is
+\begin{equation}
+PO_4^a
+=
+PO_4^n
++
+\frac{R_a}{T}.
+\label{eq:seven_po4_a_steady}
+\end{equation}
+
+%===========================================================
+\subsection{Total dissolved inorganic carbon conservation}
+%===========================================================
+
+Let \(r_{C:P}\) denote the total carbon-to-phosphorus ratio
+of sinking particles.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dTCO_2^l}{dt}
+=
+f_{lm}
+\left(
+TCO_2^m-TCO_2^l
+\right)
+-
+r_{C:P}P_l
++
+F^{\mathrm{gas}}_{C,l}.
+\label{eq:seven_tco2_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dTCO_2^n}{dt}
+=
+T
+\left(
+TCO_2^m-TCO_2^n
+\right)
+-
+r_{C:P}P_n
++
+F^{\mathrm{gas}}_{C,n}.
+\label{eq:seven_tco2_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dTCO_2^s}{dt}
+=
+T
+\left(
+TCO_2^p-TCO_2^s
+\right)
+-
+r_{C:P}P_s
++
+F^{\mathrm{gas}}_{C,s}.
+\label{eq:seven_tco2_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dTCO_2^p}{dt}
+={}&
+T
+\left(
+TCO_2^d-TCO_2^p
+\right)
+\\
+&+
+f_{pd}
+\left(
+TCO_2^d-TCO_2^p
+\right)
+-
+r_{C:P}P_p
++
+F^{\mathrm{gas}}_{C,p}.
+\end{split}
+\label{eq:seven_tco2_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dTCO_2^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(
+TCO_2^d-TCO_2^p
+\right)
+-
+r_{C:P}P_p
++
+F^{\mathrm{gas}}_{C,p}.
+\label{eq:seven_tco2_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dTCO_2^m}{dt}
+={}&
+T
+\left(
+TCO_2^s-TCO_2^m
+\right)
+\\
+&+
+f_{lm}
+\left(
+TCO_2^l-TCO_2^m
+\right)
++
+r_{C:P}R_m.
+\end{split}
+\label{eq:seven_tco2_m}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_m\frac{dTCO_2^m}{dt}
+={}&
+T
+\left(
+TCO_2^s-TCO_2^m
+\right)
++
+f_{lm}
+\left(
+TCO_2^l-TCO_2^m
+\right)
+\\
+&+
+r_{C:P}
+\gamma_m
+\left(
+P_l+P_s
+\right).
+\end{split}
+\label{eq:seven_tco2_m_expanded}
+\end{equation}
+
+\subsubsection{Atlantic middepth box}
+
+\begin{equation}
+V_a\frac{dTCO_2^a}{dt}
+=
+T
+\left(
+TCO_2^n-TCO_2^a
+\right)
++
+r_{C:P}R_a.
+\label{eq:seven_tco2_a}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_a\frac{dTCO_2^a}{dt}
+={}&
+T
+\left(
+TCO_2^n-TCO_2^a
+\right)
+\\
+&+
+r_{C:P}
+\left[
+\beta_a
+\left(
+P_l+P_s
+\right)
++
+\gamma_aP_n
+\right].
+\end{split}
+\label{eq:seven_tco2_a_expanded}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dTCO_2^d}{dt}
+={}&
+T
+\left(
+TCO_2^a-TCO_2^d
+\right)
+\\
+&+
+f_{pd}
+\left(
+TCO_2^p-TCO_2^d
+\right)
++
+r_{C:P}R_d.
+\end{split}
+\label{eq:seven_tco2_d}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_d\frac{dTCO_2^d}{dt}
+={}&
+T
+\left(
+TCO_2^a-TCO_2^d
+\right)
++
+f_{pd}
+\left(
+TCO_2^p-TCO_2^d
+\right)
+\\
+&+
+r_{C:P}
+\left[
+\beta_d
+\left(
+P_l+P_s
+\right)
++
+\left(1-\gamma_a\right)P_n
++
+P_p
+\right].
+\end{split}
+\label{eq:seven_tco2_d_expanded}
+\end{equation}
+
+At steady state,
+\begin{equation}
+TCO_2^a
+=
+TCO_2^n
++
+\frac{r_{C:P}R_a}{T}.
+\label{eq:seven_tco2_a_steady}
+\end{equation}
+
+The steady-state deep-ocean concentration is
+\begin{equation}
+TCO_2^d
+=
+\frac{
+T\,TCO_2^a
++
+f_{pd}TCO_2^p
++
+r_{C:P}R_d
+}{
+T+f_{pd}
+}.
+\label{eq:seven_tco2_d_steady}
+\end{equation}
+
+%-----------------------------------------------------------
+\subsubsection{Atmospheric carbon inventory}
+%-----------------------------------------------------------
+
+The atmospheric carbon inventory satisfies
+\begin{equation}
+\frac{dC_{\mathrm{atm}}}{dt}
+=
+-
+\sum_{i\in\{l,n,s,p\}}
+F^{\mathrm{gas}}_{C,i}.
+\label{eq:seven_carbon_atmosphere}
+\end{equation}
+
+A possible air--sea carbon flux parameterization is
+\begin{equation}
+F^{\mathrm{gas}}_{C,i}
+=
+k_iA_i
+\left(
+K_{0,i}pCO_2^{\mathrm{atm}}
+-
+[CO_2^\ast]_i
+\right),
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:seven_co2_gas_flux}
+\end{equation}
+
+%===========================================================
+\subsection{Total alkalinity conservation}
+%===========================================================
+
+Let \(r_{\mathrm{Alk}:P}\) denote the net alkalinity export
+associated with one mole of exported phosphorus.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dAlk^l}{dt}
+=
+f_{lm}
+\left(
+Alk^m-Alk^l
+\right)
+-
+r_{\mathrm{Alk}:P}P_l.
+\label{eq:seven_alk_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dAlk^n}{dt}
+=
+T
+\left(
+Alk^m-Alk^n
+\right)
+-
+r_{\mathrm{Alk}:P}P_n.
+\label{eq:seven_alk_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dAlk^s}{dt}
+=
+T
+\left(
+Alk^p-Alk^s
+\right)
+-
+r_{\mathrm{Alk}:P}P_s.
+\label{eq:seven_alk_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dAlk^p}{dt}
+={}&
+T
+\left(
+Alk^d-Alk^p
+\right)
+\\
+&+
+f_{pd}
+\left(
+Alk^d-Alk^p
+\right)
+-
+r_{\mathrm{Alk}:P}P_p.
+\end{split}
+\label{eq:seven_alk_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dAlk^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(
+Alk^d-Alk^p
+\right)
+-
+r_{\mathrm{Alk}:P}P_p.
+\label{eq:seven_alk_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dAlk^m}{dt}
+={}&
+T
+\left(
+Alk^s-Alk^m
+\right)
++
+f_{lm}
+\left(
+Alk^l-Alk^m
+\right)
+\\
+&+
+r_{\mathrm{Alk}:P}R_m.
+\end{split}
+\label{eq:seven_alk_m}
+\end{equation}
+
+\subsubsection{Atlantic middepth box}
+
+\begin{equation}
+V_a\frac{dAlk^a}{dt}
+=
+T
+\left(
+Alk^n-Alk^a
+\right)
++
+r_{\mathrm{Alk}:P}R_a.
+\label{eq:seven_alk_a}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dAlk^d}{dt}
+={}&
+T
+\left(
+Alk^a-Alk^d
+\right)
++
+f_{pd}
+\left(
+Alk^p-Alk^d
+\right)
+\\
+&+
+r_{\mathrm{Alk}:P}R_d.
+\end{split}
+\label{eq:seven_alk_d}
+\end{equation}
+
+Using the explicit remineralization partitions,
+\begin{equation}
+\begin{split}
+V_a\frac{dAlk^a}{dt}
+={}&
+T
+\left(
+Alk^n-Alk^a
+\right)
+\\
+&+
+r_{\mathrm{Alk}:P}
+\left[
+\beta_a
+\left(
+P_l+P_s
+\right)
++
+\gamma_aP_n
+\right],
+\end{split}
+\label{eq:seven_alk_a_expanded}
+\end{equation}
+
+and
+\begin{equation}
+\begin{split}
+V_d\frac{dAlk^d}{dt}
+={}&
+T
+\left(
+Alk^a-Alk^d
+\right)
++
+f_{pd}
+\left(
+Alk^p-Alk^d
+\right)
+\\
+&+
+r_{\mathrm{Alk}:P}
+\left[
+\beta_d
+\left(
+P_l+P_s
+\right)
++
+\left(1-\gamma_a\right)P_n
++
+P_p
+\right].
+\end{split}
+\label{eq:seven_alk_d_expanded}
+\end{equation}
+
+For the parameterization used in the paper,
+\begin{equation}
+r_{\mathrm{Alk}:P}
+=
+2F_{\mathrm{CaCO_3}}r_{C:P}
+-
+r_{N:P}.
+\label{eq:seven_alk_ratio}
+\end{equation}
+
+Using
+\begin{equation}
+F_{\mathrm{CaCO_3}}=0.20,
+\qquad
+r_{C:P}=162.5,
+\qquad
+r_{N:P}=15,
+\end{equation}
+gives
+\begin{equation}
+r_{\mathrm{Alk}:P}=50.
+\label{eq:seven_alk_ratio_value}
+\end{equation}
+
+%===========================================================
+\subsection{Oxygen conservation}
+%===========================================================
+
+Let \(r_{O_2:P}\) denote the oxygen-to-phosphorus ratio
+associated with organic-matter production and respiration.
+
+\subsubsection{Low-latitude surface box}
+
+\begin{equation}
+V_l\frac{dO_2^l}{dt}
+=
+f_{lm}
+\left(
+O_2^m-O_2^l
+\right)
++
+r_{O_2:P}P_l
++
+F^{\mathrm{gas}}_{O_2,l}.
+\label{eq:seven_o2_l}
+\end{equation}
+
+\subsubsection{Northern surface box}
+
+\begin{equation}
+V_n\frac{dO_2^n}{dt}
+=
+T
+\left(
+O_2^m-O_2^n
+\right)
++
+r_{O_2:P}P_n
++
+F^{\mathrm{gas}}_{O_2,n}.
+\label{eq:seven_o2_n}
+\end{equation}
+
+\subsubsection{Subantarctic surface box}
+
+\begin{equation}
+V_s\frac{dO_2^s}{dt}
+=
+T
+\left(
+O_2^p-O_2^s
+\right)
++
+r_{O_2:P}P_s
++
+F^{\mathrm{gas}}_{O_2,s}.
+\label{eq:seven_o2_s}
+\end{equation}
+
+\subsubsection{South-polar surface box}
+
+\begin{equation}
+\begin{split}
+V_p\frac{dO_2^p}{dt}
+={}&
+T
+\left(
+O_2^d-O_2^p
+\right)
+\\
+&+
+f_{pd}
+\left(
+O_2^d-O_2^p
+\right)
++
+r_{O_2:P}P_p
++
+F^{\mathrm{gas}}_{O_2,p}.
+\end{split}
+\label{eq:seven_o2_p}
+\end{equation}
+
+Equivalently,
+\begin{equation}
+V_p\frac{dO_2^p}{dt}
+=
+\left(T+f_{pd}\right)
+\left(
+O_2^d-O_2^p
+\right)
++
+r_{O_2:P}P_p
++
+F^{\mathrm{gas}}_{O_2,p}.
+\label{eq:seven_o2_p_compact}
+\end{equation}
+
+\subsubsection{Thermocline and intermediate-depth box}
+
+\begin{equation}
+\begin{split}
+V_m\frac{dO_2^m}{dt}
+={}&
+T
+\left(
+O_2^s-O_2^m
+\right)
++
+f_{lm}
+\left(
+O_2^l-O_2^m
+\right)
+\\
+&-
+r_{O_2:P}R_m.
+\end{split}
+\label{eq:seven_o2_m}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_m\frac{dO_2^m}{dt}
+={}&
+T
+\left(
+O_2^s-O_2^m
+\right)
++
+f_{lm}
+\left(
+O_2^l-O_2^m
+\right)
+\\
+&-
+r_{O_2:P}
+\gamma_m
+\left(
+P_l+P_s
+\right).
+\end{split}
+\label{eq:seven_o2_m_expanded}
+\end{equation}
+
+\subsubsection{Atlantic middepth box}
+
+\begin{equation}
+V_a\frac{dO_2^a}{dt}
+=
+T
+\left(
+O_2^n-O_2^a
+\right)
+-
+r_{O_2:P}R_a.
+\label{eq:seven_o2_a}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_a\frac{dO_2^a}{dt}
+={}&
+T
+\left(
+O_2^n-O_2^a
+\right)
+\\
+&-
+r_{O_2:P}
+\left[
+\beta_a
+\left(
+P_l+P_s
+\right)
++
+\gamma_aP_n
+\right].
+\end{split}
+\label{eq:seven_o2_a_expanded}
+\end{equation}
+
+\subsubsection{Deep-ocean box}
+
+\begin{equation}
+\begin{split}
+V_d\frac{dO_2^d}{dt}
+={}&
+T
+\left(
+O_2^a-O_2^d
+\right)
++
+f_{pd}
+\left(
+O_2^p-O_2^d
+\right)
+\\
+&-
+r_{O_2:P}R_d.
+\end{split}
+\label{eq:seven_o2_d}
+\end{equation}
+
+Expanded,
+\begin{equation}
+\begin{split}
+V_d\frac{dO_2^d}{dt}
+={}&
+T
+\left(
+O_2^a-O_2^d
+\right)
++
+f_{pd}
+\left(
+O_2^p-O_2^d
+\right)
+\\
+&-
+r_{O_2:P}
+\left[
+\beta_d
+\left(
+P_l+P_s
+\right)
++
+\left(1-\gamma_a\right)P_n
++
+P_p
+\right].
+\end{split}
+\label{eq:seven_o2_d_expanded}
+\end{equation}
+
+At steady state, the Atlantic-box oxygen concentration is
+\begin{equation}
+O_2^a
+=
+O_2^n
+-
+\frac{r_{O_2:P}R_a}{T}.
+\label{eq:seven_o2_a_steady}
+\end{equation}
+
+The steady-state deep-ocean oxygen concentration is
+\begin{equation}
+O_2^d
+=
+\frac{
+T O_2^a
++
+f_{pd}O_2^p
+-
+r_{O_2:P}R_d
+}{
+T+f_{pd}
+}.
+\label{eq:seven_o2_d_steady}
+\end{equation}
+
+The air--sea oxygen flux may be represented by
+\begin{equation}
+F^{\mathrm{gas}}_{O_2,i}
+=
+k_iA_i
+\left(
+O_{2,i}^{\mathrm{sat}}-O_2^i
+\right),
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:seven_o2_gas_flux}
+\end{equation}
+
+In the limit of rapid air--sea exchange,
+\begin{equation}
+O_2^i=O_{2,i}^{\mathrm{sat}},
+\qquad
+i\in\{l,n,s,p\}.
+\label{eq:seven_o2_saturation}
+\end{equation}
+
+%===========================================================
+\subsection{Whole-system conservation checks}
+%===========================================================
+
+Summing the seven phosphate equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lPO_4^l
++
+V_nPO_4^n
++
+V_sPO_4^s
++
+V_pPO_4^p
++
+V_mPO_4^m
++
+V_aPO_4^a
++
+V_dPO_4^d
+\right)
+=
+0.
+\label{eq:seven_total_po4}
+\end{equation}
+
+Summing the seven alkalinity equations gives
+\begin{equation}
+\frac{d}{dt}
+\left(
+V_lAlk^l
++
+V_nAlk^n
++
+V_sAlk^s
++
+V_pAlk^p
++
+V_mAlk^m
++
+V_aAlk^a
++
+V_dAlk^d
+\right)
+=
+0.
+\label{eq:seven_total_alk}
+\end{equation}
+
+Including the atmosphere, total carbon is conserved:
+\begin{equation}
+\frac{d}{dt}
+\left[
+C_{\mathrm{atm}}
++
+\sum_{i\in\{l,n,s,p,m,a,d\}}
+V_iTCO_2^i
+\right]
+=
+0.
+\label{eq:seven_total_carbon}
+\end{equation}
+
+Summing the oceanic oxygen equations gives
+\begin{equation}
+\frac{d}{dt}
+\left[
+\sum_{i\in\{l,n,s,p,m,a,d\}}
+V_iO_2^i
+\right]
+=
+\sum_{i\in\{l,n,s,p\}}
+F^{\mathrm{gas}}_{O_2,i}.
+\label{eq:seven_total_o2}
+\end{equation}
+
+\end{document}
